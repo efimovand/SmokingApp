@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */; };
+		5565A83427C8F6B0009C6ACD /* 8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83327C8F6B0009C6ACD /* 8.swift */; };
+		5565A83627C8F6B1009C6ACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5565A83527C8F6B1009C6ACD /* Assets.xcassets */; };
+		5565A83927C8F6B1009C6ACD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5565A83827C8F6B1009C6ACD /* Preview Assets.xcassets */; };
+		5565A84327C8F6B2009C6ACD /* SmokingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84227C8F6B2009C6ACD /* SmokingAppTests.swift */; };
+		5565A84D27C8F6B2009C6ACD /* SmokingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */; };
+		5565A84F27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5565A83F27C8F6B2009C6ACD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5565A82627C8F6B0009C6ACD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5565A82D27C8F6B0009C6ACD;
+			remoteInfo = SmokingApp;
+		};
+		5565A84927C8F6B2009C6ACD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5565A82627C8F6B0009C6ACD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5565A82D27C8F6B0009C6ACD;
+			remoteInfo = SmokingApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5565A82E27C8F6B0009C6ACD /* SmokingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppApp.swift; sourceTree = "<group>"; };
+		5565A83327C8F6B0009C6ACD /* 8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 8.swift; sourceTree = "<group>"; };
+		5565A83527C8F6B1009C6ACD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5565A83827C8F6B1009C6ACD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5565A83E27C8F6B2009C6ACD /* SmokingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5565A84227C8F6B2009C6ACD /* SmokingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppTests.swift; sourceTree = "<group>"; };
+		5565A84827C8F6B2009C6ACD /* SmokingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITests.swift; sourceTree = "<group>"; };
+		5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5565A82B27C8F6B0009C6ACD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5565A83B27C8F6B2009C6ACD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5565A84527C8F6B2009C6ACD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5565A82527C8F6B0009C6ACD = {
+			isa = PBXGroup;
+			children = (
+				5565A83027C8F6B0009C6ACD /* SmokingApp */,
+				5565A84127C8F6B2009C6ACD /* SmokingAppTests */,
+				5565A84B27C8F6B2009C6ACD /* SmokingAppUITests */,
+				5565A82F27C8F6B0009C6ACD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5565A82F27C8F6B0009C6ACD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5565A82E27C8F6B0009C6ACD /* SmokingApp.app */,
+				5565A83E27C8F6B2009C6ACD /* SmokingAppTests.xctest */,
+				5565A84827C8F6B2009C6ACD /* SmokingAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5565A83027C8F6B0009C6ACD /* SmokingApp */ = {
+			isa = PBXGroup;
+			children = (
+				5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */,
+				5565A83327C8F6B0009C6ACD /* 8.swift */,
+				5565A83527C8F6B1009C6ACD /* Assets.xcassets */,
+				5565A83727C8F6B1009C6ACD /* Preview Content */,
+			);
+			path = SmokingApp;
+			sourceTree = "<group>";
+		};
+		5565A83727C8F6B1009C6ACD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5565A83827C8F6B1009C6ACD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5565A84127C8F6B2009C6ACD /* SmokingAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				5565A84227C8F6B2009C6ACD /* SmokingAppTests.swift */,
+			);
+			path = SmokingAppTests;
+			sourceTree = "<group>";
+		};
+		5565A84B27C8F6B2009C6ACD /* SmokingAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */,
+				5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */,
+			);
+			path = SmokingAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5565A82D27C8F6B0009C6ACD /* SmokingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5565A85227C8F6B2009C6ACD /* Build configuration list for PBXNativeTarget "SmokingApp" */;
+			buildPhases = (
+				5565A82A27C8F6B0009C6ACD /* Sources */,
+				5565A82B27C8F6B0009C6ACD /* Frameworks */,
+				5565A82C27C8F6B0009C6ACD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmokingApp;
+			productName = SmokingApp;
+			productReference = 5565A82E27C8F6B0009C6ACD /* SmokingApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5565A83D27C8F6B2009C6ACD /* SmokingAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5565A85527C8F6B2009C6ACD /* Build configuration list for PBXNativeTarget "SmokingAppTests" */;
+			buildPhases = (
+				5565A83A27C8F6B2009C6ACD /* Sources */,
+				5565A83B27C8F6B2009C6ACD /* Frameworks */,
+				5565A83C27C8F6B2009C6ACD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5565A84027C8F6B2009C6ACD /* PBXTargetDependency */,
+			);
+			name = SmokingAppTests;
+			productName = SmokingAppTests;
+			productReference = 5565A83E27C8F6B2009C6ACD /* SmokingAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5565A84727C8F6B2009C6ACD /* SmokingAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5565A85827C8F6B2009C6ACD /* Build configuration list for PBXNativeTarget "SmokingAppUITests" */;
+			buildPhases = (
+				5565A84427C8F6B2009C6ACD /* Sources */,
+				5565A84527C8F6B2009C6ACD /* Frameworks */,
+				5565A84627C8F6B2009C6ACD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5565A84A27C8F6B2009C6ACD /* PBXTargetDependency */,
+			);
+			name = SmokingAppUITests;
+			productName = SmokingAppUITests;
+			productReference = 5565A84827C8F6B2009C6ACD /* SmokingAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5565A82627C8F6B0009C6ACD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					5565A82D27C8F6B0009C6ACD = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					5565A83D27C8F6B2009C6ACD = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 5565A82D27C8F6B0009C6ACD;
+					};
+					5565A84727C8F6B2009C6ACD = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 5565A82D27C8F6B0009C6ACD;
+					};
+				};
+			};
+			buildConfigurationList = 5565A82927C8F6B0009C6ACD /* Build configuration list for PBXProject "SmokingApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5565A82527C8F6B0009C6ACD;
+			productRefGroup = 5565A82F27C8F6B0009C6ACD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5565A82D27C8F6B0009C6ACD /* SmokingApp */,
+				5565A83D27C8F6B2009C6ACD /* SmokingAppTests */,
+				5565A84727C8F6B2009C6ACD /* SmokingAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5565A82C27C8F6B0009C6ACD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5565A83927C8F6B1009C6ACD /* Preview Assets.xcassets in Resources */,
+				5565A83627C8F6B1009C6ACD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5565A83C27C8F6B2009C6ACD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5565A84627C8F6B2009C6ACD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5565A82A27C8F6B0009C6ACD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5565A83427C8F6B0009C6ACD /* 8.swift in Sources */,
+				5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5565A83A27C8F6B2009C6ACD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5565A84327C8F6B2009C6ACD /* SmokingAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5565A84427C8F6B2009C6ACD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5565A84D27C8F6B2009C6ACD /* SmokingAppUITests.swift in Sources */,
+				5565A84F27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5565A84027C8F6B2009C6ACD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5565A82D27C8F6B0009C6ACD /* SmokingApp */;
+			targetProxy = 5565A83F27C8F6B2009C6ACD /* PBXContainerItemProxy */;
+		};
+		5565A84A27C8F6B2009C6ACD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5565A82D27C8F6B0009C6ACD /* SmokingApp */;
+			targetProxy = 5565A84927C8F6B2009C6ACD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5565A85027C8F6B2009C6ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5565A85127C8F6B2009C6ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5565A85327C8F6B2009C6ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SmokingApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Andrey.SmokingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5565A85427C8F6B2009C6ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SmokingApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Andrey.SmokingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5565A85627C8F6B2009C6ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Andrey.SmokingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmokingApp.app/SmokingApp";
+			};
+			name = Debug;
+		};
+		5565A85727C8F6B2009C6ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Andrey.SmokingAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmokingApp.app/SmokingApp";
+			};
+			name = Release;
+		};
+		5565A85927C8F6B2009C6ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Andrey.SmokingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SmokingApp;
+			};
+			name = Debug;
+		};
+		5565A85A27C8F6B2009C6ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Andrey.SmokingAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SmokingApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5565A82927C8F6B0009C6ACD /* Build configuration list for PBXProject "SmokingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5565A85027C8F6B2009C6ACD /* Debug */,
+				5565A85127C8F6B2009C6ACD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5565A85227C8F6B2009C6ACD /* Build configuration list for PBXNativeTarget "SmokingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5565A85327C8F6B2009C6ACD /* Debug */,
+				5565A85427C8F6B2009C6ACD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5565A85527C8F6B2009C6ACD /* Build configuration list for PBXNativeTarget "SmokingAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5565A85627C8F6B2009C6ACD /* Debug */,
+				5565A85727C8F6B2009C6ACD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5565A85827C8F6B2009C6ACD /* Build configuration list for PBXNativeTarget "SmokingAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5565A85927C8F6B2009C6ACD /* Debug */,
+				5565A85A27C8F6B2009C6ACD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5565A82627C8F6B0009C6ACD /* Project object */;
+}
