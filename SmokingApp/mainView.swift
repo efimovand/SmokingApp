@@ -173,6 +173,7 @@ struct ContentView: View {
         }.background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
+                        .frame(width: 375, height: 812, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
     }
 }
