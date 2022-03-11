@@ -1,5 +1,5 @@
 //
-//  restartView.swift
+//  achievementsView.swift
 //  SmokingApp
 //
 //  Created by Андрей Ефимов on 11.03.2022.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct restartView: View {
+struct achievementsView: View {
     
-    @State var selected = 3
+    @State var selected = 2
     
     var body: some View {
         
@@ -114,36 +114,10 @@ struct restartView: View {
                 }
             }
             
-            ZStack{
-                
-                // restartButton
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                    .frame(width: 293, height: 163)
-                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
-                
-                Text("Начать заново")
-                    .font(.system(size: 36, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 231, height: 86, alignment: .top)
-                
-                // staticText
-                Text("Вы сорвались и покурили?")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 252, height: 24, alignment: .top)
-                    .offset(x: -50, y: -92)
-                
-                Text("Такое бывает. Просто попробуйте ещё раз.")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 315, height: 24, alignment: .top)
-                    .offset(y: 98)
-                
-            }
+            achievement(name: "На пенек сел", description: "Сэкономить 1000 рублей", picture: Image("economy"))
+                .offset(y: -100)
+            achievement(name: "Герой России", description: "Ограбить бабку", picture: Image("restart"))
+            
         }.background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -153,11 +127,66 @@ struct restartView: View {
     }
 }
 
+// Every achievement's structure
+struct achievement: View {
+    
+    var name: String
+    var description: String
+    var picture: Image
+    
+    var body: some View {
+        
+        ZStack{
+            
+            // right
+            RoundedCorners(tl: 0, tr: 10, bl: 0, br: 10).fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
+                .frame(width: 270, height: 75)
+                .offset(x: 45)
+            
+            // left
+            RoundedCorners(tl: 10, tr: 0, bl: 10, br: 0).fill(Color(red: 0.89, green: 0.93, blue: 1, opacity: 0.40))
+                .frame(width: 75, height: 75)
+                .offset(x: -127)
+            
+            // text
+            VStack(
+                alignment: .leading,
+                spacing: 5
+            ) {
+                
+                // name
+                Text(name)
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 24, weight: .bold))
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 252, height: 27, alignment: .topLeading)
+                
+                // description
+                Text(description)
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 14, weight: .semibold))
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 190, height: 17, alignment: .topLeading)
+                
+            }.offset(x: 40, y: -10)
+            
+            // picture
+            picture
+                .resizable()
+                .frame(width: 75, height: 75)
+                .offset(x: -128, y: -3)
+            
+        } // +DropShadow and Stroke
+        
+    }
+    
+}
 
 
 
-struct restartView_Previews: PreviewProvider {
+
+struct achievementsView_Previews: PreviewProvider {
     static var previews: some View {
-        restartView()
+        achievementsView()
     }
 }
