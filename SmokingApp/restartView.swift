@@ -15,6 +15,7 @@ struct restartView: View {
         
         ZStack{
             
+            /*
             // NavigationBar
             VStack{
                 
@@ -113,7 +114,10 @@ struct restartView: View {
                                     .offset(y: 7))
                 }
             }
+             */
             
+            
+            // Restart
             ZStack{
                 
                 // restartButton

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct mainView: View {
     
     @State var selected = 0
     
@@ -18,6 +18,7 @@ struct ContentView: View {
         
         ZStack{
             
+            /*
             // NavigationBar
             VStack{
                 
@@ -116,7 +117,8 @@ struct ContentView: View {
                                     .offset(y: 7))
                 }
             }
-            
+             */
+             
             
             // Main
             Group {
@@ -226,6 +228,6 @@ struct RoundedCorners: Shape {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        mainView()
     }
 }

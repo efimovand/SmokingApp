@@ -19,6 +19,7 @@ struct economyView: View {
         
         ZStack{
             
+            /*
             // NavigationBar
             VStack{
                 
@@ -117,6 +118,8 @@ struct economyView: View {
                                     .offset(y: 7))
                 }
             }
+             */
+            
             
             // Economy
             VStack{
