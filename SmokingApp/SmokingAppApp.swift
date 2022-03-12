@@ -11,7 +11,7 @@ import SwiftUI
 struct SmokingAppApp: App {
     var body: some Scene {
         WindowGroup {
-            mainView()
+            MainTabView()
         }
     }
 }

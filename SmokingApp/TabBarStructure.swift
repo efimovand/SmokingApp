@@ -1,8 +1,8 @@
 //
-//  testTabBar.swift
+//  TabBarStructure.swift
 //  SmokingApp
 //
-//  Created by Андрей Ефимов on 12.03.2022.
+//  Created by Андрей Ефимов on 13.03.2022.
 //
 
 import SwiftUI
@@ -158,7 +158,7 @@ struct MainTabView: View {
     }
 }
 
-struct testTabBar_Previews: PreviewProvider {
+struct TabBarStructure_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
     }

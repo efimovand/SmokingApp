@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555B553127DD57AB00449868 /* TabBarStructure.swift */; };
 		5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */; };
 		5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83327C8F6B0009C6ACD /* mainView.swift */; };
 		5565A83627C8F6B1009C6ACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5565A83527C8F6B1009C6ACD /* Assets.xcassets */; };
@@ -14,7 +15,6 @@
 		5565A84327C8F6B2009C6ACD /* SmokingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84227C8F6B2009C6ACD /* SmokingAppTests.swift */; };
 		5565A84D27C8F6B2009C6ACD /* SmokingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */; };
 		5565A84F27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */; };
-		55667AA627DCF6B300A0A633 /* testTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55667AA527DCF6B300A0A633 /* testTabBar.swift */; };
 		556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F556D27DB9DD800E1A29F /* achievementsView.swift */; };
 		55DEE8F127DACC4B002DF6D3 /* economyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEE8F027DACC4B002DF6D3 /* economyView.swift */; };
 		55DEE8F327DAD8B2002DF6D3 /* restartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEE8F227DAD8B2002DF6D3 /* restartView.swift */; };
@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		555B553127DD57AB00449868 /* TabBarStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStructure.swift; sourceTree = "<group>"; };
 		5565A82E27C8F6B0009C6ACD /* SmokingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppApp.swift; sourceTree = "<group>"; };
 		5565A83327C8F6B0009C6ACD /* mainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		5565A84827C8F6B2009C6ACD /* SmokingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITests.swift; sourceTree = "<group>"; };
 		5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		55667AA527DCF6B300A0A633 /* testTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTabBar.swift; sourceTree = "<group>"; };
 		556F556D27DB9DD800E1A29F /* achievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = achievementsView.swift; sourceTree = "<group>"; };
 		55DEE8F027DACC4B002DF6D3 /* economyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = economyView.swift; sourceTree = "<group>"; };
 		55DEE8F227DAD8B2002DF6D3 /* restartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restartView.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */,
-				55667AA527DCF6B300A0A633 /* testTabBar.swift */,
+				555B553127DD57AB00449868 /* TabBarStructure.swift */,
 				5565A83327C8F6B0009C6ACD /* mainView.swift */,
 				55DEE8F027DACC4B002DF6D3 /* economyView.swift */,
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
@@ -270,9 +270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55DEE8F327DAD8B2002DF6D3 /* restartView.swift in Sources */,
-				55667AA627DCF6B300A0A633 /* testTabBar.swift in Sources */,
 				556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */,
 				55DEE8F127DACC4B002DF6D3 /* economyView.swift in Sources */,
+				555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */,
 				5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */,
 				5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */,
 			);
