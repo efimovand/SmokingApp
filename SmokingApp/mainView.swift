@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+// Score logic
+/*
+ // Save current time
+ UserDefaults.standard.set(Date(), forKey:"savedTime")
+ 
+ 
+ // Check if 24 hours have spent from saved time
+ 
+ if let date = UserDefaults.standard.object(forKey: "savedTime") as? Date {
+    if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff >= 24 {
+       // score += 1
+    }
+ }
+ 
+*/
+
 struct mainView: View {
     
     @State var selected = 0

@@ -36,7 +36,7 @@ struct achievementsView: View {
                 
                 
                 // Achievements
-                ScrollView(.vertical) {
+                ScrollView(.vertical, showsIndicators: false) {
                     
                     // List
                     VStack(spacing: 15) {
