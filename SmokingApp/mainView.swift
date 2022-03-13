@@ -10,173 +10,108 @@ import SwiftUI
 struct mainView: View {
     
     @State var selected = 0
-    
-    @State var score = 8
-    @State var textBottom = "дней"
+    @State var score: Int = 8
     
     var body: some View {
         
         ZStack{
             
-            /*
-            // NavigationBar
+            // Main
             VStack{
                 
-                Spacer(minLength: 697)
-                
-                ZStack{
-                    
-                    HStack{
-                        // main
-                        Button(action: {
-                            self.selected = 0
-                        }) {
-                            if self.selected == 0
-                            {
-                                Image("main_a")
-                                    .resizable()
-                                    .frame(width: 74, height: 74)
-                                    .offset(x: 1, y: -1)
-                            }
-                            else{
-                                Image("main")
-                                    .resizable()
-                                    .frame(width: 74, height: 74)
-                                    .offset(x: 1, y: -1)
-                            }
-                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        // economy
-                        Button(action: {
-                            self.selected = 1
-                        }) {
-                            if self.selected == 1
-                            {
-                                Image("economy_a")
-                                    .resizable()
-                                    .frame(width: 81, height: 81)
-                                    .offset(x: 1, y: -4)
-                            }
-                            else{
-                                Image("economy")
-                                    .resizable()
-                                    .frame(width: 81, height: 81)
-                                    .offset(x: 1, y: -4)
-                            }
-                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        // achievements
-                        Button(action: {
-                            self.selected = 2
-                        }) {
-                            if self.selected == 2
-                            {
-                                Image("achievements_a")
-                                    .resizable()
-                                    .frame(width: 73, height: 73)
-                                    .offset(x: 1)
-                            }
-                            else{
-                                Image("achievements")
-                                    .resizable()
-                                    .frame(width: 73, height: 73)
-                                    .offset(x: 1)
-                            }
-                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        // restart
-                        Button(action: {
-                            self.selected = 3
-                        }) {
-                            if self.selected == 3
-                            {
-                                Image("restart_test")
-                                    .resizable()
-                                    .frame(width: 67, height: 67)
-                                    .offset(x: 1)
-                            }
-                            else{
-                                Image("restart")
-                                    .resizable()
-                                    .frame(width: 67, height: 67)
-                                    .offset(x: 1)
-                            }
-                        }
-                    }
-                    .padding(.horizontal, 50)
-                    .background(RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                                    .frame(width: 377, height: 92)
-                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.50), Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
-                                    .offset(y: 7))
-                }
-            }
-             */
-             
-            
-            // Main
-            Group {
                 //textTop
                 Text("Вы не курите уже")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(Color.white)
                     .frame(width: 354, height: 121, alignment: .topLeading)
-                    .offset(x: 10, y: -227)
+                    .padding(.leading, 20)
+                    .offset(y: 80)
                 
                 //score
-                Text("\(score)")
-                    .font(score < 10 ? .system(size: 288, weight: .heavy) : .system(size: 230, weight: .heavy))
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 328, height: 328, alignment: .center)
-                    .offset(y: -55)
-                
-                //textBottom
-                Text("\(textBottom)")
-                    .font(.system(size: 48, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .frame(width: 127, height: 58)
-                    .offset(x: 78, y: 95)
-                
-                //healthNow
-                ZStack{
-                    
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 317, height: 88)
-                        .offset(y: 218)
-                        .opacity(0.4)
-                    
-                    Image("lungs")
-                        .resizable()
-                        .frame(width: 90, height: 90)
-                        .offset(x: -110, y: 218)
-                    
-                    Text("Лёгкие освобождаются от остатков CO2")
-                        .font(.system(size: 18, weight: .bold))
+                if (score < 10){
+                    Text("\(score)")
+                        .font(.system(size: 288, weight: .heavy))
                         .foregroundColor(Color.white)
-                        .frame(width: 200, height: 65, alignment: .topLeading)
-                        .offset(x: 48, y: 218)
-                    
-                    RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0).fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 317, height: 37)
-                        .offset(y: 291)
-                        .opacity(0.4)
-                    
+                        .multilineTextAlignment(.center)
+                        .frame(width: 328, height: 328, alignment: .top)
+                        .offset(y: 19)
+                }
+                else if (score > 10 && score < 100){
+                    Text("\(score)")
+                        .font(.system(size: 250, weight: .heavy))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 375, height: 328, alignment: .top)
+                        .offset(y: 44)
+                }
+                else if (score >= 100){
+                    Text("\(score)")
+                        .font(.system(size: 170, weight: .heavy))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 375, height: 328, alignment: .top)
+                        .offset(y: 80)
                 }
                 
+                //textBottom
+                if ((score != 11) && (score % 10 == 1)){
+                    Text("день")
+                        .font(.system(size: 48, weight: .bold))
+                        .foregroundColor(Color.white)
+                        .frame(width: 127, height: 58)
+                        .offset(x: 78, y: -32)
+                }
+                else if (((score != 12) && (score != 13) && (score != 14)) && ((score % 10 == 2) || (score % 10 == 3) || (score % 10 == 4))){
+                    Text("дня")
+                        .font(.system(size: 48, weight: .bold))
+                        .foregroundColor(Color.white)
+                        .frame(width: 127, height: 58)
+                        .offset(x: 78, y: -32)
+                }
+                else{
+                    Text("дней")
+                        .font(.system(size: 48, weight: .bold))
+                        .foregroundColor(Color.white)
+                        .frame(width: 127, height: 58)
+                        .offset(x: 78, y: -32)
+                }
+                
+                Spacer()
             }
+            
+            //healthNow
+            ZStack{
+                
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 317, height: 88)
+                    .offset(y: 218)
+                    .opacity(0.4)
+                
+                Image("lungs")
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .offset(x: -110, y: 218)
+                
+                Text("Лёгкие освобождаются от остатков CO2")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(Color.white)
+                    .frame(width: 200, height: 65, alignment: .topLeading)
+                    .offset(x: 48, y: 218)
+                
+                RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0).fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 317, height: 37)
+                    .offset(y: 291)
+                    .opacity(0.4)
+                
+            }
+            
         }.background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 812, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
+        
     }
 }
 
