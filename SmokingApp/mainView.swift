@@ -25,7 +25,7 @@ import SwiftUI
 
 struct mainView: View {
     
-    @State var score: Int = 8
+    @EnvironmentObject var scoreMain: Score
     
     var body: some View {
         
@@ -43,24 +43,24 @@ struct mainView: View {
                     .offset(y: 80)
                 
                 //score
-                if (score < 10){
-                    Text("\(score)")
+                if (scoreMain.score < 10){
+                    Text("\(scoreMain.score)")
                         .font(.system(size: 288, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .frame(width: 328, height: 328, alignment: .top)
                         .offset(y: 19)
                 }
-                else if (score > 10 && score < 100){
-                    Text("\(score)")
+                else if (scoreMain.score > 10 && scoreMain.score < 100){
+                    Text("\(scoreMain.score)")
                         .font(.system(size: 250, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .frame(width: 375, height: 328, alignment: .top)
                         .offset(y: 44)
                 }
-                else if (score >= 100){
-                    Text("\(score)")
+                else if (scoreMain.score >= 100){
+                    Text("\(scoreMain.score)")
                         .font(.system(size: 170, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
@@ -69,14 +69,14 @@ struct mainView: View {
                 }
                 
                 //textBottom
-                if ((score != 11) && (score % 10 == 1)){
+                if ((scoreMain.score != 11) && (scoreMain.score % 10 == 1)){
                     Text("день")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
                         .frame(width: 127, height: 58)
                         .offset(x: 78, y: -32)
                 }
-                else if (((score != 12) && (score != 13) && (score != 14)) && ((score % 10 == 2) || (score % 10 == 3) || (score % 10 == 4))){
+                else if (((scoreMain.score != 12) && (scoreMain.score != 13) && (scoreMain.score != 14)) && ((scoreMain.score % 10 == 2) || (scoreMain.score % 10 == 3) || (scoreMain.score % 10 == 4))){
                     Text("дня")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)

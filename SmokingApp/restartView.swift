@@ -9,6 +9,8 @@ import SwiftUI
 
 struct restartView: View {
     
+    @EnvironmentObject var restartScore: Score
+    
     @State private var settingsSelected = false
     @State var alertShown = false
     
@@ -90,7 +92,6 @@ struct restartView: View {
                     .offset(y: -40)
             }
             
-            
         }.background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -99,6 +100,8 @@ struct restartView: View {
         
     }
 }
+
+
 
 
 
