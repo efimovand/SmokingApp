@@ -25,7 +25,6 @@ import SwiftUI
 
 struct mainView: View {
     
-    @State var selected = 0
     @State var score: Int = 8
     
     var body: some View {

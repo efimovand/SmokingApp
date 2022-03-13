@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct economyView: View {
-    
-    @State var selected = 1
-    
+
     @State var totalEconomy: Int = 1250
     @State var dailyEconomy = ""
     @State var monthlyEconomy = ""
