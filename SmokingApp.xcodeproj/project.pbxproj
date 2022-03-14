@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55449FC427DFC8BC00146E17 /* settingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55449FC327DFC8BC00146E17 /* settingsView.swift */; };
 		555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555B553127DD57AB00449868 /* TabBarStructure.swift */; };
 		5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */; };
 		5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83327C8F6B0009C6ACD /* mainView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55449FC327DFC8BC00146E17 /* settingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsView.swift; sourceTree = "<group>"; };
 		555B553127DD57AB00449868 /* TabBarStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStructure.swift; sourceTree = "<group>"; };
 		5565A82E27C8F6B0009C6ACD /* SmokingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppApp.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
 				55DEE8F227DAD8B2002DF6D3 /* restartView.swift */,
 				55DC258827DE7FA10087BCA1 /* restartAlertView.swift */,
+				55449FC327DFC8BC00146E17 /* settingsView.swift */,
 				5565A83527C8F6B1009C6ACD /* Assets.xcassets */,
 				5565A83727C8F6B1009C6ACD /* Preview Content */,
 			);
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55DC258927DE7FA10087BCA1 /* restartAlertView.swift in Sources */,
+				55449FC427DFC8BC00146E17 /* settingsView.swift in Sources */,
 				55DEE8F327DAD8B2002DF6D3 /* restartView.swift in Sources */,
 				556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */,
 				55DEE8F127DACC4B002DF6D3 /* economyView.swift in Sources */,

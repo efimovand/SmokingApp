@@ -9,8 +9,8 @@ import SwiftUI
 
 struct restartView: View {
     
-    @State private var settingsSelected = false
     @State var alertShown = false
+    @State var settingsShown = false
     
     var body: some View {
         
@@ -63,13 +63,14 @@ struct restartView: View {
                     .opacity(alertShown ? 0.5 : 1)
                 
             }.offset(y: -40)
+                .opacity(settingsShown ? 0 : 1)
             
             
             // settingsButton
             Button(action: {
-                self.settingsSelected.toggle()
+                settingsShown.toggle()
             }) {
-                if settingsSelected{
+                if settingsShown{
                     Image("settings_a")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -84,12 +85,15 @@ struct restartView: View {
             }   .padding(.bottom, 750)
                 .padding(.leading, 293)
             
-            
+            // showingAlert
             if alertShown {
                 restartAlertView(alertShown: $alertShown)
                     .offset(y: -40)
             }
             
+            if settingsShown {
+                settingsView(settingsShown: $settingsShown)
+            }
             
         }.background(Image("background")
                         .resizable()
