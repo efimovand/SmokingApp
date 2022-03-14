@@ -10,8 +10,8 @@ import SwiftUI
 struct economyView: View {
 
     @State var totalEconomy: Int = 1250
-    @State var dailyEconomy = ""
-    @State var monthlyEconomy = ""
+    @State var dailyEconomy: Int = 350
+    @State var monthlyEconomy: Int = 10500
     
     var body: some View {
         
@@ -136,7 +136,7 @@ struct economyView: View {
                         .frame(width: 276, height: 55, alignment: .topLeading)
                         .offset(y: -50)
                     
-                    Text("\(totalEconomy)")
+                    Text(String(totalEconomy))
                         .foregroundColor(Color.white)
                         .font(.system(size: 72, weight: .heavy))
                         .multilineTextAlignment(.center)
@@ -153,16 +153,34 @@ struct economyView: View {
                 // daily+monthly
                 VStack{
                     
+                    HStack{
+                        
                     Text("Экономия в день:")
                         .foregroundColor(Color.white)
                         .font(.system(size: 25, weight: .bold))
-                        .frame(width: 300, height: 28, alignment: .leading)
+                        .frame(width: 220, height: 28, alignment: .leading)
+                        
+                        Text(String(dailyEconomy))
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 25, weight: .bold))
+                            .frame(width: 70, height: 28, alignment: .trailing)
+                        
+                    }
                     
                     
-                    Text ("Экономия в месяц:")
+                    HStack{
+                        
+                    Text("Экономия в месяц:")
                         .foregroundColor(Color.white)
                         .font(.system(size: 25, weight: .bold))
-                        .frame(width: 300, height: 28, alignment: .leading)
+                        .frame(width: 240, height: 28, alignment: .leading)
+                        
+                        Text(String(monthlyEconomy))
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 25, weight: .bold))
+                            .frame(width: 85, height: 28, alignment: .trailing)
+                        
+                    }
                     
                 }.offset(x: -8, y: 70)
                 
