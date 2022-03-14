@@ -178,7 +178,7 @@ struct economyView: View {
                         Text(String(monthlyEconomy))
                             .foregroundColor(Color.white)
                             .font(.system(size: 25, weight: .bold))
-                            .frame(width: 85, height: 28, alignment: .trailing)
+                            .frame(width: 80, height: 28, alignment: .trailing)
                         
                     }
                     

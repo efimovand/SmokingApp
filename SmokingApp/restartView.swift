@@ -82,7 +82,7 @@ struct restartView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60, alignment: .center)
                 }
-            }   .padding(.bottom, 750)
+            }   .padding(.bottom, 710)
                 .padding(.leading, 293)
             
             // showingAlert
@@ -91,6 +91,7 @@ struct restartView: View {
                     .offset(y: -40)
             }
             
+            // showingSettings
             if settingsShown {
                 settingsView(settingsShown: $settingsShown)
             }

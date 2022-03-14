@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SmokingAppApp: App {
+    
+    @StateObject private var score = Score()
+    
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environmentObject(score)
         }
     }
 }

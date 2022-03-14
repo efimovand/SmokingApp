@@ -10,7 +10,7 @@ import SwiftUI
 struct settingsView: View {
     
     @Binding var settingsShown: Bool
-    
+
     @State private var darkMode = false
     
     var body: some View {
