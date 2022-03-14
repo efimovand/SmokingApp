@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+// Global Score Var
+@MainActor class Score: ObservableObject {
+    @Published var score: Int = 8
+}
+
 // Buttons' struct
 struct TabItemData {
     let image: String
@@ -161,5 +166,6 @@ struct MainTabView: View {
 struct TabBarStructure_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
+            .environmentObject(Score())
     }
 }

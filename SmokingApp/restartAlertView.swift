@@ -15,7 +15,8 @@ enum clickedButton {
 
 struct restartAlertView: View {
     
-    @EnvironmentObject var restartAlertScore: Score
+    // Score var for achievementsAlert
+    @EnvironmentObject var alertScore: Score
     
     @Binding var alertShown: Bool
     
@@ -47,7 +48,6 @@ struct restartAlertView: View {
                 // buttons
                 HStack(spacing: 0){
                     
-                    // cancelButton
                     Button(action: {
                         alertShown.toggle()
                     }) {
@@ -65,10 +65,9 @@ struct restartAlertView: View {
                         .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
                         .offset(y: 0.6)
                     
-                    // acceptButton
                     Button(action: {
                         alertShown.toggle()
-                        self.restartAlertScore.score = 0
+                        self.alertScore.score = 0
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13, weight: .bold))
@@ -91,5 +90,6 @@ struct restartAlertView_Previews: PreviewProvider {
     static var previews: some View {
         restartAlertView(alertShown: .constant(false))
             .preferredColorScheme(.dark)
+            .environmentObject(Score())
     }
 }

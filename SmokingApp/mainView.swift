@@ -25,7 +25,8 @@ import SwiftUI
 
 struct mainView: View {
     
-    @EnvironmentObject var scoreMain: Score
+    // Score var for Main
+    @EnvironmentObject var mainScore: Score
     
     var body: some View {
         
@@ -43,24 +44,24 @@ struct mainView: View {
                     .offset(y: 80)
                 
                 //score
-                if (scoreMain.score < 10){
-                    Text("\(scoreMain.score)")
+                if (mainScore.score < 10){
+                    Text("\(mainScore.score)")
                         .font(.system(size: 288, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .frame(width: 328, height: 328, alignment: .top)
                         .offset(y: 19)
                 }
-                else if (scoreMain.score > 10 && scoreMain.score < 100){
-                    Text("\(scoreMain.score)")
+                else if (mainScore.score > 10 && mainScore.score < 100){
+                    Text("\(mainScore.score)")
                         .font(.system(size: 250, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .frame(width: 375, height: 328, alignment: .top)
                         .offset(y: 44)
                 }
-                else if (scoreMain.score >= 100){
-                    Text("\(scoreMain.score)")
+                else if (mainScore.score >= 100){
+                    Text("\(mainScore.score)")
                         .font(.system(size: 170, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
@@ -69,14 +70,14 @@ struct mainView: View {
                 }
                 
                 //textBottom
-                if ((scoreMain.score != 11) && (scoreMain.score % 10 == 1)){
+                if ((mainScore.score != 11) && (mainScore.score % 10 == 1)){
                     Text("день")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
                         .frame(width: 127, height: 58)
                         .offset(x: 78, y: -32)
                 }
-                else if (((scoreMain.score != 12) && (scoreMain.score != 13) && (scoreMain.score != 14)) && ((scoreMain.score % 10 == 2) || (scoreMain.score % 10 == 3) || (scoreMain.score % 10 == 4))){
+                else if (((mainScore.score != 12) && (mainScore.score != 13) && (mainScore.score != 14)) && ((mainScore.score % 10 == 2) || (mainScore.score % 10 == 3) || (mainScore.score % 10 == 4))){
                     Text("дня")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
@@ -179,5 +180,6 @@ struct RoundedCorners: Shape {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         mainView()
+            .environmentObject(Score())
     }
 }
