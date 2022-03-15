@@ -150,6 +150,7 @@ struct startCigarettes: View {
             (Button(action: {
                 UserDefaults.standard.set(startCigarettesData.dailyUse+1, forKey: "dailyUse")
                 UserDefaults.standard.set(startCigarettesData.pricePack, forKey: "pricePack")
+                UserDefaults.standard.set(false, forKey: "firstLaunch")
             }) {
                 ZStack{
                     

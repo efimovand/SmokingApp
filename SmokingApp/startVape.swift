@@ -92,6 +92,7 @@ struct startVape: View {
                 UserDefaults.standard.set(dailyUse, forKey: "dailyUse")
                 intVape = lroundf(Float(startVapeData.pricePack) / 1.5)
                 UserDefaults.standard.set(intVape, forKey: "pricePack")
+                UserDefaults.standard.set(false, forKey: "firstLaunch")
             }) {
                 ZStack{
                     

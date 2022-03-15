@@ -172,5 +172,6 @@ struct TabBarStructure_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
             .environmentObject(Score())
+            .environmentObject(SData())
     }
 }

@@ -16,14 +16,18 @@ struct SmokingAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            startView()
+            firstLaunchLogic()
+                .environmentObject(score)
                 .environmentObject(dailyUse)
                 .environmentObject(pricePack)
+            //startView()
+            //.environmentObject(dailyUse)
+            //.environmentObject(pricePack)
         }
     }
 }
 
 //MainTabView
-    //.environmentObject(score)
-    //.environmentObject(dailyUse)
-    //.environmentObject(pricePack)
+//.environmentObject(score)
+//.environmentObject(dailyUse)
+//.environmentObject(pricePack)
