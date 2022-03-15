@@ -134,7 +134,7 @@ struct startSticks: View {
             (Button(action: {
                 UserDefaults.standard.set(startSticksData.dailyUse+1, forKey: "dailyUse")
                 UserDefaults.standard.set(startSticksData.pricePack, forKey: "pricePack")
-                UserDefaults.standard.set(false, forKey: "firstLaunch")
+                UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
             }) {
                 ZStack{
                     

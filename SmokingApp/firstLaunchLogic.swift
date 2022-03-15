@@ -12,15 +12,15 @@ import Foundation
 
 struct firstLaunchLogic: View {
     
-    @AppStorage("firstLaunch") var firstLaunch: Bool = true
+    @AppStorage("isLaunchedBefore") var isLaunchedBefore: Bool = false
     
     var body: some View {
         
-        if firstLaunch {
-            startView()
+        if isLaunchedBefore {
+            MainTabView()
         }
         else {
-            MainTabView()
+            startView()
         }
         
     }
