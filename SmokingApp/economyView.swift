@@ -8,117 +8,13 @@
 import SwiftUI
 
 struct economyView: View {
-
+    
     @State var totalEconomy: Int = 1250
     @State var dailyEconomy: Int = 350
     @State var monthlyEconomy: Int = 10500
     
     var body: some View {
         
-        ZStack{
-            
-            /*
-            // NavigationBar
-            VStack{
-                
-                Spacer(minLength: 697)
-                
-                ZStack{
-                    
-                    HStack{
-                        // main
-                        Button(action: {
-                            self.selected = 0
-                        }) {
-                            if self.selected == 0
-                            {
-                                Image("main_a")
-                                    .resizable()
-                                    .frame(width: 74, height: 74)
-                                    .offset(x: 1, y: -1)
-                            }
-                            else{
-                                Image("main")
-                                    .resizable()
-                                    .frame(width: 74, height: 74)
-                                    .offset(x: 1, y: -1)
-                            }
-                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        // economy
-                        Button(action: {
-                            self.selected = 1
-                        }) {
-                            if self.selected == 1
-                            {
-                                Image("economy_a")
-                                    .resizable()
-                                    .frame(width: 81, height: 81)
-                                    .offset(x: 1, y: -4)
-                            }
-                            else{
-                                Image("economy")
-                                    .resizable()
-                                    .frame(width: 81, height: 81)
-                                    .offset(x: 1, y: -4)
-                            }
-                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        // achievements
-                        Button(action: {
-                            self.selected = 2
-                        }) {
-                            if self.selected == 2
-                            {
-                                Image("achievements_a")
-                                    .resizable()
-                                    .frame(width: 73, height: 73)
-                                    .offset(x: 1)
-                            }
-                            else{
-                                Image("achievements")
-                                    .resizable()
-                                    .frame(width: 73, height: 73)
-                                    .offset(x: 1)
-                            }
-                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        // restart
-                        Button(action: {
-                            self.selected = 3
-                        }) {
-                            if self.selected == 3
-                            {
-                                Image("restart_test")
-                                    .resizable()
-                                    .frame(width: 67, height: 67)
-                                    .offset(x: 1)
-                            }
-                            else{
-                                Image("restart")
-                                    .resizable()
-                                    .frame(width: 67, height: 67)
-                                    .offset(x: 1)
-                            }
-                        }
-                    }
-                    .padding(.horizontal, 50)
-                    .background(RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                                    .frame(width: 377, height: 92)
-                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.50), Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
-                                    .offset(y: 7))
-                }
-            }
-             */
-            
-            
             // Economy
             VStack{
                 
@@ -155,10 +51,10 @@ struct economyView: View {
                     
                     HStack{
                         
-                    Text("Экономия в день:")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 25, weight: .bold))
-                        .frame(width: 220, height: 28, alignment: .leading)
+                        Text("Экономия в день:")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 25, weight: .bold))
+                            .frame(width: 220, height: 28, alignment: .leading)
                         
                         Text(String(dailyEconomy))
                             .foregroundColor(Color.white)
@@ -170,10 +66,10 @@ struct economyView: View {
                     
                     HStack{
                         
-                    Text("Экономия в месяц:")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 25, weight: .bold))
-                        .frame(width: 240, height: 28, alignment: .leading)
+                        Text("Экономия в месяц:")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 25, weight: .bold))
+                            .frame(width: 240, height: 28, alignment: .leading)
                         
                         Text(String(monthlyEconomy))
                             .foregroundColor(Color.white)
@@ -184,17 +80,14 @@ struct economyView: View {
                     
                 }.offset(x: -8, y: 70)
                 
-            }
-        }.background(Image("background_economy")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
-                        .edgesIgnoringSafeArea(.all))
-        
+            }.background(Image("background_economy")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 375, height: 812, alignment: .center)
+                            .edgesIgnoringSafeArea(.all))
+            
     }
 }
-
-
 
 
 struct economyView_Previews: PreviewProvider {

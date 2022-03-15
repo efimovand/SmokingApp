@@ -57,7 +57,7 @@ struct restartAlertView: View {
                             .multilineTextAlignment(.center)
                             .frame(width: 115, height: 34, alignment: .center)
                             .offset(y: -1)
-                        }
+                    }
                     
                     // verticalDivider
                     Rectangle()
@@ -75,7 +75,7 @@ struct restartAlertView: View {
                             .multilineTextAlignment(.center)
                             .frame(width: 115, height: 34, alignment: .center)
                             .offset(y: -1)
-                        }
+                    }
                     
                 }
                 
@@ -85,6 +85,7 @@ struct restartAlertView: View {
         
     }
 }
+
 
 struct restartAlertView_Previews: PreviewProvider {
     static var previews: some View {

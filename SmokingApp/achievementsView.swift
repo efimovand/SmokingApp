@@ -10,9 +10,7 @@ import SwiftUI
 struct achievementsView: View {
     
     var body: some View {
-        
-        ZStack{
-            
+
             // Header + Achievements
             VStack(spacing: 0){
                 
@@ -31,7 +29,6 @@ struct achievementsView: View {
                         .frame(width: 252, height: 27, alignment: .center)
                     
                 }
-                
                 
                 // Achievements
                 ScrollView(.vertical, showsIndicators: false) {
@@ -92,12 +89,11 @@ struct achievementsView: View {
                 }.frame(width: 375, height: 632)
                 
             }.padding(.top, -65)
-            
-        }.background(Image("background")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
-                        .edgesIgnoringSafeArea(.all))
+                .background(Image("background")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 375, height: 812, alignment: .center)
+                                .edgesIgnoringSafeArea(.all))
         
     }
 }
@@ -162,8 +158,6 @@ struct achievement: View {
     }
     
 }
-
-
 
 
 struct achievementsView_Previews: PreviewProvider {

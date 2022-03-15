@@ -64,81 +64,81 @@ struct startCigarettes: View {
                         .frame(width: 250, height: 26, alignment: .leading)
                         .offset(x: -15, y: -87)
                     
-                        // data
-                        VStack(spacing: 40){
+                    // data
+                    VStack(spacing: 40){
+                        
+                        // dailyUse
+                        HStack(spacing: 0){
                             
-                            // dailyUse
-                            HStack(spacing: 0){
-                                
-                                Text("Сколько сигарет в день вы курите?")
-                                    .font(.system(size: 19, weight: .heavy))
-                                    .foregroundColor(Color.white)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(width: 179, height: 48, alignment: .top)
-                                    .padding(.trailing, 30)
-                                    .offset(x: -8, y: 12)
-                                 
-                                Picker("DailyUse", selection: $startCigarettesData.dailyUse) {
-                                    ForEach(1..<31) {
-                                        Text("\($0)")
-                                            .foregroundColor(Color.black)
-                                    }
-                                }.pickerStyle(.wheel)
-                                    .labelsHidden()
-                                    .frame(width: 50, height: 32)
-                                    .clipped()
-                                    .background(Color.white)
-                                    .cornerRadius(15)
-                                    .offset(x: 5, y: 12)
-                                    
-                            }.padding(.top, 60)
+                            Text("Сколько сигарет в день вы курите?")
+                                .font(.system(size: 19, weight: .heavy))
+                                .foregroundColor(Color.white)
+                                .multilineTextAlignment(.leading)
+                                .frame(width: 179, height: 48, alignment: .top)
+                                .padding(.trailing, 30)
+                                .offset(x: -8, y: 12)
                             
-                            // pricePack
-                            HStack(spacing: 0){
-                                
-                                Text("Стоимость одной пачки:")
-                                    .font(.system(size: 19, weight: .heavy))
-                                    .foregroundColor(Color.white)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(width: 190, height: 48, alignment: .leading)
-                                    .padding(.trailing, 30)
-                                    .offset(x: -1, y: -1)
-                                
-                                TextField("", value: $startCigarettesData.pricePack, formatter: NumberFormatter())
-                                    .keyboardType(.numberPad)
-                                    .foregroundColor(Color.black)
-                                    .labelsHidden()
-                                    .frame(width: 50, height: 32)
-                                    .clipped()
-                                    .background((Color.gray).opacity(0.1))
-                                    .background((Color.white).opacity(0.8))
-                                    .cornerRadius(15)
-                                    .multilineTextAlignment(.center)
-                                    .offset(x: -1)
-                                
-                            }
+                            Picker("DailyUse", selection: $startCigarettesData.dailyUse) {
+                                ForEach(1..<31) {
+                                    Text("\($0)")
+                                        .foregroundColor(Color.black)
+                                }
+                            }.pickerStyle(.wheel)
+                                .labelsHidden()
+                                .frame(width: 50, height: 32)
+                                .clipped()
+                                .background(Color.white)
+                                .cornerRadius(15)
+                                .offset(x: 5, y: 12)
+                            
+                        }.padding(.top, 60)
+                        
+                        // pricePack
+                        HStack(spacing: 0){
+                            
+                            Text("Стоимость одной пачки:")
+                                .font(.system(size: 19, weight: .heavy))
+                                .foregroundColor(Color.white)
+                                .multilineTextAlignment(.leading)
+                                .frame(width: 190, height: 48, alignment: .leading)
+                                .padding(.trailing, 30)
+                                .offset(x: -1, y: -1)
+                            
+                            TextField("", value: $startCigarettesData.pricePack, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                                .foregroundColor(Color.black)
+                                .labelsHidden()
+                                .frame(width: 50, height: 32)
+                                .clipped()
+                                .background((Color.gray).opacity(0.1))
+                                .background((Color.white).opacity(0.8))
+                                .cornerRadius(15)
+                                .multilineTextAlignment(.center)
+                                .offset(x: -1)
                             
                         }
                         
+                    }
                     
-                     // Hide keyboard invisible button
-                     Button(action: {hideKeyboard()}){
-                     Rectangle()
-                     .frame(width: 375, height: 812)
-                     .opacity(0)
-                     }
+                    
+                    // Hide keyboard invisible button
+                    Button(action: {hideKeyboard()}){
+                        Rectangle()
+                            .frame(width: 375, height: 812)
+                            .opacity(0)
+                    }
                     
                     /*
-                    // Test Data
-                    HStack(spacing: 0){
-                        Text("dailyUse = ")
-                        Text(String(startData.dailyUse))
-                    }.offset(y: 220)
-                    
-                    HStack(spacing: 0){
-                        Text("pricePack = ")
-                        Text(String(startData.pricePack))
-                    }.offset(y: 255)
+                     // Test Data
+                     HStack(spacing: 0){
+                     Text("dailyUse = ")
+                     Text(String(startData.dailyUse))
+                     }.offset(y: 220)
+                     
+                     HStack(spacing: 0){
+                     Text("pricePack = ")
+                     Text(String(startData.pricePack))
+                     }.offset(y: 255)
                      */
                     
                 }

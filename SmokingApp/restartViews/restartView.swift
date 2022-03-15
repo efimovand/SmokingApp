@@ -35,18 +35,18 @@ struct restartView: View {
                     
                     ZStack{
                         
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                        .frame(width: 293, height: 163)
-                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
-                        .opacity(alertShown ? 0.2 : 1)
-                    
-                    Text("Начать заново")
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                        .frame(width: 231, height: 86, alignment: .top)
-                        .opacity(alertShown ? 0 : 1)
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
+                            .frame(width: 293, height: 163)
+                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
+                            .opacity(alertShown ? 0.2 : 1)
+                        
+                        Text("Начать заново")
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 231, height: 86, alignment: .top)
+                            .opacity(alertShown ? 0 : 1)
                         
                     }
                     
@@ -207,7 +207,6 @@ struct restartView: View {
  }
  }
  */
-
 
 
 struct restartView_Previews: PreviewProvider {

@@ -16,12 +16,12 @@ import SwiftUI
  // Check if 24 hours have spent from saved time
  
  if let date = UserDefaults.standard.object(forKey: "savedTime") as? Date {
-    if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff >= 24 {
-       // score += 1
-    }
+ if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff >= 24 {
+ // score += 1
+ }
  }
  
-*/
+ */
 
 struct mainView: View {
     
@@ -174,8 +174,6 @@ struct RoundedCorners: Shape {
         return path
     }
 }
-
-
 
 
 struct ContentView_Previews: PreviewProvider {

@@ -51,37 +51,37 @@ struct startVape: View {
                         .frame(width: 250, height: 26, alignment: .leading)
                         .offset(x: -15, y: -87)
                     
-                            // pricePack
-                            HStack(spacing: 0){
-                                
-                                Text("Ваши затраты на жидкость в месяц:")
-                                    .font(.system(size: 19, weight: .heavy))
-                                    .foregroundColor(Color.white)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(width: 190, height: 48, alignment: .leading)
-                                    .padding(.trailing, 30)
-                                    .offset(x: -1, y: -1)
-                                
-                                TextField("", value: $startVapeData.pricePack, formatter: NumberFormatter())
-                                    .keyboardType(.numberPad)
-                                    .foregroundColor(Color.black)
-                                    .labelsHidden()
-                                    .frame(width: 50, height: 32)
-                                    .clipped()
-                                    .background((Color.gray).opacity(0.1))
-                                    .background((Color.white).opacity(0.8))
-                                    .cornerRadius(15)
-                                    .multilineTextAlignment(.center)
-                                    .offset(x: -1)
-                                
-                            }.offset(y: 25)
+                    // pricePack
+                    HStack(spacing: 0){
                         
-                     // Hide keyboard invisible button
-                     Button(action: {hideKeyboard()}){
-                     Rectangle()
-                     .frame(width: 375, height: 812)
-                     .opacity(0)
-                     }
+                        Text("Ваши затраты на жидкость в месяц:")
+                            .font(.system(size: 19, weight: .heavy))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: 190, height: 48, alignment: .leading)
+                            .padding(.trailing, 30)
+                            .offset(x: -1, y: -1)
+                        
+                        TextField("", value: $startVapeData.pricePack, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
+                            .foregroundColor(Color.black)
+                            .labelsHidden()
+                            .frame(width: 50, height: 32)
+                            .clipped()
+                            .background((Color.gray).opacity(0.1))
+                            .background((Color.white).opacity(0.8))
+                            .cornerRadius(15)
+                            .multilineTextAlignment(.center)
+                            .offset(x: -1)
+                        
+                    }.offset(y: 25)
+                    
+                    // Hide keyboard invisible button
+                    Button(action: {hideKeyboard()}){
+                        Rectangle()
+                            .frame(width: 375, height: 812)
+                            .opacity(0)
+                    }
                     
                 }
                 

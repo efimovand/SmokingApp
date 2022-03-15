@@ -93,6 +93,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		554536F927E15B340016F1B2 /* startDataViews */ = {
+			isa = PBXGroup;
+			children = (
+				5555A9CD27DFF971006E1684 /* startCigarettes.swift */,
+				5591F9FC27E0F20A009728E2 /* startSticks.swift */,
+				55D97BDF27E0F4B000A7DFBF /* startVape.swift */,
+			);
+			path = startDataViews;
+			sourceTree = "<group>";
+		};
+		554536FA27E15B4A0016F1B2 /* restartViews */ = {
+			isa = PBXGroup;
+			children = (
+				55DEE8F227DAD8B2002DF6D3 /* restartView.swift */,
+				55DC258827DE7FA10087BCA1 /* restartAlertView.swift */,
+				55449FC327DFC8BC00146E17 /* settingsView.swift */,
+			);
+			path = restartViews;
+			sourceTree = "<group>";
+		};
 		5565A82527C8F6B0009C6ACD = {
 			isa = PBXGroup;
 			children = (
@@ -120,15 +140,11 @@
 				554536F627E1555C0016F1B2 /* firstLaunchLogic.swift */,
 				555B553127DD57AB00449868 /* TabBarStructure.swift */,
 				55449FC527DFE0AC00146E17 /* startView.swift */,
-				5555A9CD27DFF971006E1684 /* startCigarettes.swift */,
-				5591F9FC27E0F20A009728E2 /* startSticks.swift */,
-				55D97BDF27E0F4B000A7DFBF /* startVape.swift */,
+				554536F927E15B340016F1B2 /* startDataViews */,
 				5565A83327C8F6B0009C6ACD /* mainView.swift */,
 				55DEE8F027DACC4B002DF6D3 /* economyView.swift */,
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
-				55DEE8F227DAD8B2002DF6D3 /* restartView.swift */,
-				55DC258827DE7FA10087BCA1 /* restartAlertView.swift */,
-				55449FC327DFC8BC00146E17 /* settingsView.swift */,
+				554536FA27E15B4A0016F1B2 /* restartViews */,
 				5565A83527C8F6B1009C6ACD /* Assets.xcassets */,
 				5565A83727C8F6B1009C6ACD /* Preview Content */,
 			);
