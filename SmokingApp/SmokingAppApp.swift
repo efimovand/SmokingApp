@@ -11,11 +11,19 @@ import SwiftUI
 struct SmokingAppApp: App {
     
     @StateObject private var score = Score()
+    @StateObject private var dailyUse = SData()
+    @StateObject private var pricePack = SData()
     
     var body: some Scene {
         WindowGroup {
-            startCigarettes()
-                //.environmentObject(score)
+            startView()
+                .environmentObject(dailyUse)
+                .environmentObject(pricePack)
         }
     }
 }
+
+//MainTabView
+    //.environmentObject(score)
+    //.environmentObject(dailyUse)
+    //.environmentObject(pricePack)

@@ -19,6 +19,8 @@
 		5565A84D27C8F6B2009C6ACD /* SmokingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */; };
 		5565A84F27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */; };
 		556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F556D27DB9DD800E1A29F /* achievementsView.swift */; };
+		5591F9FD27E0F20A009728E2 /* startSticks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591F9FC27E0F20A009728E2 /* startSticks.swift */; };
+		55D97BE027E0F4B000A7DFBF /* startVape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D97BDF27E0F4B000A7DFBF /* startVape.swift */; };
 		55DC258927DE7FA10087BCA1 /* restartAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC258827DE7FA10087BCA1 /* restartAlertView.swift */; };
 		55DEE8F127DACC4B002DF6D3 /* economyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEE8F027DACC4B002DF6D3 /* economyView.swift */; };
 		55DEE8F327DAD8B2002DF6D3 /* restartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEE8F227DAD8B2002DF6D3 /* restartView.swift */; };
@@ -57,6 +59,8 @@
 		5565A84C27C8F6B2009C6ACD /* SmokingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITests.swift; sourceTree = "<group>"; };
 		5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		556F556D27DB9DD800E1A29F /* achievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = achievementsView.swift; sourceTree = "<group>"; };
+		5591F9FC27E0F20A009728E2 /* startSticks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startSticks.swift; sourceTree = "<group>"; };
+		55D97BDF27E0F4B000A7DFBF /* startVape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startVape.swift; sourceTree = "<group>"; };
 		55DC258827DE7FA10087BCA1 /* restartAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restartAlertView.swift; sourceTree = "<group>"; };
 		55DEE8F027DACC4B002DF6D3 /* economyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = economyView.swift; sourceTree = "<group>"; };
 		55DEE8F227DAD8B2002DF6D3 /* restartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restartView.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				555B553127DD57AB00449868 /* TabBarStructure.swift */,
 				55449FC527DFE0AC00146E17 /* startView.swift */,
 				5555A9CD27DFF971006E1684 /* startCigarettes.swift */,
+				5591F9FC27E0F20A009728E2 /* startSticks.swift */,
+				55D97BDF27E0F4B000A7DFBF /* startVape.swift */,
 				5565A83327C8F6B0009C6ACD /* mainView.swift */,
 				55DEE8F027DACC4B002DF6D3 /* economyView.swift */,
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
@@ -283,11 +289,13 @@
 			files = (
 				55DC258927DE7FA10087BCA1 /* restartAlertView.swift in Sources */,
 				55449FC427DFC8BC00146E17 /* settingsView.swift in Sources */,
+				5591F9FD27E0F20A009728E2 /* startSticks.swift in Sources */,
 				55DEE8F327DAD8B2002DF6D3 /* restartView.swift in Sources */,
 				55449FC627DFE0AC00146E17 /* startView.swift in Sources */,
 				556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */,
 				55DEE8F127DACC4B002DF6D3 /* economyView.swift in Sources */,
 				555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */,
+				55D97BE027E0F4B000A7DFBF /* startVape.swift in Sources */,
 				5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */,
 				5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */,
 				5555A9CE27DFF971006E1684 /* startCigarettes.swift in Sources */,

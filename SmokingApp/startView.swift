@@ -9,6 +9,7 @@ import SwiftUI
 
 struct startView: View {
     
+    // Parallax scaling function
     private func getScale(proxy: GeometryProxy) -> CGFloat {
         var scale: CGFloat = 1
         
@@ -24,12 +25,19 @@ struct startView: View {
         return scale
     }
     
+    // Start models
     @State var images: [Image] = [Image("cigarettes"), Image("sticks"), Image("vape")]
+    
+    // Next views
+    @State var cigarettesShown = false
+    @State var sticksShown = false
+    @State var vapeShown = false
     
     var body: some View {
         
         ZStack{
             
+            // Header
             Text("Что вы курите?")
                 .font(.system(size: 36, weight: .bold))
                 .foregroundColor(Color.white)
@@ -37,6 +45,7 @@ struct startView: View {
                 .padding(.leading, 21)
                 .offset(y: -300)
             
+            // Start models' carousel
             ScrollView(.horizontal, showsIndicators: false){
                 
                 HStack(spacing: 28){
@@ -55,18 +64,18 @@ struct startView: View {
                                 .scaleEffect(CGSize(width: scale, height: scale))
                                 .onTapGesture {
                                     if num == 0 {
-                                        // go to next view 1
+                                        cigarettesShown.toggle()
                                     }
                                     else if num == 1 {
-                                        // go to next view 2
+                                        sticksShown.toggle()
                                     }
                                     else if num == 2 {
-                                        // go to next view 3
+                                        vapeShown.toggle()
                                     }
                                 }
-
+                            
                         }.frame(width: 280, height: 480)
-
+                        
                     }.cornerRadius(15)
                     
                 }.padding(.leading, 45)
@@ -75,16 +84,29 @@ struct startView: View {
             }
             
             
+            // going to the next view
+            if cigarettesShown {
+                startCigarettes(cigarettesShown: $cigarettesShown)
+            }
+            
+            if sticksShown {
+                startSticks(sticksShown: $sticksShown)
+            }
+            
+            if vapeShown {
+                startVape(vapeShown: $vapeShown)
+            }
             
         }.background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 812, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
-        
-        
     }
+    
+    
 }
+
 
 struct startView_Previews: PreviewProvider {
     static var previews: some View {

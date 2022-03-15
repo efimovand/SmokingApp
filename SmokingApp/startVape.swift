@@ -1,5 +1,5 @@
 //
-//  startCigarettes.swift
+//  startVape.swift
 //  SmokingApp
 //
 //  Created by Андрей Ефимов on 15.03.2022.
@@ -9,26 +9,13 @@ import SwiftUI
 import Combine
 import UIKit
 
-// Closing keyboard
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
-// Picker weight
-extension UIPickerView {
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric + 80, height: super.intrinsicContentSize.height)
-    }
-}
-
-
-struct startCigarettes: View {
+struct startVape: View {
     
-    @EnvironmentObject var startCigarettesData: SData
+    @EnvironmentObject var startVapeData: SData
+    @State var dailyUse: Int = 1
+    @State var intVape: Int = 0
     
-    @Binding var cigarettesShown: Bool
+    @Binding var vapeShown: Bool
     
     var body: some View {
         
@@ -64,39 +51,10 @@ struct startCigarettes: View {
                         .frame(width: 250, height: 26, alignment: .leading)
                         .offset(x: -15, y: -87)
                     
-                        // data
-                        VStack(spacing: 40){
-                            
-                            // dailyUse
-                            HStack(spacing: 0){
-                                
-                                Text("Сколько сигарет в день вы курите?")
-                                    .font(.system(size: 19, weight: .heavy))
-                                    .foregroundColor(Color.white)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(width: 179, height: 48, alignment: .top)
-                                    .padding(.trailing, 30)
-                                    .offset(x: -8, y: 12)
-                                 
-                                Picker("DailyUse", selection: $startCigarettesData.dailyUse) {
-                                    ForEach(1..<31) {
-                                        Text("\($0)")
-                                            .foregroundColor(Color.black)
-                                    }
-                                }.pickerStyle(.wheel)
-                                    .labelsHidden()
-                                    .frame(width: 50, height: 32)
-                                    .clipped()
-                                    .background(Color.white)
-                                    .cornerRadius(15)
-                                    .offset(x: 5, y: 12)
-                                    
-                            }.padding(.top, 60)
-                            
                             // pricePack
                             HStack(spacing: 0){
                                 
-                                Text("Стоимость одной пачки:")
+                                Text("Ваши затраты на жидкость в месяц:")
                                     .font(.system(size: 19, weight: .heavy))
                                     .foregroundColor(Color.white)
                                     .multilineTextAlignment(.leading)
@@ -104,7 +62,7 @@ struct startCigarettes: View {
                                     .padding(.trailing, 30)
                                     .offset(x: -1, y: -1)
                                 
-                                TextField("", value: $startCigarettesData.pricePack, formatter: NumberFormatter())
+                                TextField("", value: $startVapeData.pricePack, formatter: NumberFormatter())
                                     .keyboardType(.numberPad)
                                     .foregroundColor(Color.black)
                                     .labelsHidden()
@@ -116,11 +74,8 @@ struct startCigarettes: View {
                                     .multilineTextAlignment(.center)
                                     .offset(x: -1)
                                 
-                            }
-                            
-                        }
+                            }.offset(y: 25)
                         
-                    
                      // Hide keyboard invisible button
                      Button(action: {hideKeyboard()}){
                      Rectangle()
@@ -128,28 +83,15 @@ struct startCigarettes: View {
                      .opacity(0)
                      }
                     
-                    /*
-                    // Test Data
-                    HStack(spacing: 0){
-                        Text("dailyUse = ")
-                        Text(String(startData.dailyUse))
-                    }.offset(y: 220)
-                    
-                    HStack(spacing: 0){
-                        Text("pricePack = ")
-                        Text(String(startData.pricePack))
-                    }.offset(y: 255)
-                     */
-                    
                 }
                 
             }.offset(y: -22)
             
-            
             // Next button
             (Button(action: {
-                UserDefaults.standard.set(startCigarettesData.dailyUse+1, forKey: "dailyUse")
-                UserDefaults.standard.set(startCigarettesData.pricePack, forKey: "pricePack")
+                UserDefaults.standard.set(dailyUse, forKey: "dailyUse")
+                intVape = lroundf(Float(startVapeData.pricePack) / 1.5)
+                UserDefaults.standard.set(intVape, forKey: "pricePack")
             }) {
                 ZStack{
                     
@@ -181,9 +123,9 @@ struct startCigarettes: View {
     
 }
 
-struct startCigarettes_Previews: PreviewProvider {
+struct startVape_Previews: PreviewProvider {
     static var previews: some View {
-        startCigarettes(cigarettesShown: .constant(false))
+        startVape(vapeShown: .constant(false))
             .environmentObject(SData())
     }
 }

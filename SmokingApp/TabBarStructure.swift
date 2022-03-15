@@ -12,6 +12,11 @@ import SwiftUI
     @Published var score: Int = 8
 }
 
+@MainActor class SData: ObservableObject {
+    @Published var dailyUse: Int = UserDefaults.standard.integer(forKey: "dailyUse")
+    @Published var pricePack: Int = UserDefaults.standard.integer(forKey: "pricePack")
+}
+
 // Buttons' struct
 struct TabItemData {
     let image: String
