@@ -24,7 +24,7 @@ struct startView: View {
         return scale
     }
     
-    
+    @State var images: [Image] = [Image("cigarettes"), Image("sticks"), Image("vape")]
     
     var body: some View {
         
@@ -46,7 +46,7 @@ struct startView: View {
                             
                             let scale = getScale(proxy: proxy)
                             
-                            Image("vape")
+                            images[num]
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 300)
@@ -54,10 +54,17 @@ struct startView: View {
                                 .cornerRadius(15)
                                 .scaleEffect(CGSize(width: scale, height: scale))
                                 .onTapGesture {
-                                    // go to next view
+                                    if num == 0 {
+                                        // go to next view 1
+                                    }
+                                    else if num == 1 {
+                                        // go to next view 2
+                                    }
+                                    else if num == 2 {
+                                        // go to next view 3
+                                    }
                                 }
-                            
-                            
+
                         }.frame(width: 280, height: 480)
 
                     }.cornerRadius(15)

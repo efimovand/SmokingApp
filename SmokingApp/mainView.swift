@@ -115,7 +115,8 @@ struct mainView: View {
                     .frame(width: 200, height: 65, alignment: .topLeading)
                     .offset(x: 48, y: 218)
                 
-                RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0).fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 317, height: 37)
                     .offset(y: 291)
                     .opacity(0.4)

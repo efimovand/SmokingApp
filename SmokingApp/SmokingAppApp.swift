@@ -14,7 +14,7 @@ struct SmokingAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            startView()
+            startCigarettes()
                 //.environmentObject(score)
         }
     }

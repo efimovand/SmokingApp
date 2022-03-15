@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		55449FC427DFC8BC00146E17 /* settingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55449FC327DFC8BC00146E17 /* settingsView.swift */; };
 		55449FC627DFE0AC00146E17 /* startView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55449FC527DFE0AC00146E17 /* startView.swift */; };
+		5555A9CE27DFF971006E1684 /* startCigarettes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5555A9CD27DFF971006E1684 /* startCigarettes.swift */; };
 		555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555B553127DD57AB00449868 /* TabBarStructure.swift */; };
 		5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */; };
 		5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A83327C8F6B0009C6ACD /* mainView.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		55449FC327DFC8BC00146E17 /* settingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsView.swift; sourceTree = "<group>"; };
 		55449FC527DFE0AC00146E17 /* startView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startView.swift; sourceTree = "<group>"; };
+		5555A9CD27DFF971006E1684 /* startCigarettes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startCigarettes.swift; sourceTree = "<group>"; };
 		555B553127DD57AB00449868 /* TabBarStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarStructure.swift; sourceTree = "<group>"; };
 		5565A82E27C8F6B0009C6ACD /* SmokingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmokingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppApp.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */,
 				555B553127DD57AB00449868 /* TabBarStructure.swift */,
 				55449FC527DFE0AC00146E17 /* startView.swift */,
+				5555A9CD27DFF971006E1684 /* startCigarettes.swift */,
 				5565A83327C8F6B0009C6ACD /* mainView.swift */,
 				55DEE8F027DACC4B002DF6D3 /* economyView.swift */,
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
@@ -287,6 +290,7 @@
 				555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */,
 				5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */,
 				5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */,
+				5555A9CE27DFF971006E1684 /* startCigarettes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
