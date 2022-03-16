@@ -1,5 +1,5 @@
 //
-//  startCigarettes.swift
+//  startSticks.swift
 //  SmokingApp
 //
 //  Created by Андрей Ефимов on 15.03.2022.
@@ -9,26 +9,15 @@ import SwiftUI
 import Combine
 import UIKit
 
-// Closing keyboard
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
-// Picker weight
-extension UIPickerView {
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric + 80, height: super.intrinsicContentSize.height)
-    }
-}
-
-
-struct startCigarettes: View {
+struct startSticks: View {
     
-    @EnvironmentObject var startCigarettesData: SData
+    @EnvironmentObject var startSticksData: SData
     
-    @Binding var cigarettesShown: Bool
+    @Binding var sticksShown: Bool
+    
+    @State var dailyUse: Int = 0
+    @State var pricePack = ""
+    @State var pricePackInt: Int = 0
     
     var body: some View {
         
@@ -70,7 +59,7 @@ struct startCigarettes: View {
                         // dailyUse
                         HStack(spacing: 0){
                             
-                            Text("Сколько сигарет в день вы курите?")
+                            Text("Сколько стиков в день вы курите?")
                                 .font(.system(size: 19, weight: .heavy))
                                 .foregroundColor(Color.white)
                                 .multilineTextAlignment(.leading)
@@ -78,7 +67,8 @@ struct startCigarettes: View {
                                 .padding(.trailing, 30)
                                 .offset(x: -8, y: 12)
                             
-                            Picker("DailyUse", selection: $startCigarettesData.dailyUse) {
+                            /*
+                            Picker("dailyUse", selection: $startSticksData.dailyUse) {
                                 ForEach(1..<31) {
                                     Text("\($0)")
                                         .foregroundColor(Color.black)
@@ -90,6 +80,7 @@ struct startCigarettes: View {
                                 .background(Color.white)
                                 .cornerRadius(15)
                                 .offset(x: 5, y: 12)
+                            */
                             
                         }.padding(.top, 60)
                         
@@ -104,7 +95,8 @@ struct startCigarettes: View {
                                 .padding(.trailing, 30)
                                 .offset(x: -1, y: -1)
                             
-                            TextField("", value: $startCigarettesData.pricePack, formatter: NumberFormatter())
+                            /*
+                            TextField("", value: $startSticksData.pricePack, formatter: NumberFormatter())
                                 .keyboardType(.numberPad)
                                 .foregroundColor(Color.black)
                                 .labelsHidden()
@@ -115,6 +107,7 @@ struct startCigarettes: View {
                                 .cornerRadius(15)
                                 .multilineTextAlignment(.center)
                                 .offset(x: -1)
+                             */
                             
                         }
                         
@@ -132,12 +125,12 @@ struct startCigarettes: View {
                      // Test Data
                      HStack(spacing: 0){
                      Text("dailyUse = ")
-                     Text(String(startData.dailyUse))
+                     Text(String(startSticksData.dailyUse))
                      }.offset(y: 220)
                      
                      HStack(spacing: 0){
                      Text("pricePack = ")
-                     Text(String(startData.pricePack))
+                     Text(String(startSticksData.pricePack))
                      }.offset(y: 255)
                      */
                     
@@ -145,11 +138,10 @@ struct startCigarettes: View {
                 
             }.offset(y: -22)
             
-            
             // Next button
             (Button(action: {
-                UserDefaults.standard.set(startCigarettesData.dailyUse+1, forKey: "dailyUse")
-                UserDefaults.standard.set(startCigarettesData.pricePack, forKey: "pricePack")
+                pricePackInt = Int(pricePack) ?? 0
+                UserDefaults.standard.set((dailyUse + 1) * pricePackInt / 20, forKey: "dailyEconomy")
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
             }) {
                 ZStack{
@@ -182,9 +174,9 @@ struct startCigarettes: View {
     
 }
 
-struct startCigarettes_Previews: PreviewProvider {
+struct startSticks_Previews: PreviewProvider {
     static var previews: some View {
-        startCigarettes(cigarettesShown: .constant(false))
+        startSticks(sticksShown: .constant(false))
             .environmentObject(SData())
     }
 }

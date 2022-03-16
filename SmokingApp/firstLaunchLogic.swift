@@ -24,12 +24,12 @@ struct firstLaunchLogic: View {
         }
         
     }
+    
 }
 
 struct firstLaunchLogic_Previews: PreviewProvider {
     static var previews: some View {
         firstLaunchLogic()
-            .environmentObject(Score())
             .environmentObject(SData())
     }
 }

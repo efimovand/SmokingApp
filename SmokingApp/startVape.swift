@@ -12,10 +12,11 @@ import UIKit
 struct startVape: View {
     
     @EnvironmentObject var startVapeData: SData
-    @State var dailyUse: Int = 1
-    @State var intVape: Int = 0
     
     @Binding var vapeShown: Bool
+    
+    @State var monthlyVape = ""
+    @State var monthlyVapeInt: Int = 0
     
     var body: some View {
         
@@ -62,7 +63,7 @@ struct startVape: View {
                             .padding(.trailing, 30)
                             .offset(x: -1, y: -1)
                         
-                        TextField("", value: $startVapeData.pricePack, formatter: NumberFormatter())
+                        TextField("", value: $monthlyVape, formatter: NumberFormatter())
                             .keyboardType(.numberPad)
                             .foregroundColor(Color.black)
                             .labelsHidden()
@@ -89,9 +90,8 @@ struct startVape: View {
             
             // Next button
             (Button(action: {
-                UserDefaults.standard.set(dailyUse, forKey: "dailyUse")
-                intVape = lroundf(Float(startVapeData.pricePack) / 1.5)
-                UserDefaults.standard.set(intVape, forKey: "pricePack")
+                monthlyVapeInt = Int(monthlyVape) ?? 0
+                UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
             }) {
                 ZStack{

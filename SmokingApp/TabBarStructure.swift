@@ -7,14 +7,10 @@
 
 import SwiftUI
 
-// Global Score Var
-@MainActor class Score: ObservableObject {
-    @Published var score: Int = 8
-}
-
 @MainActor class SData: ObservableObject {
-    @Published var dailyUse: Int = UserDefaults.standard.integer(forKey: "dailyUse")
-    @Published var pricePack: Int = UserDefaults.standard.integer(forKey: "pricePack")
+    @Published var dailyEconomy: Int = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @Published var score: Int = 1
+    @Published var savedTime = UserDefaults.standard.object(forKey: "savedTime")
 }
 
 // Buttons' struct
@@ -171,7 +167,6 @@ struct MainTabView: View {
 struct TabBarStructure_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
-            .environmentObject(Score())
             .environmentObject(SData())
     }
 }

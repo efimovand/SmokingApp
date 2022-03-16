@@ -10,16 +10,16 @@ import SwiftUI
 @main
 struct SmokingAppApp: App {
     
-    @StateObject private var score = Score()
-    @StateObject private var dailyUse = SData()
-    @StateObject private var pricePack = SData()
+    @StateObject private var score = SData()
+    @StateObject private var dailyEconomy = SData()
+    @StateObject private var savedTime = SData()
     
     var body: some Scene {
         WindowGroup {
             firstLaunchLogic()
                 .environmentObject(score)
-                .environmentObject(dailyUse)
-                .environmentObject(pricePack)
+                .environmentObject(dailyEconomy)
+                .environmentObject(savedTime)
             //startView()
             //.environmentObject(dailyUse)
             //.environmentObject(pricePack)

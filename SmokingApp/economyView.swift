@@ -9,9 +9,8 @@ import SwiftUI
 
 struct economyView: View {
     
-    @State var totalEconomy: Int = 1250
-    @State var dailyEconomy: Int = 350
-    @State var monthlyEconomy: Int = 10500
+    @EnvironmentObject var dailyEconomy4Economy: SData
+    @EnvironmentObject var scoreEconomy: SData
     
     var body: some View {
         
@@ -32,7 +31,7 @@ struct economyView: View {
                         .frame(width: 276, height: 55, alignment: .topLeading)
                         .offset(y: -50)
                     
-                    Text(String(totalEconomy))
+                    Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))
                         .foregroundColor(Color.white)
                         .font(.system(size: 72, weight: .heavy))
                         .multilineTextAlignment(.center)
@@ -56,7 +55,7 @@ struct economyView: View {
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 220, height: 28, alignment: .leading)
                         
-                        Text(String(dailyEconomy))
+                        Text(String(dailyEconomy4Economy.dailyEconomy))
                             .foregroundColor(Color.white)
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 70, height: 28, alignment: .trailing)
@@ -71,7 +70,7 @@ struct economyView: View {
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 240, height: 28, alignment: .leading)
                         
-                        Text(String(monthlyEconomy))
+                        Text(String(dailyEconomy4Economy.dailyEconomy * 30))
                             .foregroundColor(Color.white)
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 80, height: 28, alignment: .trailing)
