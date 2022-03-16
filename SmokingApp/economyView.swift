@@ -9,8 +9,8 @@ import SwiftUI
 
 struct economyView: View {
     
-    @EnvironmentObject var dailyEconomy4Economy: SData
-    @EnvironmentObject var scoreEconomy: SData
+    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var score = UserDefaults.standard.integer(forKey: "score")
     
     var body: some View {
         
@@ -33,24 +33,24 @@ struct economyView: View {
                     
                     HStack(spacing: 0){
                         
-                        if (dailyEconomy4Economy.dailyEconomy * scoreEconomy.score >= 1000) {
-                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))                                .foregroundColor(Color.white)
+                        if (dailyEconomy * score >= 1000) {
+                         Text(String(dailyEconomy * score))                                .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
                                 .frame(width: 200, height: 90, alignment: .top)
                                 .offset(y: 20)
                                 .padding(.leading, 30)
                         }
-                        else if (dailyEconomy4Economy.dailyEconomy * scoreEconomy.score >= 100) {
-                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))                                .foregroundColor(Color.white)
+                        else if (dailyEconomy * score >= 100) {
+                         Text(String(dailyEconomy * score))                                .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
                                 .frame(width: 150, height: 90, alignment: .top)
                                 .offset(y: 20)
                                 .padding(.leading, 30)
                         }
-                        else if (dailyEconomy4Economy.dailyEconomy * scoreEconomy.score >= 10) {
-                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))                                .foregroundColor(Color.white)
+                        else if (dailyEconomy * score >= 10) {
+                         Text(String(dailyEconomy * score))                                .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
                                 .frame(width: 100, height: 90, alignment: .top)
@@ -58,7 +58,7 @@ struct economyView: View {
                                 .padding(.leading, 30)
                         }
                         else {
-                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))
+                         Text(String(dailyEconomy * score))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
@@ -86,7 +86,7 @@ struct economyView: View {
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 220, height: 28, alignment: .leading)
                         
-                        Text(String(dailyEconomy4Economy.dailyEconomy))
+                        Text(String(dailyEconomy))
                             .foregroundColor(Color.white)
                             .font(.system(size: 28, weight: .heavy))
                             .frame(width: 70, height: 28, alignment: .trailing)
@@ -101,7 +101,7 @@ struct economyView: View {
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 240, height: 28, alignment: .leading)
                         
-                        Text(String(dailyEconomy4Economy.dailyEconomy * 30))
+                        Text(String(dailyEconomy * 30))
                             .foregroundColor(Color.white)
                             .font(.system(size: 28, weight: .heavy))
                             .frame(width: 80, height: 28, alignment: .trailing)

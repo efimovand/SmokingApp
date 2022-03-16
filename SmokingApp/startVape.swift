@@ -11,8 +11,6 @@ import UIKit
 
 struct startVape: View {
     
-    @EnvironmentObject var startVapeData: SData
-    
     @Binding var vapeShown: Bool
     
     @State var monthlyVape = ""
@@ -90,8 +88,9 @@ struct startVape: View {
             
             // Next button
             (Button(action: {
+                UserDefaults.standard.set(5, forKey: "score")
                 monthlyVapeInt = Int(monthlyVape) ?? 0
-                UserDefaults.standard.set((monthlyVapeInt / 30), forKey: "dailyEconomy")
+                UserDefaults.standard.set(58, forKey: "dailyEconomy")
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")
             }) {
@@ -128,6 +127,5 @@ struct startVape: View {
 struct startVape_Previews: PreviewProvider {
     static var previews: some View {
         startVape(vapeShown: .constant(false))
-            .environmentObject(SData())
     }
 }

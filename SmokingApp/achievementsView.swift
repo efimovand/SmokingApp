@@ -6,94 +6,96 @@
 //
 
 import SwiftUI
+import Foundation
+import Combine
 
 struct achievementsView: View {
     
     var body: some View {
 
-            // Header + Achievements
-            VStack(spacing: 0){
+        // Header + Achievements
+        VStack(spacing: 0){
+            
+            // Header
+            ZStack{
                 
-                // Header
-                ZStack{
-                    
-                    Rectangle()
-                        .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                        .frame(width: 377, height: 52)
-                        .border(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), width: 1)
-                    
-                    Text("Достижения")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 28, weight: .heavy))
-                        .multilineTextAlignment(.center)
-                        .frame(width: 252, height: 27, alignment: .center)
-                    
-                }
+                Rectangle()
+                    .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
+                    .frame(width: 377, height: 52)
+                    .border(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), width: 1)
                 
-                // Achievements
-                ScrollView(.vertical, showsIndicators: false) {
+                Text("Достижения")
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 28, weight: .heavy))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 252, height: 27, alignment: .center)
+                
+            }
+            
+            // Achievements
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                // List
+                VStack(spacing: 15) {
                     
-                    // List
-                    VStack(spacing: 15) {
+                    Group {
                         
-                        Group {
+                        VStack(spacing: 15) {
                             
-                            VStack(spacing: 15) {
-                                
-                                achievement(name: "Начало положено", description: "Провести 1 день без курения", picture: Image("24hours"))
-                                    .padding(.top, 19)
-                                
-                                achievement(name: "Первые дивиденды", description: "Сэкономить 500Р", picture: Image("coin"))
-                                
-                                achievement(name: "Идём на снижение", description: "Провести 3 дня без курения", picture: Image("nikotine"))
-                                
-                                achievement(name: "Денежное дерево", description: "Сэкономить 1000Р", picture: Image("moneytree"))
-                                
-                                achievement(name: "Неделя очищения", description: "Провести 7 дней без курения", picture: Image("wings"))
-                                
-                                achievement(name: "Спорт это жизнь", description: "Избавиться от одышки", picture: Image("walking"))
-                                
-                                achievement(name: "С кем не бывает", description: "Начать вторую попытку", picture: Image("heartballoon"))
-                                
-                                achievement(name: "Стонкс", description: "Сэкономить 2500Р", picture: Image("stonks"))
-                                
-                                achievement(name: "Железная выдержка", description: "Провести 14 дней без курения", picture: Image("yoga"))
-                                
-                                achievement(name: "Красивое зеркало", description: "Восстановить состояние кожи", picture: Image("beauty"))
-                                
-                            }
-                        }
-                        
-                        Group {
+                            achievement(name: "Начало положено", description: "Провести 1 день без курения", picture: Image("24hours"), type: 0, value: 1)
+                                .padding(.top, 19)
                             
-                            VStack(spacing: 15) {
-                                
-                                achievement(name: "Тяжелый бумажник", description: "Сэкономить 5000Р", picture: Image("wallet"))
-                                
-                                achievement(name: "Главное не сдаваться", description: "Начать пятую попытку", picture: Image("firststeps"))
-                                
-                                achievement(name: "Спокойной ночи", description: "Восстановить сон", picture: Image("sleep"))
-                                
-                                achievement(name: "Экономист", description: "Сэкономить 10000Р", picture: Image("treasure"))
-                                
-                                achievement(name: "Вдох выдох вдох", description: "Полностью очистить лёгкие от CO2", picture: Image("lungs"))
-                                
-                                achievement(name: "Это победа", description: "Провести 365 дней без курения", picture: Image("win"))
-                                    .padding(.bottom, 19)
-                                
-                            }
+                            achievement(name: "Первые дивиденды", description: "Сэкономить 500Р", picture: Image("coin"), type: 1, value: 500)
+                            
+                            achievement(name: "Идём на снижение", description: "Провести 3 дня без курения", picture: Image("nikotine"), type: 0, value: 3)
+                            
+                            achievement(name: "Денежное дерево", description: "Сэкономить 1000Р", picture: Image("moneytree"), type: 1, value: 1000)
+                            
+                            achievement(name: "Неделя очищения", description: "Провести 7 дней без курения", picture: Image("wings"), type: 0, value: 7)
+                            
+                            achievement(name: "Спорт это жизнь", description: "Избавиться от одышки", picture: Image("walking"), type: 0, value: 1000)
+                            
+                            achievement(name: "С кем не бывает", description: "Начать вторую попытку", picture: Image("heartballoon"), type: 3, value: 2)
+                            
+                            achievement(name: "Стонкс", description: "Сэкономить 2500Р", picture: Image("stonks"), type: 1, value: 2500)
+                            
+                            achievement(name: "Железная выдержка", description: "Провести 14 дней без курения", picture: Image("yoga"), type: 0, value: 14)
+                            
+                            achievement(name: "Красивое зеркало", description: "Восстановить состояние кожи", picture: Image("beauty"), type: 0, value: 1000)
+                            
                         }
                     }
                     
-                    
-                }.frame(width: 375, height: 632)
+                    Group {
+                        
+                        VStack(spacing: 15) {
+                            
+                            achievement(name: "Тяжелый бумажник", description: "Сэкономить 5000Р", picture: Image("wallet"), type: 1, value: 5000)
+                            
+                            achievement(name: "Главное не сдаваться", description: "Начать пятую попытку", picture: Image("firststeps"), type: 3, value: 5)
+                            
+                            achievement(name: "Спокойной ночи", description: "Восстановить сон", picture: Image("sleep"), type: 0, value: 1000)
+                            
+                            achievement(name: "Экономист", description: "Сэкономить 10000Р", picture: Image("treasure"), type: 1, value: 10000)
+                            
+                            achievement(name: "Вдох выдох вдох", description: "Полностью очистить лёгкие от CO2", picture: Image("lungs"), type: 0, value: 1000)
+                            
+                            achievement(name: "Это победа", description: "Провести 365 дней без курения", picture: Image("win"), type: 0, value: 365)
+                                .padding(.bottom, 19)
+                            
+                        }
+                    }
+                }
                 
-            }.padding(.top, -65)
-                .background(Image("background")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 375, height: 812, alignment: .center)
-                                .edgesIgnoringSafeArea(.all))
+                
+            }.frame(width: 375, height: 632)
+            
+        }.padding(.top, -65)
+            .background(Image("background")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 375, height: 812, alignment: .center)
+                            .edgesIgnoringSafeArea(.all))
         
     }
 }
@@ -102,9 +104,14 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
+    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    
     var name: String
     var description: String
     var picture: Image
+    var type: Int
+    var value: Int
     
     var body: some View {
         
@@ -148,10 +155,58 @@ struct achievement: View {
                 .offset(x: -135, y: 0)
             
             // progressBar
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .frame(width: 246, height: 10)
-                .offset(x: 38, y: 25)
+            if type == 0 {
+                ZStack(alignment: .leading){
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                        .frame(width: 246, height: 10, alignment: .leading)
+                        .offset(x: 38, y: 25)
+                    
+                    if (score >= value) {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.pink)
+                            .frame(width: 246, height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.4)
+                    }
+                    else{
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.pink)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(score), height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.4)
+                    }
+                    
+                }.frame(width: 246, height: 10)
+            }
+            
+            else if type == 1 {
+                ZStack(alignment: .leading){
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                        .frame(width: 246, height: 10, alignment: .leading)
+                        .offset(x: 38, y: 25)
+                    
+                    if (score * dailyEconomy >= value){
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.yellow)
+                            .frame(width: 246, height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.4)
+                    }
+                    else {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.yellow)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(score * dailyEconomy), height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.4)
+                    }
+                    
+                }
+            }
+            
             
         } // +DropShadow and Stroke
         

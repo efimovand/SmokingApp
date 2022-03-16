@@ -161,6 +161,5 @@ struct MainTabView: View {
 struct TabBarStructure_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
-            .environmentObject(SData())
     }
 }

@@ -15,8 +15,7 @@ enum clickedButton {
 
 struct restartAlertView: View {
     
-    // Score var for achievementsAlert
-    @EnvironmentObject var alertScore: SData
+    @State var score = UserDefaults.standard.integer(forKey: "score")
     
     @Binding var alertShown: Bool
     
@@ -67,8 +66,8 @@ struct restartAlertView: View {
                     
                     Button(action: {
                         alertShown.toggle()
-                        self.alertScore.score = 0
-                        UserDefaults.standard.set(Date(), forKey: "savedTime")
+                        UserDefaults.standard.set(0, forKey: "Score")
+                        //UserDefaults.standard.set(Date(), forKey: "savedTime")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13, weight: .bold))
@@ -92,6 +91,5 @@ struct restartAlertView_Previews: PreviewProvider {
     static var previews: some View {
         restartAlertView(alertShown: .constant(false))
             .preferredColorScheme(.dark)
-            .environmentObject(SData())
     }
 }

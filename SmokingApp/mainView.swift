@@ -10,10 +10,7 @@ import Foundation
 
 struct mainView: View {
     
-    // Score var for Main
-    @EnvironmentObject var scoreMain: SData
-    @EnvironmentObject var dailyEconomyMain: SData
-    
+    @State var score = UserDefaults.standard.integer(forKey: "score")
     @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
     @State var now = Date()
     
@@ -33,24 +30,24 @@ struct mainView: View {
                     .offset(y: 80)
                 
                 //score
-                if (scoreMain.score < 10){
-                    Text("\(scoreMain.score)")
+                if (score < 10){
+                    Text("\(score)")
                         .font(.system(size: 288, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .frame(width: 328, height: 328, alignment: .top)
                         .offset(y: 19)
                 }
-                else if (scoreMain.score >= 10 && scoreMain.score < 100){
-                    Text("\(scoreMain.score)")
+                else if (score >= 10 && score < 100){
+                    Text("\(score)")
                         .font(.system(size: 250, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .frame(width: 375, height: 328, alignment: .top)
                         .offset(y: 44)
                 }
-                else if (scoreMain.score >= 100){
-                    Text("\(scoreMain.score)")
+                else if (score >= 100){
+                    Text("\(score)")
                         .font(.system(size: 170, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
@@ -59,14 +56,14 @@ struct mainView: View {
                 }
                 
                 //textBottom
-                if ((scoreMain.score != 11) && (scoreMain.score % 10 == 1)){
+                if ((score != 11) && (score % 10 == 1)){
                     Text("день")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
                         .frame(width: 127, height: 58)
                         .offset(x: 78, y: -32)
                 }
-                else if (((scoreMain.score != 12) && (scoreMain.score != 13) && (scoreMain.score != 14)) && ((scoreMain.score % 10 == 2) || (scoreMain.score % 10 == 3) || (scoreMain.score % 10 == 4))){
+                else if (((score != 12) && (score != 13) && (score != 14)) && ((score % 10 == 2) || (score % 10 == 3) || (score % 10 == 4))){
                     Text("дня")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
@@ -119,7 +116,7 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all))
             .onAppear(perform: {
                 if (abs(saved - now)) > 86400 {
-                    scoreMain.score += Int((abs(saved - now)) / 86400)
+                    score += Int((abs(saved - now)) / 86400)
                     UserDefaults.standard.set(Date(), forKey: "savedTime")
                 }
             })
@@ -181,6 +178,5 @@ extension Date {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         mainView()
-            .environmentObject(SData())
     }
 }
