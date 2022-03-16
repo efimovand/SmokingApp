@@ -11,8 +11,6 @@ import UIKit
 
 struct startSticks: View {
     
-    @EnvironmentObject var startSticksData: SData
-    
     @Binding var sticksShown: Bool
     
     @State var dailyUse: Int = 0
@@ -67,8 +65,7 @@ struct startSticks: View {
                                 .padding(.trailing, 30)
                                 .offset(x: -8, y: 12)
                             
-                            /*
-                            Picker("dailyUse", selection: $startSticksData.dailyUse) {
+                            Picker("DailyUse", selection: $dailyUse) {
                                 ForEach(1..<31) {
                                     Text("\($0)")
                                         .foregroundColor(Color.black)
@@ -80,7 +77,6 @@ struct startSticks: View {
                                 .background(Color.white)
                                 .cornerRadius(15)
                                 .offset(x: 5, y: 12)
-                            */
                             
                         }.padding(.top, 60)
                         
@@ -95,8 +91,7 @@ struct startSticks: View {
                                 .padding(.trailing, 30)
                                 .offset(x: -1, y: -1)
                             
-                            /*
-                            TextField("", value: $startSticksData.pricePack, formatter: NumberFormatter())
+                             TextField("", text: $pricePack)
                                 .keyboardType(.numberPad)
                                 .foregroundColor(Color.black)
                                 .labelsHidden()
@@ -107,7 +102,6 @@ struct startSticks: View {
                                 .cornerRadius(15)
                                 .multilineTextAlignment(.center)
                                 .offset(x: -1)
-                             */
                             
                         }
                         
@@ -120,29 +114,18 @@ struct startSticks: View {
                             .frame(width: 375, height: 812)
                             .opacity(0)
                     }
-                    
-                    /*
-                     // Test Data
-                     HStack(spacing: 0){
-                     Text("dailyUse = ")
-                     Text(String(startSticksData.dailyUse))
-                     }.offset(y: 220)
-                     
-                     HStack(spacing: 0){
-                     Text("pricePack = ")
-                     Text(String(startSticksData.pricePack))
-                     }.offset(y: 255)
-                     */
-                    
+
                 }
                 
             }.offset(y: -22)
+            
             
             // Next button
             (Button(action: {
                 pricePackInt = Int(pricePack) ?? 0
                 UserDefaults.standard.set((dailyUse + 1) * pricePackInt / 20, forKey: "dailyEconomy")
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
+                UserDefaults.standard.set(Date(), forKey: "savedTime")
             }) {
                 ZStack{
                     

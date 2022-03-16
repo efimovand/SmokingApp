@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-@MainActor class SData: ObservableObject {
-    @Published var dailyEconomy: Int = UserDefaults.standard.integer(forKey: "dailyEconomy")
-    @Published var score: Int = 1
-    @Published var savedTime = UserDefaults.standard.object(forKey: "savedTime")
-}
-
 // Buttons' struct
 struct TabItemData {
     let image: String

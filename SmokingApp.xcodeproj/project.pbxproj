@@ -117,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				5565A83127C8F6B0009C6ACD /* SmokingAppApp.swift */,
-				555B553127DD57AB00449868 /* TabBarStructure.swift */,
 				554536F627E1555C0016F1B2 /* firstLaunchLogic.swift */,
 				55449FC527DFE0AC00146E17 /* startView.swift */,
 				5555A9CD27DFF971006E1684 /* startCigarettes.swift */,
@@ -129,6 +128,7 @@
 				55DEE8F227DAD8B2002DF6D3 /* restartView.swift */,
 				55DC258827DE7FA10087BCA1 /* restartAlertView.swift */,
 				55449FC327DFC8BC00146E17 /* settingsView.swift */,
+				555B553127DD57AB00449868 /* TabBarStructure.swift */,
 				5565A83527C8F6B1009C6ACD /* Assets.xcassets */,
 				5565A83727C8F6B1009C6ACD /* Preview Content */,
 			);

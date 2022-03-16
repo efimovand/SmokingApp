@@ -10,6 +10,14 @@ import SwiftUI
 import SwiftUI
 import Foundation
 
+
+@MainActor class SData: ObservableObject {
+    @Published var dailyEconomy: Int = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @Published var score: Int = 1
+    @Published var savedTime = UserDefaults.standard.object(forKey: "savedTime")
+}
+
+
 struct firstLaunchLogic: View {
     
     @AppStorage("isLaunchedBefore") var isLaunchedBefore: Bool = false
@@ -31,5 +39,6 @@ struct firstLaunchLogic_Previews: PreviewProvider {
     static var previews: some View {
         firstLaunchLogic()
             .environmentObject(SData())
+            .preferredColorScheme(.dark)
     }
 }

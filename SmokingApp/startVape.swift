@@ -63,7 +63,7 @@ struct startVape: View {
                             .padding(.trailing, 30)
                             .offset(x: -1, y: -1)
                         
-                        TextField("", value: $monthlyVape, formatter: NumberFormatter())
+                        TextField("", text: $monthlyVape)
                             .keyboardType(.numberPad)
                             .foregroundColor(Color.black)
                             .labelsHidden()
@@ -91,8 +91,9 @@ struct startVape: View {
             // Next button
             (Button(action: {
                 monthlyVapeInt = Int(monthlyVape) ?? 0
-                UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")
+                UserDefaults.standard.set((monthlyVapeInt / 30), forKey: "dailyEconomy")
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
+                UserDefaults.standard.set(Date(), forKey: "savedTime")
             }) {
                 ZStack{
                     

@@ -26,8 +26,6 @@ extension UIPickerView {
 
 struct startCigarettes: View {
     
-    @EnvironmentObject var startCigarettesData: SData
-    
     @Binding var cigarettesShown: Bool
     
     @State var dailyUse: Int = 0
@@ -131,19 +129,6 @@ struct startCigarettes: View {
                             .frame(width: 375, height: 812)
                             .opacity(0)
                     }
-                    
-                    /*
-                     // Test Data
-                     HStack(spacing: 0){
-                     Text("dailyUse = ")
-                     Text(String(startData.dailyUse))
-                     }.offset(y: 220)
-                     
-                     HStack(spacing: 0){
-                     Text("pricePack = ")
-                     Text(String(startData.pricePack))
-                     }.offset(y: 255)
-                     */
                     
                 }
                 

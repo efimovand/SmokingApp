@@ -83,12 +83,6 @@ struct mainView: View {
                 
                 Spacer()
             }
-            .onAppear(perform: {
-                if (abs(saved - now)) > 86400 {
-                    scoreMain.score += Int((abs(saved - now)) / 86400)
-                    UserDefaults.standard.set(Date(), forKey: "savedTime")
-                }
-            })
             
             //healthNow
             ZStack{
@@ -123,6 +117,12 @@ struct mainView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 812, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
+            .onAppear(perform: {
+                if (abs(saved - now)) > 86400 {
+                    scoreMain.score += Int((abs(saved - now)) / 86400)
+                    UserDefaults.standard.set(Date(), forKey: "savedTime")
+                }
+            })
         
     }
 }
