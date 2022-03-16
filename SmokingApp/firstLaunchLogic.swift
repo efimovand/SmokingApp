@@ -12,8 +12,8 @@ import Foundation
 
 
 @MainActor class SData: ObservableObject {
-    @Published var dailyEconomy: Int = UserDefaults.standard.integer(forKey: "dailyEconomy")
     @Published var score: Int = 1
+    @Published var dailyEconomy: Int = UserDefaults.standard.integer(forKey: "dailyEconomy")
     @Published var savedTime = UserDefaults.standard.object(forKey: "savedTime")
 }
 

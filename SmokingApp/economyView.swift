@@ -31,17 +31,48 @@ struct economyView: View {
                         .frame(width: 276, height: 55, alignment: .topLeading)
                         .offset(y: -50)
                     
-                    Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 72, weight: .heavy))
-                        .multilineTextAlignment(.center)
-                        .frame(width: 356, height: 90, alignment: .top)
-                        .offset(y: 20)
+                    HStack(spacing: 0){
+                        
+                        if (dailyEconomy4Economy.dailyEconomy * scoreEconomy.score >= 1000) {
+                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))                                .foregroundColor(Color.white)
+                                .font(.system(size: 72, weight: .heavy))
+                                .multilineTextAlignment(.center)
+                                .frame(width: 200, height: 90, alignment: .top)
+                                .offset(y: 20)
+                                .padding(.leading, 30)
+                        }
+                        else if (dailyEconomy4Economy.dailyEconomy * scoreEconomy.score >= 100) {
+                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))                                .foregroundColor(Color.white)
+                                .font(.system(size: 72, weight: .heavy))
+                                .multilineTextAlignment(.center)
+                                .frame(width: 150, height: 90, alignment: .top)
+                                .offset(y: 20)
+                                .padding(.leading, 30)
+                        }
+                        else if (dailyEconomy4Economy.dailyEconomy * scoreEconomy.score >= 10) {
+                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))                                .foregroundColor(Color.white)
+                                .font(.system(size: 72, weight: .heavy))
+                                .multilineTextAlignment(.center)
+                                .frame(width: 100, height: 90, alignment: .top)
+                                .offset(y: 20)
+                                .padding(.leading, 30)
+                        }
+                        else {
+                         Text(String(dailyEconomy4Economy.dailyEconomy * scoreEconomy.score))
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 72, weight: .heavy))
+                                .multilineTextAlignment(.center)
+                                .frame(width: 50, height: 90, alignment: .top)
+                                .offset(y: 20)
+                                .padding(.leading, 30)
+                        }
                     
                     Text("₽")
                         .foregroundColor(Color.white)
                         .font(.system(size: 48, weight: .bold))
-                        .offset(x: 105, y: 25)
+                        .offset(y: 25)
+                        
+                    }
                     
                 }.offset(y: -56)
                 
@@ -57,7 +88,7 @@ struct economyView: View {
                         
                         Text(String(dailyEconomy4Economy.dailyEconomy))
                             .foregroundColor(Color.white)
-                            .font(.system(size: 25, weight: .bold))
+                            .font(.system(size: 28, weight: .heavy))
                             .frame(width: 70, height: 28, alignment: .trailing)
                         
                     }
@@ -72,7 +103,7 @@ struct economyView: View {
                         
                         Text(String(dailyEconomy4Economy.dailyEconomy * 30))
                             .foregroundColor(Color.white)
-                            .font(.system(size: 25, weight: .bold))
+                            .font(.system(size: 28, weight: .heavy))
                             .frame(width: 80, height: 28, alignment: .trailing)
                         
                     }
