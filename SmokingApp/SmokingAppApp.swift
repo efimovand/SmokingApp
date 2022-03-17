@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+/*
+UserDefaults
+ score = UserDefaults.standart.integer(forKey: "score")
+ dailyEconomy = UserDefaults.standart.integer(forKey: "dailyEconomy")
+ isLaunchedBefore = UserDefaults.standart.bool(forKey: "isLaunchedBefore")
+ savedTime = UserDefaults.standart.object(forKey: "savedTime")
+ attempts = score = UserDefaults.standart.integer(forKey: "attempts")
+*/
+
 @main
 struct SmokingAppApp: App {
     

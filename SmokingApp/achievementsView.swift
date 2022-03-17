@@ -55,7 +55,7 @@ struct achievementsView: View {
                             
                             achievement(name: "Спорт это жизнь", description: "Избавиться от одышки", picture: Image("walking"), type: 0, value: 1000)
                             
-                            achievement(name: "С кем не бывает", description: "Начать вторую попытку", picture: Image("heartballoon"), type: 3, value: 2)
+                            achievement(name: "С кем не бывает", description: "Начать вторую попытку", picture: Image("heartballoon"), type: 2, value: 2)
                             
                             achievement(name: "Стонкс", description: "Сэкономить 2500Р", picture: Image("stonks"), type: 1, value: 2500)
                             
@@ -72,7 +72,7 @@ struct achievementsView: View {
                             
                             achievement(name: "Тяжелый бумажник", description: "Сэкономить 5000Р", picture: Image("wallet"), type: 1, value: 5000)
                             
-                            achievement(name: "Главное не сдаваться", description: "Начать пятую попытку", picture: Image("firststeps"), type: 3, value: 5)
+                            achievement(name: "Главное не сдаваться", description: "Начать пятую попытку", picture: Image("firststeps"), type: 2, value: 5)
                             
                             achievement(name: "Спокойной ночи", description: "Восстановить сон", picture: Image("sleep"), type: 0, value: 1000)
                             
@@ -104,8 +104,9 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = 120 //UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var attempts = 1 //UserDefaults.standard.integer(forKey: "attempts")
     
     var name: String
     var description: String
@@ -202,6 +203,38 @@ struct achievement: View {
                             .frame(width: 246 / CGFloat(value) * CGFloat(score * dailyEconomy), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.4)
+                    }
+                    
+                }
+            }
+            
+            else if type == 2 {
+                ZStack(alignment: .leading){
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                        .frame(width: 246, height: 10, alignment: .leading)
+                        .offset(x: 38, y: 25)
+                    
+                    if (attempts >= value){
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.brown)
+                            .frame(width: 246, height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.4)
+                    }
+                    else {
+                        /*
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.yellow)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(attempts), height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.4)
+                         */
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.white)
+                            .frame(width: 246, height: 10, alignment: .leading)
+                            .offset(x: 38, y: 25)
                     }
                     
                 }
