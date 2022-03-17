@@ -10,9 +10,13 @@ import Foundation
 
 struct mainView: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    @State var now = Date()
+    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
+    //@State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+    //@State var now = Date()
+    
+    // List of healthNow
+    @State var healthCases = [healthNow(text: "Лёгкие освобождаются от остатков CO2", picture: Image("lungs"), description: "На 5-8 день после отказа от курения легкие самостоятельно вытесняют оставшийся CO2 и наполянются кислородом."),
+                              healthNow(text: "Восстанавливается нервная система и улучшается сон", picture: Image("sleep"), description: "piska")]
     
     var body: some View {
         
@@ -82,6 +86,17 @@ struct mainView: View {
             }
             
             //healthNow
+            switch score{
+                
+            case 5:
+                healthCases[0]
+            case 6...9:
+                healthCases[1]
+            default:
+                Text("")
+                
+            }
+            /*
             ZStack{
                 
                 RoundedRectangle(cornerRadius: 15)
@@ -108,23 +123,59 @@ struct mainView: View {
                     .opacity(0.4)
                 
             }
+             */
+
             
         }.background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 812, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
-            .onAppear(perform: {
+        /* .onAppear(perform: {
                 if (abs(saved - now)) > 86400 {
                     score += Int((abs(saved - now)) / 86400)
                     UserDefaults.standard.set(Date(), forKey: "savedTime")
                 }
-            })
+            }) */
         
     }
 }
 
-
+struct healthNow: View {
+    
+    var text: String
+    var picture: Image
+    var description: String
+    
+    var body: some View {
+        ZStack{
+            
+            RoundedRectangle(cornerRadius: 15)
+                .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                .frame(width: 317, height: 88)
+                .offset(y: 218)
+                .opacity(0.4)
+            
+            picture
+                .resizable()
+                .frame(width: 90, height: 90)
+                .offset(x: -110, y: 218)
+            
+            Text(text)
+                .font(.system(size: 18, weight: .bold))
+                .foregroundColor(Color.white)
+                .frame(width: 200, height: 65, alignment: .topLeading)
+                .offset(x: 48, y: 218)
+            
+            RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
+                .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                .frame(width: 317, height: 37)
+                .offset(y: 291)
+                .opacity(0.4)
+            
+        }
+    }
+}
 
 // RoundedCorners function
 struct RoundedCorners: Shape {

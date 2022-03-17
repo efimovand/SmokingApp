@@ -74,7 +74,7 @@ struct startSticks: View {
                                 .labelsHidden()
                                 .frame(width: 50, height: 32)
                                 .clipped()
-                                .background(Color.white)
+                                .background((Color.white).opacity(0.9))
                                 .cornerRadius(15)
                                 .offset(x: 5, y: 12)
                             
@@ -98,7 +98,7 @@ struct startSticks: View {
                                 .frame(width: 50, height: 32)
                                 .clipped()
                                 .background((Color.gray).opacity(0.1))
-                                .background((Color.white).opacity(0.8))
+                                .background((Color.white).opacity(0.9))
                                 .cornerRadius(15)
                                 .multilineTextAlignment(.center)
                                 .offset(x: -1)

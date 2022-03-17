@@ -33,6 +33,8 @@ struct startView: View {
     @State var sticksShown = false
     @State var vapeShown = false
     
+    @State var number: Int = 0
+    
     var body: some View {
         
         ZStack{
@@ -51,10 +53,11 @@ struct startView: View {
                 HStack(spacing: 28){
                     
                     ForEach(0..<3) { num in
+                        
                         GeometryReader { proxy in
                             
                             let scale = getScale(proxy: proxy)
-                            
+                        
                             images[num]
                                 .resizable()
                                 .scaledToFill()
@@ -102,6 +105,7 @@ struct startView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 812, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
+            .offset(y: 10)
     }
     
     

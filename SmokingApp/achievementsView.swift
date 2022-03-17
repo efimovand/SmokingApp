@@ -104,8 +104,8 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
-    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = 120 //UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var score = 1 //UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = 80 //UserDefaults.standard.integer(forKey: "dailyEconomy")
     @State var attempts = 1 //UserDefaults.standard.integer(forKey: "attempts")
     
     var name: String
@@ -118,6 +118,7 @@ struct achievement: View {
         
         ZStack{
             
+            // background
             HStack(alignment: .center, spacing: 0){
                 
                 // left
@@ -211,30 +212,12 @@ struct achievement: View {
             else if type == 2 {
                 ZStack(alignment: .leading){
                     
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.white)
-                        .frame(width: 246, height: 10, alignment: .leading)
-                        .offset(x: 38, y: 25)
-                    
                     if (attempts >= value){
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.brown)
-                            .frame(width: 246, height: 10)
-                            .offset(x: 38, y: 25)
-                            .opacity(0.4)
-                    }
-                    else {
-                        /*
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.yellow)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(attempts), height: 10)
-                            .offset(x: 38, y: 25)
-                            .opacity(0.4)
-                         */
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
-                            .frame(width: 246, height: 10, alignment: .leading)
-                            .offset(x: 38, y: 25)
+                        Image(systemName: "checkmark.circle")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color.white)
+                            .offset(x: 145, y: 13)
                     }
                     
                 }
