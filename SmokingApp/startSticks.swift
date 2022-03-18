@@ -122,10 +122,10 @@ struct startSticks: View {
             
             // Next button
             (Button(action: {
-                UserDefaults.standard.set(5, forKey: "score")
+                UserDefaults.standard.set(0, forKey: "score")
                 
                 pricePackInt = Int(pricePack) ?? 0
-                UserDefaults.standard.set(58, forKey: "dailyEconomy")
+                UserDefaults.standard.set(dailyUse * pricePackInt / 20, forKey: "dailyEconomy")
                 
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")

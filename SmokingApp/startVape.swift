@@ -91,7 +91,7 @@ struct startVape: View {
                 UserDefaults.standard.set(5, forKey: "score")
                 
                 monthlyVapeInt = Int(monthlyVape) ?? 0
-                UserDefaults.standard.set(58, forKey: "dailyEconomy")
+                UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")
                 
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")

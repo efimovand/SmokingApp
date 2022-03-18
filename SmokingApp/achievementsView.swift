@@ -30,7 +30,7 @@ struct achievementsView: View {
                     .multilineTextAlignment(.center)
                     .frame(width: 252, height: 27, alignment: .center)
                 
-            }
+            }.offset(y: 2)
             
             // Achievements
             ScrollView(.vertical, showsIndicators: false) {
@@ -88,7 +88,9 @@ struct achievementsView: View {
                 }
                 
                 
-            }.frame(width: 375, height: 632)
+            }
+                .frame(width: 375, height: 638)
+                .offset(y: 2)
             
         }.padding(.top, -65)
             .background(Image("background")
@@ -104,9 +106,9 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
-    @State var score = 1 //UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = 80 //UserDefaults.standard.integer(forKey: "dailyEconomy")
-    @State var attempts = 1 //UserDefaults.standard.integer(forKey: "attempts")
+    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var attempts = UserDefaults.standard.integer(forKey: "attempts")
     
     var name: String
     var description: String

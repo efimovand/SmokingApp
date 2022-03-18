@@ -17,8 +17,7 @@ struct firstLaunchLogic: View {
     var body: some View {
         
         if isLaunchedBefore {
-            startView()
-            //MainTabView()
+            MainTabView()
         }
         else {
             startView()

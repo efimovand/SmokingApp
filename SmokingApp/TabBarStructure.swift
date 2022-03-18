@@ -96,8 +96,8 @@ struct CustomTabView<Content: View>: View {
                         .tag(index)
                 }
             }
-            .frame(width: 375, height: 812)
-            .offset(y: 34)
+            .frame(width: 375, height: 900)
+            .offset(y: 50)
             
             VStack {
                 TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
@@ -144,16 +144,16 @@ struct MainTabView: View {
         switch type {
         case .main:
             mainView()
-                .offset(y: 5)
+                .offset(y: -25)
         case .economy:
             economyView()
-                .offset(y: 5)
+                .offset(y: -25)
         case .achievements:
             achievementsView()
-                .offset(y: 5)
+                .offset(y: -25)
         case .restart:
             restartView()
-                .offset(y: 5)
+                .offset(y: -25)
         }
     }
 }

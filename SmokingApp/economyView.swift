@@ -34,7 +34,8 @@ struct economyView: View {
                     HStack(spacing: 0){
                         
                         if (dailyEconomy * score >= 1000) {
-                         Text(String(dailyEconomy * score))                                .foregroundColor(Color.white)
+                         Text(String(dailyEconomy * score))
+                                .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
                                 .frame(width: 200, height: 90, alignment: .top)
@@ -42,7 +43,8 @@ struct economyView: View {
                                 .padding(.leading, 30)
                         }
                         else if (dailyEconomy * score >= 100) {
-                         Text(String(dailyEconomy * score))                                .foregroundColor(Color.white)
+                         Text(String(dailyEconomy * score))
+                                .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
                                 .frame(width: 150, height: 90, alignment: .top)
@@ -50,7 +52,8 @@ struct economyView: View {
                                 .padding(.leading, 30)
                         }
                         else if (dailyEconomy * score >= 10) {
-                         Text(String(dailyEconomy * score))                                .foregroundColor(Color.white)
+                         Text(String(dailyEconomy * score))
+                                .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
                                 .frame(width: 100, height: 90, alignment: .top)
@@ -108,7 +111,7 @@ struct economyView: View {
                         
                     }
                     
-                }.offset(x: -8, y: 70)
+                }.offset(x: -8, y: 100)
                 
             }.background(Image("background_economy")
                             .resizable()

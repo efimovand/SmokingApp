@@ -46,7 +46,6 @@ struct settingsView: View {
                 
                 Button(action: {
                     // change language
-                    print(UserDefaults.standard.dictionaryRepresentation())
                 }) {
                     Image("flagRus")
                         .resizable()
