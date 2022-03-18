@@ -40,7 +40,7 @@ struct startSticks: View {
                             .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
                             .frame(width: 309, height: 169)
                         
-                    }
+                    }.overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))
                     
                     // overlayStroke + dropShadow
                     

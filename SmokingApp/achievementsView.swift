@@ -129,7 +129,9 @@ struct achievement: View {
                 RoundedCorners(tl: 0, tr: 10, bl: 0, br: 10).fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
                     .frame(width: 270, height: 75)
                 
-            }
+            }.frame(width: 345, height: 75)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
             
             // text
             VStack(alignment: .leading, spacing: 5) {
