@@ -88,7 +88,7 @@ struct startVape: View {
             
             // Next button
             (Button(action: {
-                UserDefaults.standard.set(5, forKey: "score")
+                UserDefaults.standard.set(0, forKey: "score")
                 
                 monthlyVapeInt = Int(monthlyVape) ?? 0
                 UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")

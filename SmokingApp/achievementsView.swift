@@ -171,17 +171,17 @@ struct achievement: View {
                     
                     if (score >= value) {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.pink)
+                            .fill(Color.blue)
                             .frame(width: 246, height: 10)
                             .offset(x: 38, y: 25)
-                            .opacity(0.4)
+                            .opacity(0.6)
                     }
                     else{
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.pink)
+                            .fill(Color.blue)
                             .frame(width: 246 / CGFloat(value) * CGFloat(score), height: 10)
                             .offset(x: 38, y: 25)
-                            .opacity(0.4)
+                            .opacity(0.6)
                     }
                     
                 }.frame(width: 246, height: 10)
@@ -197,17 +197,17 @@ struct achievement: View {
                     
                     if (score * dailyEconomy >= value){
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.yellow)
+                            .fill(Color.blue)
                             .frame(width: 246, height: 10)
                             .offset(x: 38, y: 25)
-                            .opacity(0.4)
+                            .opacity(0.6)
                     }
                     else {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.yellow)
+                            .fill(Color.blue)
                             .frame(width: 246 / CGFloat(value) * CGFloat(score * dailyEconomy), height: 10)
                             .offset(x: 38, y: 25)
-                            .opacity(0.4)
+                            .opacity(0.6)
                     }
                     
                 }

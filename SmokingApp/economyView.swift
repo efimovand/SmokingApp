@@ -80,7 +80,7 @@ struct economyView: View {
                 }.offset(y: -56)
                 
                 // daily+monthly
-                VStack{
+                VStack(spacing: 3){
                     
                     HStack{
                         
@@ -103,11 +103,12 @@ struct economyView: View {
                             .foregroundColor(Color.white)
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 240, height: 28, alignment: .leading)
+                            .padding(.leading, 30)
                         
                         Text(String(dailyEconomy * 30))
                             .foregroundColor(Color.white)
                             .font(.system(size: 28, weight: .heavy))
-                            .frame(width: 80, height: 28, alignment: .trailing)
+                            .frame(width: 100, height: 28, alignment: .center)
                         
                     }
                     
