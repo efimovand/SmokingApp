@@ -93,10 +93,11 @@ struct achievementsView: View {
                 .offset(y: 2)
             
         }.padding(.top, -65)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Image("background")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 375, height: 812, alignment: .center)
+                            .frame(width: 375, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
         
     }
@@ -106,9 +107,9 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
-    @State var attempts = UserDefaults.standard.integer(forKey: "attempts")
+    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = 80 //UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var attempts = 1 //UserDefaults.standard.integer(forKey: "attempts")
     
     var name: String
     var description: String

@@ -10,9 +10,9 @@ import Foundation
 
 struct mainView: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    @State var now = Date()
+    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
+    //@State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+    //@State var now = Date()
     
     // List of healthNow
     @State var healthCases = [healthNow(text: "Лёгкие освобождаются от остатков CO2", picture: Image("lungs"), description: "На 5-8 день после отказа от курения легкие самостоятельно вытесняют оставшийся CO2 и наполянются кислородом."),
@@ -88,26 +88,27 @@ struct mainView: View {
             //healthNow
             switch score{
                 
-            case 0:
+            case 5:
                 healthCases[0]
-            case 1...3:
+            case 6...9:
                 healthCases[1]
             default:
                 Text("")
                 
             }
             
-        }.background(Image("background")
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
+                        .frame(width: 375, height: .infinity, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
-            .onAppear(perform: {
+            /*.onAppear(perform: {
                 if (abs(saved - now)) > 86400 {
                     score += Int((abs(saved - now)) / 86400)
                     UserDefaults.standard.set(Date(), forKey: "savedTime")
                 }
-            })
+            })*/
         
     }
 }

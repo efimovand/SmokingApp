@@ -9,8 +9,8 @@ import SwiftUI
 
 struct economyView: View {
     
-    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
-    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = 80 //UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
     
     var body: some View {
         
@@ -114,10 +114,11 @@ struct economyView: View {
                     
                 }.offset(x: -8, y: 100)
                 
-            }.background(Image("background_economy")
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Image("background_economy")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 375, height: 812, alignment: .center)
+                            .frame(width: 375, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
             
     }

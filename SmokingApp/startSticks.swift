@@ -145,17 +145,12 @@ struct startSticks: View {
                 
             }).offset(y: 140)
             
-        }.background(Image("background")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
-                        .edgesIgnoringSafeArea(.all))
-            .overlay(Image("testStartData")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
-                        .offset(y: -5)
-                        .opacity(0))
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Image("background")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 375, height: .infinity, alignment: .center)
+                            .edgesIgnoringSafeArea(.all))
         
     }
     

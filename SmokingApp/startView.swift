@@ -100,11 +100,12 @@ struct startView: View {
                 startVape(vapeShown: $vapeShown)
             }
             
-        }.background(Image("background")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
-                        .edgesIgnoringSafeArea(.all))
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Image("background")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 375, height: .infinity, alignment: .center)
+                            .edgesIgnoringSafeArea(.all))
             .offset(y: 10)
     }
     

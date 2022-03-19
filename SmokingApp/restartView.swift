@@ -97,10 +97,11 @@ struct restartView: View {
                 settingsView(settingsShown: $settingsShown)
             }
             
-        }.background(Image("background")
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 812, alignment: .center)
+                        .frame(width: 375, height: .infinity, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
         
     }
