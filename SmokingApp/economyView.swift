@@ -122,7 +122,7 @@ struct economyView: View {
             .background(Image("background_economy")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 375, height: .infinity, alignment: .center)
+                            .frame(width: .infinity, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
             .padding(.top, 40)
             

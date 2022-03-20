@@ -12,6 +12,8 @@ struct restartView: View {
     @State var alertShown = false
     @State var settingsShown = false
     
+    @State var height: Float = Float(UIScreen.screenHeight)
+    
     var body: some View {
         
         ZStack{
@@ -82,8 +84,8 @@ struct restartView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60, alignment: .center)
                 }
-            }   .padding(.bottom, 710)
-                .padding(.leading, 293)
+            }   .padding(.bottom, height >= 812 ? (UIScreen.screenHeight * 0.87) : (UIScreen.screenHeight * 0.9))
+                .padding(.leading, UIScreen.screenWidth * 0.8)
             
             // showingAlert
             if alertShown {
