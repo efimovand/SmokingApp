@@ -38,7 +38,7 @@ struct TabItemView: View {
                     .resizable()
                     .frame(width: 81, height: 81)
                     .padding(.top, -7)
-                    .offset(y: 5)
+                    .offset(y: 6)
             }
             else if (data.image == "achievements" && data.selectedImage == "achievements_a"){
                 Image(isSelected ? data.selectedImage : data.image)

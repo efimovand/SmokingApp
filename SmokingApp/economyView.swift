@@ -12,6 +12,8 @@ struct economyView: View {
     @State var score = UserDefaults.standard.integer(forKey: "score")
     @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
     
+    @State var height: Float = Float(UIScreen.screenHeight)
+    
     var body: some View {
         
         // Economy
@@ -124,6 +126,7 @@ struct economyView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: .infinity, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
+            .statusBar(hidden: height >= 812 ? false : true)
             .padding(.top, 40)
             
     }

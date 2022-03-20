@@ -84,7 +84,7 @@ struct restartView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60, alignment: .center)
                 }
-            }   .padding(.bottom, height >= 812 ? (UIScreen.screenHeight * 0.87) : (UIScreen.screenHeight * 0.9))
+            }   .padding(.bottom, height >= 812 ? (UIScreen.screenHeight * 0.87) : (UIScreen.screenHeight * 0.82))
                 .padding(.leading, UIScreen.screenWidth * 0.8)
             
             // showingAlert
@@ -104,6 +104,7 @@ struct restartView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: .infinity, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
+        .statusBar(hidden: height >= 812 ? false : true)
         
     }
 }

@@ -18,6 +18,8 @@ struct mainView: View {
     @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
     @State var now = Date()
     
+    @State var height: Float = Float(UIScreen.screenHeight)
+    
     // List of healthNow
     @State var healthCases = [healthNow(text: "Лёгкие освобождаются от остатков CO2", picture: Image("lungs"), description: "На 5-8 день после отказа от курения легкие самостоятельно вытесняют оставшийся CO2 и наполянются кислородом."),
                               healthNow(text: "Восстанавливается нервная система и улучшается сон", picture: Image("sleep"), description: "piska")]
@@ -175,10 +177,11 @@ struct mainView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.screenWidth, height: .infinity, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
+        .statusBar(hidden: height >= 812 ? false : true)
            .onAppear(perform: {
             
                 if hours > 24 {
-            UserDefaults.standard.set(false, forKey: "firstDay")
+                    UserDefaults.standard.set(false, forKey: "firstDay")
                 }
                 else if (abs(savedHours - now)) > 3600 {
                     hours += Int((abs(savedHours - now)) / 3600)

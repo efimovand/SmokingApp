@@ -91,7 +91,7 @@ struct achievementsView: View {
                 
                 
             }
-            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * 0.7881)
+            .frame(width: UIScreen.screenWidth, height: height >= 812 ? UIScreen.screenHeight * 0.7881 : UIScreen.screenHeight * 0.82)
             
             //Spacer(minLength: UIScreen.screenHeight * 0.113)
             
@@ -103,7 +103,7 @@ struct achievementsView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: .infinity, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
-        
+            .statusBar(hidden: height >= 812 ? false : true)
     }
 }
 
