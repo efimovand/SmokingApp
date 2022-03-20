@@ -62,7 +62,7 @@ struct restartView: View {
                     .offset(x: 2, y: -1)
                     .opacity(alertShown ? 0.5 : 1)
                 
-            }.offset(y: -35)
+            }.padding(.bottom, 30)
                 .opacity(settingsShown ? 0 : 1)
             
             
@@ -84,7 +84,6 @@ struct restartView: View {
                 }
             }   .padding(.bottom, 710)
                 .padding(.leading, 293)
-                .offset(y: 10)
             
             // showingAlert
             if alertShown {

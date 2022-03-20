@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+// Get screen size
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
+
 // Buttons' struct
 struct TabItemData {
     let image: String
@@ -24,25 +31,27 @@ struct TabItemView: View {
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 74, height: 74)
-                    .offset(x: 0, y: 0)
+                    .offset(y: 5)
             }
             else if (data.image == "economy" && data.selectedImage == "economy_a"){
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 81, height: 81)
                     .padding(.top, -7)
+                    .offset(y: 5)
             }
             else if (data.image == "achievements" && data.selectedImage == "achievements_a"){
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 73, height: 73)
                     .padding(.top, 1)
+                    .offset(y: 5)
             }
             else if (data.image == "restart" && data.selectedImage == "restart_a"){
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 67, height: 67)
-                    .offset(x: 0, y: 0)
+                    .offset(y: 5)
             }
         }
     }
@@ -53,7 +62,7 @@ struct TabBottomView: View {
     
     let tabbarItems: [TabItemData]
     var height: CGFloat = 92
-    var width: CGFloat = 377
+    var width: CGFloat = UIScreen.screenWidth
     @Binding var selectedIndex: Int
     
     var body: some View {
@@ -74,10 +83,10 @@ struct TabBottomView: View {
             Spacer(minLength: 103)
             
         }
-        .frame(width: 377, height: 92)
-        .background(RoundedRectangle(cornerRadius: 20)
+        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * 0.113)
+        .background(RoundedCorners(tl: 20, tr: 20, bl: 0, br: 0)
                         .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.50), Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1)))
+                        .overlay(RoundedCorners(tl: 20, tr: 20, bl: 0, br: 0).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.50), Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1)))
     }
 }
 
@@ -96,12 +105,13 @@ struct CustomTabView<Content: View>: View {
                         .tag(index)
                 }
             }
-            .frame(width: 375, height: 900)
-            .offset(y: 50)
+            .frame(width: .infinity, height: .infinity)
             
             VStack {
+                Spacer()
                 TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
-            }.offset(y: 356)
+            }.ignoresSafeArea()
+            
         }
     }
 }
@@ -144,16 +154,12 @@ struct MainTabView: View {
         switch type {
         case .main:
             mainView()
-                .offset(y: -25)
         case .economy:
             economyView()
-                .offset(y: -25)
         case .achievements:
             achievementsView()
-                .offset(y: -25)
         case .restart:
             restartView()
-                .offset(y: -25)
         }
     }
 }

@@ -81,7 +81,7 @@ struct restartAlertView: View {
                 
             }.frame(width: 234, height: 109)
             
-        }.offset(y: 5)
+        }.padding(.top, 50)
         
     }
 }

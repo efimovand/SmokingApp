@@ -9,13 +9,15 @@ import SwiftUI
 
 struct economyView: View {
     
-    @State var dailyEconomy = 80 //UserDefaults.standard.integer(forKey: "dailyEconomy")
     @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = 120 //UserDefaults.standard.integer(forKey: "dailyEconomy")
     
     var body: some View {
         
-            // Economy
-            VStack{
+        // Economy
+        VStack(spacing: 100){
+            
+            Spacer(minLength: UIScreen.screenHeight * 0.095)
                 
                 // totalEconomy
                 ZStack{
@@ -112,7 +114,9 @@ struct economyView: View {
                         
                     }
                     
-                }.offset(x: -8, y: 100)
+                }
+            
+            Spacer()
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Image("background_economy")
@@ -120,6 +124,7 @@ struct economyView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 375, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
+            .padding(.top, 40)
             
     }
 }

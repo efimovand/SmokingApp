@@ -10,7 +10,7 @@ import Foundation
 
 struct mainView: View {
     
-    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
+    @State var score = 0 //UserDefaults.standard.integer(forKey: "score")
     //@State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
     //@State var now = Date()
     
@@ -20,18 +20,19 @@ struct mainView: View {
     
     var body: some View {
         
-        ZStack{
+        VStack(spacing: 0){
             
             // Main
-            VStack{
+            VStack(spacing: 0){
+                
+                Spacer()
                 
                 //textTop
                 Text("Вы не курите уже")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(Color.white)
-                    .frame(width: 354, height: 121, alignment: .topLeading)
+                    .frame(width: 354, height: 115, alignment: .topLeading)
                     .padding(.leading, 20)
-                    .offset(y: 80)
                 
                 //score
                 if (score < 10){
@@ -39,8 +40,8 @@ struct mainView: View {
                         .font(.system(size: 288, weight: .heavy))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
-                        .frame(width: 328, height: 328, alignment: .top)
-                        .offset(y: 19)
+                        .frame(width: 200, height: 200, alignment: .center)
+                        .padding()
                 }
                 else if (score >= 10 && score < 100){
                     Text("\(score)")
@@ -78,37 +79,40 @@ struct mainView: View {
                     Text("дней")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
-                        .frame(width: 127, height: 58)
-                        .offset(x: 78, y: -32)
+                        .frame(width: UIScreen.screenWidth, height: 0)
+                        .padding(.leading, 155)
+                        .padding(.top, 25)
                 }
                 
-                Spacer()
-            }.offset(y: 65)
+            }
+            
+            Spacer(minLength: UIScreen.screenHeight * 0.09)
             
             //healthNow
             switch score{
                 
-            case 5:
+            case 0:
                 healthCases[0]
-            case 6...9:
+            case 1...99:
                 healthCases[1]
             default:
                 Text("")
                 
             }
             
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        }.ignoresSafeArea()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Image("background")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: .infinity, alignment: .center)
+                        .frame(width: UIScreen.screenWidth, height: .infinity, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
-            /*.onAppear(perform: {
+           /* .onAppear(perform: {
                 if (abs(saved - now)) > 86400 {
                     score += Int((abs(saved - now)) / 86400)
                     UserDefaults.standard.set(Date(), forKey: "savedTime")
                 }
-            })*/
+            }) */
         
     }
 }
@@ -120,32 +124,37 @@ struct healthNow: View {
     var description: String
     
     var body: some View {
-        ZStack{
+        
+        VStack{
             
+            ZStack{
+                
             RoundedRectangle(cornerRadius: 15)
                 .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
                 .frame(width: 317, height: 88)
-                .offset(y: 218)
                 .opacity(0.4)
-            
-            picture
-                .resizable()
-                .frame(width: 90, height: 90)
-                .offset(x: -110, y: 218)
-            
-            Text(text)
-                .font(.system(size: 18, weight: .bold))
-                .foregroundColor(Color.white)
-                .frame(width: 200, height: 65, alignment: .topLeading)
-                .offset(x: 48, y: 218)
+                
+                picture
+                    .resizable()
+                    .frame(width: 90, height: 90)
+                    .offset(x: -110)
+                
+                Text(text)
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(Color.white)
+                    .frame(width: 200, height: 65, alignment: .topLeading)
+                    .offset(x: 48)
+                
+            }
             
             RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
                 .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
                 .frame(width: 317, height: 37)
-                .offset(y: 291)
                 .opacity(0.4)
             
-        }.offset(y: 5)
+
+        }.padding(.bottom, UIScreen.screenHeight * 0.113)
+        
     }
 }
 

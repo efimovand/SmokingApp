@@ -11,6 +11,8 @@ import Combine
 
 struct achievementsView: View {
     
+    @State var height: Float = Float(UIScreen.screenHeight)
+    
     var body: some View {
 
         // Header + Achievements
@@ -21,7 +23,7 @@ struct achievementsView: View {
                 
                 Rectangle()
                     .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                    .frame(width: 377, height: 52)
+                    .frame(width: UIScreen.screenWidth, height: 52)
                     .border(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), width: 1)
                 
                 Text("Достижения")
@@ -30,7 +32,7 @@ struct achievementsView: View {
                     .multilineTextAlignment(.center)
                     .frame(width: 252, height: 27, alignment: .center)
                 
-            }.offset(y: 2)
+            }
             
             // Achievements
             ScrollView(.vertical, showsIndicators: false) {
@@ -89,15 +91,17 @@ struct achievementsView: View {
                 
                 
             }
-                .frame(width: 375, height: 638)
-                .offset(y: 2)
+            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * 0.7881)
             
-        }.padding(.top, -65)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //Spacer(minLength: UIScreen.screenHeight * 0.113)
+            
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.top, height >= 812 ? CGFloat(height * 0.08128) : CGFloat(height * 0.062))
+            .padding(.bottom, UIScreen.screenHeight * 0.113)
             .background(Image("background")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 375, height: .infinity, alignment: .center)
+                            .frame(width: .infinity, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
         
     }
@@ -108,7 +112,7 @@ struct achievementsView: View {
 struct achievement: View {
     
     @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = 80 //UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var dailyEconomy = 120 //UserDefaults.standard.integer(forKey: "dailyEconomy")
     @State var attempts = 1 //UserDefaults.standard.integer(forKey: "attempts")
     
     var name: String
@@ -229,7 +233,7 @@ struct achievement: View {
             }
             
             
-        } // +DropShadow and Stroke
+        } // +DropShadow
         
     }
     

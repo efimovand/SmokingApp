@@ -106,7 +106,6 @@ struct startView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 375, height: .infinity, alignment: .center)
                             .edgesIgnoringSafeArea(.all))
-            .offset(y: 10)
     }
     
     
