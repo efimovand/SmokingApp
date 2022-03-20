@@ -89,12 +89,15 @@ struct startVape: View {
             // Next button
             (Button(action: {
                 UserDefaults.standard.set(0, forKey: "score")
+                UserDefaults.standard.set(0, forKey: "hours")
                 
                 monthlyVapeInt = Int(monthlyVape) ?? 0
                 UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")
                 
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
+                UserDefaults.standard.set(true, forKey: "firstDay")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")
+                UserDefaults.standard.set(Date(), forKey: "savedHours")
                 UserDefaults.standard.set(1, forKey: "attempts")
             }) {
                 ZStack{

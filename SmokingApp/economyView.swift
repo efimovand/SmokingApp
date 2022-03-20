@@ -9,8 +9,8 @@ import SwiftUI
 
 struct economyView: View {
     
-    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = 120 //UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
     
     var body: some View {
         

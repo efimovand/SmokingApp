@@ -10,9 +10,13 @@ import Foundation
 
 struct mainView: View {
     
-    @State var score = 0 //UserDefaults.standard.integer(forKey: "score")
-    //@State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    //@State var now = Date()
+    @State var firstDay = UserDefaults.standard.bool(forKey: "firstDay")
+    @State var hours = UserDefaults.standard.integer(forKey: "hours")
+    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+    
+    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+    @State var now = Date()
     
     // List of healthNow
     @State var healthCases = [healthNow(text: "Лёгкие освобождаются от остатков CO2", picture: Image("lungs"), description: "На 5-8 день после отказа от курения легкие самостоятельно вытесняют оставшийся CO2 и наполянются кислородом."),
@@ -25,64 +29,128 @@ struct mainView: View {
             // Main
             VStack(spacing: 0){
                 
-                Spacer()
-                
-                //textTop
-                Text("Вы не курите уже")
-                    .font(.system(size: 48, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .frame(width: 354, height: 115, alignment: .topLeading)
-                    .padding(.leading, 20)
-                
-                //score
-                if (score < 10){
-                    Text("\(score)")
-                        .font(.system(size: 288, weight: .heavy))
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                        .frame(width: 200, height: 200, alignment: .center)
-                        .padding()
-                }
-                else if (score >= 10 && score < 100){
-                    Text("\(score)")
-                        .font(.system(size: 250, weight: .heavy))
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                        .frame(width: 375, height: 328, alignment: .top)
-                        .offset(y: 44)
-                }
-                else if (score >= 100){
-                    Text("\(score)")
-                        .font(.system(size: 170, weight: .heavy))
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.center)
-                        .frame(width: 375, height: 328, alignment: .top)
-                        .offset(y: 80)
-                }
-                
-                //textBottom
-                if ((score != 11) && (score % 10 == 1)){
-                    Text("день")
+                if firstDay {
+                    
+                    Spacer()
+                    
+                    //textTop
+                    Text("Вы не курите уже")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
-                        .frame(width: 127, height: 58)
-                        .offset(x: 78, y: -32)
+                        .frame(width: 354, height: 115, alignment: .topLeading)
+                        .padding(.leading, 20)
+                    
+                    //score
+                    if (hours < 10){
+                        Text("\(hours)")
+                            .font(.system(size: 288, weight: .heavy))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 200, height: 200, alignment: .center)
+                            .padding()
+                    }
+                    else if (hours >= 10 && hours < 100){
+                        Text("\(hours)")
+                            .font(.system(size: 250, weight: .heavy))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 340, height: 200, alignment: .center)
+                            .padding()
+                    }
+                    
+                    //textBottom
+                    if ((hours != 11) && (hours % 10 == 1)){
+                        Text("час")
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: UIScreen.screenWidth, height: 0)
+                            .padding(.leading, 155)
+                            .padding(.top, 25)
+                    }
+                    else if (((hours != 12) && (hours != 13) && (hours != 14)) && ((hours % 10 == 2) || (hours % 10 == 3) || (hours % 10 == 4))){
+                        Text("часа")
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: UIScreen.screenWidth, height: 0)
+                            .padding(.leading, 155)
+                            .padding(.top, 25)
+                    }
+                    else{
+                        Text("часов")
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: UIScreen.screenWidth, height: 0)
+                            .padding(.leading, 155)
+                            .padding(.top, 25)
+                    }
+                    
                 }
-                else if (((score != 12) && (score != 13) && (score != 14)) && ((score % 10 == 2) || (score % 10 == 3) || (score % 10 == 4))){
-                    Text("дня")
+                
+                else {
+                    
+                    Spacer()
+                    
+                    //textTop
+                    Text("Вы не курите уже")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(Color.white)
-                        .frame(width: 127, height: 58)
-                        .offset(x: 78, y: -32)
+                        .frame(width: 354, height: 115, alignment: .topLeading)
+                        .padding(.leading, 20)
+                    
+                    //score
+                    if (score < 10){
+                        Text("\(score)")
+                            .font(.system(size: 288, weight: .heavy))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 200, height: 200, alignment: .center)
+                            .padding()
+                    }
+                    else if (score >= 10 && score < 100){
+                        Text("\(score)")
+                            .font(.system(size: 250, weight: .heavy))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 340, height: 200, alignment: .center)
+                            .padding()
+                    }
+                    else if (score >= 100){
+                        Text("\(score)")
+                            .font(.system(size: 170, weight: .heavy))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 350, height: 200, alignment: .center)
+                            .padding()
+                    }
+                    
+                    //textBottom
+                    if ((score != 11) && (score % 10 == 1)){
+                        Text("день")
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: UIScreen.screenWidth, height: 0)
+                            .padding(.leading, 155)
+                            .padding(.top, 25)
+                    }
+                    else if (((score != 12) && (score != 13) && (score != 14)) && ((score % 10 == 2) || (score % 10 == 3) || (score % 10 == 4))){
+                        Text("дня")
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: UIScreen.screenWidth, height: 0)
+                            .padding(.leading, 155)
+                            .padding(.top, 25)
+                    }
+                    else{
+                        Text("дней")
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: UIScreen.screenWidth, height: 0)
+                            .padding(.leading, 155)
+                            .padding(.top, 25)
+                    }
+                    
                 }
-                else{
-                    Text("дней")
-                        .font(.system(size: 48, weight: .bold))
-                        .foregroundColor(Color.white)
-                        .frame(width: UIScreen.screenWidth, height: 0)
-                        .padding(.leading, 155)
-                        .padding(.top, 25)
-                }
+                
                 
             }
             
@@ -93,7 +161,7 @@ struct mainView: View {
                 
             case 0:
                 healthCases[0]
-            case 1...99:
+            case 1...1000:
                 healthCases[1]
             default:
                 Text("")
@@ -107,12 +175,21 @@ struct mainView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.screenWidth, height: .infinity, alignment: .center)
                         .edgesIgnoringSafeArea(.all))
-           /* .onAppear(perform: {
+           .onAppear(perform: {
+            
+                if hours > 24 {
+            UserDefaults.standard.set(false, forKey: "firstDay")
+                }
+                else if (abs(savedHours - now)) > 3600 {
+                    hours += Int((abs(savedHours - now)) / 3600)
+                    UserDefaults.standard.set(Date(), forKey: "savedHours")
+                }
+            
                 if (abs(saved - now)) > 86400 {
                     score += Int((abs(saved - now)) / 86400)
                     UserDefaults.standard.set(Date(), forKey: "savedTime")
                 }
-            }) */
+            })
         
     }
 }

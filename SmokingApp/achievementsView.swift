@@ -111,9 +111,9 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
-    @State var score = 5 //UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = 120 //UserDefaults.standard.integer(forKey: "dailyEconomy")
-    @State var attempts = 1 //UserDefaults.standard.integer(forKey: "attempts")
+    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @State var attempts = UserDefaults.standard.integer(forKey: "attempts")
     
     var name: String
     var description: String

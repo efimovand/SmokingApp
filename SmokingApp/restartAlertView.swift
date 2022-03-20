@@ -16,6 +16,7 @@ enum clickedButton {
 struct restartAlertView: View {
     
     @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var attempts = UserDefaults.standard.integer(forKey: "attempts")
     
     @Binding var alertShown: Bool
     
@@ -66,8 +67,12 @@ struct restartAlertView: View {
                     
                     Button(action: {
                         alertShown.toggle()
-                        UserDefaults.standard.set(0, forKey: "Score")
+                        attempts += 1
+                        UserDefaults.standard.set(0, forKey: "score")
+                        UserDefaults.standard.set(0, forKey: "hours")
+                        UserDefaults.standard.set(true, forKey: "firstDay")
                         UserDefaults.standard.set(Date(), forKey: "savedTime")
+                        UserDefaults.standard.set(Date(), forKey: "savedHours")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))
