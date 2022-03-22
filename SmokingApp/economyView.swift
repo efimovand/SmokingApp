@@ -9,8 +9,7 @@ import SwiftUI
 
 struct economyView: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @EnvironmentObject var data: UserData
     
     @State var height: Float = Float(UIScreen.screenHeight)
     
@@ -37,8 +36,8 @@ struct economyView: View {
                     
                     HStack(spacing: 0){
                         
-                        if (dailyEconomy * score >= 1000) {
-                         Text(String(dailyEconomy * score))
+                        if (data.dailyEconomy * data.score >= 1000) {
+                         Text(String(data.dailyEconomy * data.score))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
@@ -46,8 +45,8 @@ struct economyView: View {
                                 .offset(y: 20)
                                 .padding(.leading, 30)
                         }
-                        else if (dailyEconomy * score >= 100) {
-                         Text(String(dailyEconomy * score))
+                        else if (data.dailyEconomy * data.score >= 100) {
+                         Text(String(data.dailyEconomy * data.score))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
@@ -55,8 +54,8 @@ struct economyView: View {
                                 .offset(y: 20)
                                 .padding(.leading, 30)
                         }
-                        else if (dailyEconomy * score >= 10) {
-                         Text(String(dailyEconomy * score))
+                        else if (data.dailyEconomy * data.score >= 10) {
+                         Text(String(data.dailyEconomy * data.score))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
@@ -65,7 +64,7 @@ struct economyView: View {
                                 .padding(.leading, 30)
                         }
                         else {
-                         Text(String(dailyEconomy * score))
+                         Text(String(data.dailyEconomy * data.score))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 72, weight: .heavy))
                                 .multilineTextAlignment(.center)
@@ -93,7 +92,7 @@ struct economyView: View {
                             .font(.system(size: 25, weight: .bold))
                             .frame(width: 220, height: 28, alignment: .leading)
                         
-                        Text(String(dailyEconomy))
+                        Text(String(data.dailyEconomy))
                             .foregroundColor(Color.white)
                             .font(.system(size: 28, weight: .heavy))
                             .frame(width: 70, height: 28, alignment: .trailing)
@@ -109,7 +108,7 @@ struct economyView: View {
                             .frame(width: 240, height: 28, alignment: .leading)
                             .padding(.leading, 30)
                         
-                        Text(String(dailyEconomy * 30))
+                        Text(String(data.dailyEconomy * 30))
                             .foregroundColor(Color.white)
                             .font(.system(size: 28, weight: .heavy))
                             .frame(width: 100, height: 28, alignment: .center)
@@ -136,5 +135,6 @@ struct economyView: View {
 struct economyView_Previews: PreviewProvider {
     static var previews: some View {
         economyView()
+            .environmentObject(UserData())
     }
 }

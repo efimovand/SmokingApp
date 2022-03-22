@@ -10,6 +10,13 @@ import SwiftUI
 import SwiftUI
 import Foundation
 
+class UserData: ObservableObject {
+    @Published var score = UserDefaults.standard.integer(forKey: "score")
+    @Published var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
+    @Published var attempts = UserDefaults.standard.integer(forKey: "attempts")
+    @Published var hours = UserDefaults.standard.integer(forKey: "hours")
+}
+
 struct firstLaunchLogic: View {
     
     @AppStorage("isLaunchedBefore") var isLaunchedBefore: Bool = false

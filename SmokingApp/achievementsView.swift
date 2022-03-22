@@ -111,9 +111,7 @@ struct achievementsView: View {
 // Every achievement's structure (need add)
 struct achievement: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
-    @State var attempts = UserDefaults.standard.integer(forKey: "attempts")
+    @EnvironmentObject var data: UserData
     
     var name: String
     var description: String
@@ -174,7 +172,7 @@ struct achievement: View {
                         .frame(width: 246, height: 10, alignment: .leading)
                         .offset(x: 38, y: 25)
                     
-                    if (score >= value) {
+                    if (data.score >= value) {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
                             .frame(width: 246, height: 10)
@@ -184,7 +182,7 @@ struct achievement: View {
                     else{
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(score), height: 10)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(data.score), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.6)
                     }
@@ -200,7 +198,7 @@ struct achievement: View {
                         .frame(width: 246, height: 10, alignment: .leading)
                         .offset(x: 38, y: 25)
                     
-                    if (score * dailyEconomy >= value){
+                    if (data.score * data.dailyEconomy >= value){
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
                             .frame(width: 246, height: 10)
@@ -210,7 +208,7 @@ struct achievement: View {
                     else {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(score * dailyEconomy), height: 10)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(data.score * data.dailyEconomy), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.6)
                     }
@@ -221,7 +219,7 @@ struct achievement: View {
             else if type == 2 {
                 ZStack(alignment: .leading){
                     
-                    if (attempts >= value){
+                    if (data.attempts >= value){
                         Image(systemName: "checkmark.circle")
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -243,5 +241,6 @@ struct achievement: View {
 struct achievementsView_Previews: PreviewProvider {
     static var previews: some View {
         achievementsView()
+            .environmentObject(UserData())
     }
 }

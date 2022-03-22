@@ -15,8 +15,7 @@ enum clickedButton {
 
 struct restartAlertView: View {
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
-    @State var attempts = UserDefaults.standard.integer(forKey: "attempts")
+    @EnvironmentObject var data: UserData
     
     @Binding var alertShown: Bool
     
@@ -67,9 +66,9 @@ struct restartAlertView: View {
                     
                     Button(action: {
                         alertShown.toggle()
-                        attempts += 1
-                        UserDefaults.standard.set(0, forKey: "score")
-                        UserDefaults.standard.set(0, forKey: "hours")
+                        data.attempts += 1
+                        data.score = 0
+                        data.hours = 0
                         UserDefaults.standard.set(true, forKey: "firstDay")
                         UserDefaults.standard.set(Date(), forKey: "savedTime")
                         UserDefaults.standard.set(Date(), forKey: "savedHours")
@@ -96,5 +95,6 @@ struct restartAlertView_Previews: PreviewProvider {
     static var previews: some View {
         restartAlertView(alertShown: .constant(false))
             .preferredColorScheme(.dark)
+            .environmentObject(UserData())
     }
 }

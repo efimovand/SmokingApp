@@ -10,11 +10,10 @@ import Foundation
 
 struct mainView: View {
     
-    @State var firstDay = UserDefaults.standard.bool(forKey: "firstDay")
-    @State var hours = UserDefaults.standard.integer(forKey: "hours")
-    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+    @EnvironmentObject var data: UserData // for score
     
-    @State var score = UserDefaults.standard.integer(forKey: "score")
+    @State var firstDay = UserDefaults.standard.bool(forKey: "firstDay")
+    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
     @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
     @State var now = Date()
     
@@ -43,16 +42,16 @@ struct mainView: View {
                         .padding(.leading, 20)
                     
                     //score
-                    if (hours < 10){
-                        Text("\(hours)")
+                    if (data.hours < 10){
+                        Text("\(data.hours)")
                             .font(.system(size: 288, weight: .heavy))
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
                             .frame(width: 200, height: 200, alignment: .center)
                             .padding()
                     }
-                    else if (hours >= 10 && hours < 100){
-                        Text("\(hours)")
+                    else if (data.hours >= 10 && data.hours < 100){
+                        Text("\(data.hours)")
                             .font(.system(size: 250, weight: .heavy))
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
@@ -61,7 +60,7 @@ struct mainView: View {
                     }
                     
                     //textBottom
-                    if ((hours != 11) && (hours % 10 == 1)){
+                    if ((data.hours != 11) && (data.hours % 10 == 1)){
                         Text("час")
                             .font(.system(size: 48, weight: .bold))
                             .foregroundColor(Color.white)
@@ -69,7 +68,7 @@ struct mainView: View {
                             .padding(.leading, 155)
                             .padding(.top, 25)
                     }
-                    else if (((hours != 12) && (hours != 13) && (hours != 14)) && ((hours % 10 == 2) || (hours % 10 == 3) || (hours % 10 == 4))){
+                    else if (((data.hours != 12) && (data.hours != 13) && (data.hours != 14)) && ((data.hours % 10 == 2) || (data.hours % 10 == 3) || (data.hours % 10 == 4))){
                         Text("часа")
                             .font(.system(size: 48, weight: .bold))
                             .foregroundColor(Color.white)
@@ -100,24 +99,24 @@ struct mainView: View {
                         .padding(.leading, 20)
                     
                     //score
-                    if (score < 10){
-                        Text("\(score)")
+                    if (data.score < 10){
+                        Text("\(data.score)")
                             .font(.system(size: 288, weight: .heavy))
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
                             .frame(width: 200, height: 200, alignment: .center)
                             .padding()
                     }
-                    else if (score >= 10 && score < 100){
-                        Text("\(score)")
+                    else if (data.score >= 10 && data.score < 100){
+                        Text("\(data.score)")
                             .font(.system(size: 250, weight: .heavy))
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
                             .frame(width: 340, height: 200, alignment: .center)
                             .padding()
                     }
-                    else if (score >= 100){
-                        Text("\(score)")
+                    else if (data.score >= 100){
+                        Text("\(data.score)")
                             .font(.system(size: 170, weight: .heavy))
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.center)
@@ -126,7 +125,7 @@ struct mainView: View {
                     }
                     
                     //textBottom
-                    if ((score != 11) && (score % 10 == 1)){
+                    if ((data.score != 11) && (data.score % 10 == 1)){
                         Text("день")
                             .font(.system(size: 48, weight: .bold))
                             .foregroundColor(Color.white)
@@ -134,7 +133,7 @@ struct mainView: View {
                             .padding(.leading, 155)
                             .padding(.top, 25)
                     }
-                    else if (((score != 12) && (score != 13) && (score != 14)) && ((score % 10 == 2) || (score % 10 == 3) || (score % 10 == 4))){
+                    else if (((data.score != 12) && (data.score != 13) && (data.score != 14)) && ((data.score % 10 == 2) || (data.score % 10 == 3) || (data.score % 10 == 4))){
                         Text("дня")
                             .font(.system(size: 48, weight: .bold))
                             .foregroundColor(Color.white)
@@ -159,7 +158,7 @@ struct mainView: View {
             Spacer(minLength: UIScreen.screenHeight * 0.09)
             
             //healthNow
-            switch score{
+            switch data.score{
                 
             case 0:
                 healthCases[0]
@@ -179,18 +178,19 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all))
         .statusBar(hidden: height >= 812 ? false : true)
            .onAppear(perform: {
-            
-                if hours > 24 {
+               
+                if data.hours > 24 {
                     UserDefaults.standard.set(false, forKey: "firstDay")
+                    firstDay = false
                 }
                 else if (abs(savedHours - now)) > 3600 {
-                    hours += Int((abs(savedHours - now)) / 3600)
-                    UserDefaults.standard.set(Date(), forKey: "savedHours")
+                    data.hours += Int((abs(savedHours - now)) / 3600)
+                    savedHours = Date()
                 }
             
                 if (abs(saved - now)) > 86400 {
-                    score += Int((abs(saved - now)) / 86400)
-                    UserDefaults.standard.set(Date(), forKey: "savedTime")
+                    data.score += Int((abs(saved - now)) / 86400)
+                    saved = Date()
                 }
             })
         
@@ -290,5 +290,6 @@ extension Date {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         mainView()
+            .environmentObject(UserData())
     }
 }
