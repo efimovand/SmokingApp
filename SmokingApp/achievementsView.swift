@@ -21,7 +21,7 @@ struct achievementsView: View {
             // Header
             ZStack{
                 
-                if height >= 812{
+                if height >= 812 {
                     
                 Text("Достижения")
                     .foregroundColor(Color.white)
@@ -30,9 +30,11 @@ struct achievementsView: View {
                     .frame(width: 252, height: 52, alignment: .center)
                     .background(Rectangle()
                         .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                        .frame(width: UIScreen.screenWidth, height: 81, alignment: .top)
+                        .ignoresSafeArea()
+                        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * 0.146551724, alignment: .top)
                         .border(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), width: 1)
-                        .ignoresSafeArea())
+                        .ignoresSafeArea()
+                        .padding(.bottom, UIScreen.screenHeight * 0.0812807882))
                     
                 }
                 else {
