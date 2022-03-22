@@ -31,27 +31,27 @@ struct TabItemView: View {
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 74, height: 74)
-                    .offset(y: 5)
+                    .offset(y: UIScreen.screenHeight >= 812 ? 1 : 5)
             }
             else if (data.image == "economy" && data.selectedImage == "economy_a"){
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 81, height: 81)
                     .padding(.top, -7)
-                    .offset(y: 6)
+                    .offset(y: UIScreen.screenHeight >= 812 ? 2 : 6)
             }
             else if (data.image == "achievements" && data.selectedImage == "achievements_a"){
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 73, height: 73)
                     .padding(.top, 1)
-                    .offset(y: 5)
+                    .offset(y: UIScreen.screenHeight >= 812 ? 1 : 5)
             }
             else if (data.image == "restart" && data.selectedImage == "restart_a"){
                 Image(isSelected ? data.selectedImage : data.image)
                     .resizable()
                     .frame(width: 67, height: 67)
-                    .offset(y: 5)
+                    .offset(y: UIScreen.screenHeight >= 812 ? 1 : 5)
             }
         }
     }
