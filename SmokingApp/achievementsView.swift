@@ -64,7 +64,7 @@ struct achievementsView: View {
                         
                         VStack(spacing: 15) {
                             
-                            achievement(name: "Начало положено", description: "Провести 1 день без курения", picture: Image("24hours"), type: 0, value: 1)
+                            achievement(name: "Начало положено", description: "Провести 1 день без курения", picture: Image("24hours"), type: -1, value: 24)
                                 .padding(.top, 19)
                             
                             achievement(name: "Первые дивиденды", description: "Сэкономить 500Р", picture: Image("coin"), type: 1, value: 500)
@@ -248,6 +248,32 @@ struct achievement: View {
                     }
                     
                 }
+            }
+            
+            else if type == -1 {
+                ZStack(alignment: .leading){
+                    
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                        .frame(width: 246, height: 10, alignment: .leading)
+                        .offset(x: 38, y: 25)
+                    
+                    if (data.hours >= value) {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.blue)
+                            .frame(width: 246, height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.6)
+                    }
+                    else{
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.blue)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(data.hours), height: 10)
+                            .offset(x: 38, y: 25)
+                            .opacity(0.6)
+                    }
+                    
+                }.frame(width: 246, height: 10)
             }
             
             
