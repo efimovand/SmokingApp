@@ -84,7 +84,7 @@ struct restartView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60, alignment: .center)
                 }
-            }   .padding(.bottom, height >= 812 ? (UIScreen.screenHeight * 0.8) : (UIScreen.screenHeight * 0.82))
+            }   .padding(.bottom, height >= 812 ? (UIScreen.screenHeight * 0.79) : (UIScreen.screenHeight * 0.82))
                 .padding(.leading, UIScreen.screenWidth * 0.8)
             
             // showingAlert
