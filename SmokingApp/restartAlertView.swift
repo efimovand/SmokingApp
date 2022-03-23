@@ -69,6 +69,7 @@ struct restartAlertView: View {
                         data.attempts += 1
                         data.score = 0
                         data.hours = 0
+                        data.freeMoney = 0
                         UserDefaults.standard.set(true, forKey: "firstDay")
                         UserDefaults.standard.set(Date(), forKey: "savedTime")
                         UserDefaults.standard.set(Date(), forKey: "savedHours")
