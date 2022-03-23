@@ -19,6 +19,11 @@ UserDefaults
  
  isLaunchedBefore = UserDefaults.standart.bool(forKey: "isLaunchedBefore")
  savedTime = UserDefaults.standart.object(forKey: "savedTime")
+ 
+ !!!
+ isGoal = UserDefaults.standart.bool(forKey: "isGoal")
+ goalValue = UserDefaults.standard.integer(forKey: "goalValue")
+ goalName = UserDefaults.standard.string(forKey: "goalName")
 */
 
 @main

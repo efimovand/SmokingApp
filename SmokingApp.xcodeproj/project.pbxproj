@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5516411B27EB549800A2A24A /* newGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5516411A27EB549800A2A24A /* newGoalView.swift */; };
 		55449FC427DFC8BC00146E17 /* settingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55449FC327DFC8BC00146E17 /* settingsView.swift */; };
 		55449FC627DFE0AC00146E17 /* startView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55449FC527DFE0AC00146E17 /* startView.swift */; };
 		554536F727E1555C0016F1B2 /* firstLaunchLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554536F627E1555C0016F1B2 /* firstLaunchLogic.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5516411A27EB549800A2A24A /* newGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newGoalView.swift; sourceTree = "<group>"; };
 		55449FC327DFC8BC00146E17 /* settingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsView.swift; sourceTree = "<group>"; };
 		55449FC527DFE0AC00146E17 /* startView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startView.swift; sourceTree = "<group>"; };
 		554536F627E1555C0016F1B2 /* firstLaunchLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstLaunchLogic.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				55D97BDF27E0F4B000A7DFBF /* startVape.swift */,
 				5565A83327C8F6B0009C6ACD /* mainView.swift */,
 				55DEE8F027DACC4B002DF6D3 /* economyView.swift */,
+				5516411A27EB549800A2A24A /* newGoalView.swift */,
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
 				55DEE8F227DAD8B2002DF6D3 /* restartView.swift */,
 				55DC258827DE7FA10087BCA1 /* restartAlertView.swift */,
@@ -302,6 +305,7 @@
 				55D97BE027E0F4B000A7DFBF /* startVape.swift in Sources */,
 				5565A83427C8F6B0009C6ACD /* mainView.swift in Sources */,
 				5565A83227C8F6B0009C6ACD /* SmokingAppApp.swift in Sources */,
+				5516411B27EB549800A2A24A /* newGoalView.swift in Sources */,
 				5555A9CE27DFF971006E1684 /* startCigarettes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

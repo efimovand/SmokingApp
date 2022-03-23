@@ -9,125 +9,161 @@ import SwiftUI
 
 struct economyView: View {
     
-    @EnvironmentObject var data: UserData
+    //@EnvironmentObject var data: UserData
+    @State var score = 5
+    @State var dailyEconomy = 180
+    
+    @State var goalShown = false
     
     @State var height: Float = Float(UIScreen.screenHeight)
     
     var body: some View {
         
-        // Economy
-        VStack(spacing: 100){
+        ZStack{
             
-            Spacer(minLength: UIScreen.screenHeight * 0.095)
+            // Economy
+            ZStack{
                 
-                // totalEconomy
-                ZStack{
+                VStack(spacing: 130){
                     
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                        .frame(width: 326, height: 227)
-                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))
+                    Spacer(minLength: UIScreen.screenHeight * 0.095)
                     
-                    Text("Вы сохранили")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 40, weight: .bold))
-                        .frame(width: 276, height: 55, alignment: .topLeading)
-                        .offset(y: -50)
-                    
-                    HStack(spacing: 0){
+                    // totalEconomy
+                    ZStack{
                         
-                        if (data.dailyEconomy * data.score >= 1000) {
-                         Text(String(data.dailyEconomy * data.score))
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 72, weight: .heavy))
-                                .multilineTextAlignment(.center)
-                                .frame(width: 200, height: 90, alignment: .top)
-                                .offset(y: 20)
-                                .padding(.leading, 30)
-                        }
-                        else if (data.dailyEconomy * data.score >= 100) {
-                         Text(String(data.dailyEconomy * data.score))
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 72, weight: .heavy))
-                                .multilineTextAlignment(.center)
-                                .frame(width: 150, height: 90, alignment: .top)
-                                .offset(y: 20)
-                                .padding(.leading, 30)
-                        }
-                        else if (data.dailyEconomy * data.score >= 10) {
-                         Text(String(data.dailyEconomy * data.score))
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 72, weight: .heavy))
-                                .multilineTextAlignment(.center)
-                                .frame(width: 100, height: 90, alignment: .top)
-                                .offset(y: 20)
-                                .padding(.leading, 30)
-                        }
-                        else {
-                         Text(String(data.dailyEconomy * data.score))
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 72, weight: .heavy))
-                                .multilineTextAlignment(.center)
-                                .frame(width: 50, height: 90, alignment: .top)
-                                .offset(y: 20)
-                                .padding(.leading, 30)
-                        }
-                    
-                    Text("₽")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 48, weight: .bold))
-                        .offset(y: 25)
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
+                            .frame(width: 326, height: 227)
+                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))
                         
-                    }
-                    
-                }.offset(y: -56)
-                
-                // daily+monthly
-                VStack(spacing: 3){
-                    
-                    HStack{
-                        
-                        Text("Экономия в день:")
+                        Text("Вы сохранили")
                             .foregroundColor(Color.white)
-                            .font(.system(size: 25, weight: .bold))
-                            .frame(width: 220, height: 28, alignment: .leading)
+                            .font(.system(size: 40, weight: .bold))
+                            .frame(width: 276, height: 55, alignment: .topLeading)
+                            .offset(y: -50)
                         
-                        Text(String(data.dailyEconomy))
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 28, weight: .heavy))
-                            .frame(width: 70, height: 28, alignment: .trailing)
+                        HStack(spacing: 0){
+                            
+                            if (dailyEconomy * score >= 1000) {
+                                Text(String(dailyEconomy * score))
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 72, weight: .heavy))
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 200, height: 90, alignment: .top)
+                                    .offset(y: 20)
+                                    .padding(.leading, 30)
+                            }
+                            else if (dailyEconomy * score >= 100) {
+                                Text(String(dailyEconomy * score))
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 72, weight: .heavy))
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 150, height: 90, alignment: .top)
+                                    .offset(y: 20)
+                                    .padding(.leading, 30)
+                            }
+                            else if (dailyEconomy * score >= 10) {
+                                Text(String(dailyEconomy * score))
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 72, weight: .heavy))
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 100, height: 90, alignment: .top)
+                                    .offset(y: 20)
+                                    .padding(.leading, 30)
+                            }
+                            else {
+                                Text(String(dailyEconomy * score))
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 72, weight: .heavy))
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 50, height: 90, alignment: .top)
+                                    .offset(y: 20)
+                                    .padding(.leading, 30)
+                            }
+                            
+                            Text("₽")
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 48, weight: .bold))
+                                .offset(y: 25)
+                            
+                        }
                         
-                    }
+                    }.offset(y: -56)
                     
+                    /*
+                    // daily+monthly
+                    VStack(spacing: 3){
+                        
+                        HStack{
+                            
+                            Text("Экономия в день:")
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 25, weight: .bold))
+                                .frame(width: 220, height: 28, alignment: .leading)
+                            
+                            Text(String(dailyEconomy))
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 28, weight: .heavy))
+                                .frame(width: 70, height: 28, alignment: .trailing)
+                            
+                        }
+                        
+                        
+                        HStack{
+                            
+                            Text("Экономия в месяц:")
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 25, weight: .bold))
+                                .frame(width: 240, height: 28, alignment: .leading)
+                                .padding(.leading, 30)
+                            
+                            Text(String(dailyEconomy * 30))
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 28, weight: .heavy))
+                                .frame(width: 100, height: 28, alignment: .leading)
+                            
+                        }
+                        
+                    } */
                     
-                    HStack{
+                    // Goal Button
+                    Button(action: {
+                        goalShown.toggle()
+                    }) {
                         
-                        Text("Экономия в месяц:")
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 25, weight: .bold))
-                            .frame(width: 240, height: 28, alignment: .leading)
-                            .padding(.leading, 30)
+                        Circle()
+                            .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
+                            .frame(width: 55, height: 55)
+                            .overlay(Circle().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 0.50))
+                            .overlay(Image("target")
+                                .resizable()
+                                .frame(width: 55, height: 55))
                         
-                        Text(String(data.dailyEconomy * 30))
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 28, weight: .heavy))
-                            .frame(width: 100, height: 28, alignment: .center)
-                        
-                    }
+                    }.padding(.trailing, 285)
+                        .offset(y: 30)
                     
-                }
-            
-            Spacer()
+                    Spacer()
+                    
+                }.padding(.top, 60)
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Image("background_economy")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: .infinity, height: .infinity, alignment: .center)
-                            .edgesIgnoringSafeArea(.all))
-            .statusBar(hidden: height >= 812 ? false : true)
-            .padding(.top, 40)
+                .background(Image("background_economy")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: .infinity, height: .infinity, alignment: .center)
+                    .edgesIgnoringSafeArea(.all))
+                .statusBar(hidden: height >= 812 ? false : true)
+                .blur(radius: goalShown ? 3 : 0)
             
+            if goalShown {
+                newGoalView(goalShown: $goalShown)
+                    .offset(y: 100)
+            }
+            
+        }
+        
+        
+        
     }
 }
 
