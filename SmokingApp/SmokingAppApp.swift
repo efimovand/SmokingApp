@@ -34,6 +34,10 @@ struct SmokingAppApp: App {
     @StateObject private var attempts = UserData()
     @StateObject private var hours = UserData()
     
+    @StateObject private var isGoal = UserData()
+    @StateObject private var goalValue = UserData()
+    @StateObject private var goalName = UserData()
+    
     var body: some Scene {
         WindowGroup {
             firstLaunchLogic()
@@ -41,6 +45,9 @@ struct SmokingAppApp: App {
                 .environmentObject(dailyEconomy)
                 .environmentObject(attempts)
                 .environmentObject(hours)
+                .environmentObject(isGoal)
+                .environmentObject(goalValue)
+                .environmentObject(goalName)
             //startView()
             //.environmentObject(dailyUse)
             //.environmentObject(pricePack)

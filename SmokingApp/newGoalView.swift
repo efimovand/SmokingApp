@@ -9,11 +9,12 @@ import SwiftUI
 
 struct newGoalView: View {
     
+    @EnvironmentObject var data: UserData
+    
     @Binding var goalShown: Bool
     
     @State var name = ""
     @State var value = ""
-    @State var valueInt: Int = 0
     
     var body: some View {
         
@@ -25,11 +26,11 @@ struct newGoalView: View {
                 
             // background
             RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
-                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.70))
+                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.65))
                 .frame(width: 295, height: 30)
             
             RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
-                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.60))
+                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.50))
                 .frame(width: 295, height: 110)
                 
             }.overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1).frame(width: 295, height: 140))
@@ -79,7 +80,7 @@ struct newGoalView: View {
                             .foregroundColor(Color.white)
                             .frame(width: 170, alignment: .center)
                         
-                    TextField("", text: $value)
+                        TextField("", text: $value)
                         .keyboardType(.numberPad)
                         .font(.system(size: 18, weight: .heavy))
                         .foregroundColor(Color.white)
@@ -115,14 +116,13 @@ struct newGoalView: View {
         }
         
         // Accept Button
-        if (name != "") && (value != ""){
+            if (name != "") && (value != ""){
             
             Button(action: {
-                UserDefaults.standard.set(name, forKey: "goalName")
-                valueInt = Int(value) ?? 0
-                UserDefaults.standard.set(valueInt, forKey: "goalValue")
+                data.goalName = name
+                data.goalValue = Int(value) ?? 0
+                data.isGoal = true
                 goalShown.toggle()
-                UserDefaults.standard.set(true, forKey: "isGoal")
             }) {
                 
                 ZStack{
@@ -150,6 +150,7 @@ struct newGoalView: View {
 struct newGoalView_Previews: PreviewProvider {
     static var previews: some View {
         newGoalView(goalShown: .constant(false))
+            .environmentObject(UserData())
             .preferredColorScheme(.dark)
     }
 }

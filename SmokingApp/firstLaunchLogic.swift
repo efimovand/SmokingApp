@@ -15,6 +15,10 @@ class UserData: ObservableObject {
     @Published var dailyEconomy = UserDefaults.standard.integer(forKey: "dailyEconomy")
     @Published var attempts = UserDefaults.standard.integer(forKey: "attempts")
     @Published var hours = UserDefaults.standard.integer(forKey: "hours")
+    
+    @Published var isGoal = UserDefaults.standard.bool(forKey: "isGoal")
+    @Published var goalValue = UserDefaults.standard.integer(forKey: "goalValue")
+    @Published var goalName = UserDefaults.standard.string(forKey: "goalName")
 }
 
 struct firstLaunchLogic: View {

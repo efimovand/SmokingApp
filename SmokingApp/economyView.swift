@@ -9,9 +9,10 @@ import SwiftUI
 
 struct economyView: View {
     
-    //@EnvironmentObject var data: UserData
-    @State var score = 5
-    @State var dailyEconomy = 180
+    @EnvironmentObject var data: UserData
+    //@State var score = 5
+    //@State var dailyEconomy = 180
+    //@State var isGoal = true
     
     @State var goalShown = false
     
@@ -19,9 +20,9 @@ struct economyView: View {
     
     var body: some View {
         
+        // Economy
         ZStack{
             
-            // Economy
             ZStack{
                 
                 VStack(spacing: 130){
@@ -44,8 +45,8 @@ struct economyView: View {
                         
                         HStack(spacing: 0){
                             
-                            if (dailyEconomy * score >= 1000) {
-                                Text(String(dailyEconomy * score))
+                            if (data.dailyEconomy * data.score >= 1000) {
+                                Text(String(data.dailyEconomy * data.score))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -53,8 +54,8 @@ struct economyView: View {
                                     .offset(y: 20)
                                     .padding(.leading, 30)
                             }
-                            else if (dailyEconomy * score >= 100) {
-                                Text(String(dailyEconomy * score))
+                            else if (data.dailyEconomy * data.score >= 100) {
+                                Text(String(data.dailyEconomy * data.score))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -62,8 +63,8 @@ struct economyView: View {
                                     .offset(y: 20)
                                     .padding(.leading, 30)
                             }
-                            else if (dailyEconomy * score >= 10) {
-                                Text(String(dailyEconomy * score))
+                            else if (data.dailyEconomy * data.score >= 10) {
+                                Text(String(data.dailyEconomy * data.score))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -72,7 +73,7 @@ struct economyView: View {
                                     .padding(.leading, 30)
                             }
                             else {
-                                Text(String(dailyEconomy * score))
+                                Text(String(data.dailyEconomy * data.score))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -101,7 +102,7 @@ struct economyView: View {
                                 .font(.system(size: 25, weight: .bold))
                                 .frame(width: 220, height: 28, alignment: .leading)
                             
-                            Text(String(dailyEconomy))
+                            Text(String(data.dailyEconomy))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 28, weight: .heavy))
                                 .frame(width: 70, height: 28, alignment: .trailing)
@@ -117,7 +118,7 @@ struct economyView: View {
                                 .frame(width: 240, height: 28, alignment: .leading)
                                 .padding(.leading, 30)
                             
-                            Text(String(dailyEconomy * 30))
+                            Text(String(data.dailyEconomy * 30))
                                 .foregroundColor(Color.white)
                                 .font(.system(size: 28, weight: .heavy))
                                 .frame(width: 100, height: 28, alignment: .leading)
@@ -126,21 +127,99 @@ struct economyView: View {
                         
                     } */
                     
-                    // Goal Button
-                    Button(action: {
-                        goalShown.toggle()
-                    }) {
+                    if data.isGoal {
                         
-                        Circle()
-                            .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                            .frame(width: 55, height: 55)
-                            .overlay(Circle().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 0.50))
-                            .overlay(Image("target")
-                                .resizable()
-                                .frame(width: 55, height: 55))
+                        // Goal Button
+                        Button(action: {
+                            goalShown.toggle()
+                        }) {
+                            
+                            Circle()
+                                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
+                                .frame(width: 55, height: 55)
+                                .overlay(Circle().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 0.50))
+                                .overlay(Image("target")
+                                    .resizable()
+                                    .frame(width: 55, height: 55))
+                            
+                        }.padding(.trailing, 285)
+                            .offset(y: 30)
                         
-                    }.padding(.trailing, 285)
-                        .offset(y: 30)
+                    }
+                    
+                    else {
+                        
+                        // nowGoal
+                        ZStack{
+                            
+                            // background
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                                .frame(width: 317, height: 180)
+                                .opacity(0.4)
+                            
+                            VStack{
+                                
+                            HStack(spacing: 15){
+                                
+                                // picture
+                                RoundedRectangle(cornerRadius: 15)
+                                    .foregroundColor((Color.white).opacity(0.4))
+                                    .frame(width: 58, height: 58)
+                                    .overlay(Text("Фото").foregroundColor(Color.gray).opacity(0.4))
+                                
+                                VStack(spacing: 16){
+                                    
+                                    // name
+                                    Text(String(data.goalName ?? ""))
+                                        .font(.system(size: 24, weight: .bold))
+                                        .foregroundColor(Color.white)
+                                    
+                                    // progressBar
+                                    ZStack(alignment: .leading){
+                                        
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.white)
+                                            .frame(width: 210, height: 10, alignment: .leading)
+                                        
+                                        if (data.score * data.dailyEconomy >= data.goalValue){
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.blue)
+                                                .frame(width: 210, height: 10)
+                                                .opacity(0.6)
+                                        }
+                                        else {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.blue)
+                                                .frame(width: 210 / CGFloat(data.goalValue) * CGFloat(data.score * data.dailyEconomy), height: 10)
+                                                .opacity(0.6)
+                                        }
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
+                                
+                                HStack{
+                                    
+                                Text("Осталось копить:")
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundColor(Color.white)
+                                    
+                                    Text("5 дней")
+                                        .font(.system(size: 14, weight: .bold))
+                                        .foregroundColor(Color.white)
+                                    
+                                }
+                                
+                            }
+                            
+                        }.offset(y: 53)
+                        
+                        
+                        
+                    }
                     
                     Spacer()
                     
@@ -157,7 +236,7 @@ struct economyView: View {
             
             if goalShown {
                 newGoalView(goalShown: $goalShown)
-                    .offset(y: 150)
+                    .offset(y: UIScreen.screenHeight * 0.185)
             }
             
         }
