@@ -122,6 +122,9 @@ struct newGoalView: View {
                 data.goalName = name
                 data.goalValue = Int(value) ?? 0
                 data.isGoal = true
+                UserDefaults.standard.set(name, forKey: "goalName")
+                UserDefaults.standard.set(Int(value) ?? 0, forKey: "goalValue")
+                UserDefaults.standard.set(true, forKey: "isGoal")
                 goalShown.toggle()
             }) {
                 
