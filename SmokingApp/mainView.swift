@@ -12,7 +12,6 @@ struct mainView: View {
     
     @EnvironmentObject var data: UserData // for score
     
-    @State var firstDay = UserDefaults.standard.bool(forKey: "firstDay")
     @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
     @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
     @State var now = Date()
@@ -30,7 +29,7 @@ struct mainView: View {
             // Main
             VStack(spacing: 0){
                 
-                if firstDay {
+                if data.firstDay {
                     
                     Spacer()
                     
@@ -181,7 +180,7 @@ struct mainView: View {
                
                 if data.hours > 24 {
                     UserDefaults.standard.set(false, forKey: "firstDay")
-                    firstDay = false
+                    data.firstDay = false
                 }
                 else if (abs(savedHours - now)) > 3600 {
                     data.hours += Int((abs(savedHours - now)) / 3600)

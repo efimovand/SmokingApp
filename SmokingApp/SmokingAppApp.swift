@@ -38,6 +38,7 @@ struct SmokingAppApp: App {
     @StateObject private var goalValue = UserData()
     @StateObject private var goalName = UserData()
     @StateObject private var freeMoney = UserData()
+    @StateObject private var firstDay = UserData()
     
     var body: some Scene {
         WindowGroup {
@@ -46,6 +47,7 @@ struct SmokingAppApp: App {
                 .environmentObject(dailyEconomy)
                 .environmentObject(attempts)
                 .environmentObject(hours)
+                .environmentObject(firstDay)
                 .environmentObject(isGoal)
                 .environmentObject(goalValue)
                 .environmentObject(goalName)

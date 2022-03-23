@@ -133,6 +133,7 @@ struct startSticks: View {
                 UserDefaults.standard.set(Date(), forKey: "savedTime")
                 UserDefaults.standard.set(Date(), forKey: "savedHours")
                 UserDefaults.standard.set(1, forKey: "attempts")
+                UserDefaults.standard.set(false, forKey: "isGoal")
                 UserDefaults.standard.set(0, forKey: "freeMoney")
             }) {
                 ZStack{
