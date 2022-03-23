@@ -17,6 +17,8 @@ struct newGoalView: View {
     
     var body: some View {
         
+        VStack(spacing: 0){
+            
         ZStack{
             
             VStack(spacing: 0){
@@ -58,10 +60,10 @@ struct newGoalView: View {
                             .frame(width: 170, alignment: .center)
                         
                         TextField("", text: $name)
-                            .font(.system(size: 18, weight: .bold))
+                            .font(.system(size: 18, weight: .heavy))
                             .foregroundColor(Color.white)
                             .labelsHidden()
-                            .background((Color.white).opacity(0.4))
+                            .background((Color.white).opacity(0.3))
                             .frame(width: 180, height: 25)
                             .clipped()
                             .cornerRadius(50)
@@ -79,10 +81,10 @@ struct newGoalView: View {
                         
                     TextField("", text: $value)
                         .keyboardType(.numberPad)
-                        .font(.system(size: 18, weight: .bold))
+                        .font(.system(size: 18, weight: .heavy))
                         .foregroundColor(Color.white)
                         .labelsHidden()
-                        .background((Color.white).opacity(0.4))
+                        .background((Color.white).opacity(0.3))
                         .frame(width: 140, height: 25)
                         .clipped()
                         .cornerRadius(30)
@@ -110,34 +112,37 @@ struct newGoalView: View {
                 
             }.offset(x: 128, y: -55)
             
-            // Accept Button
-            if (name != "") && (value != ""){
+        }
+        
+        // Accept Button
+        if (name != "") && (value != ""){
+            
+            Button(action: {
+                UserDefaults.standard.set(name, forKey: "goalName")
+                valueInt = Int(value) ?? 0
+                UserDefaults.standard.set(valueInt, forKey: "goalValue")
+                goalShown.toggle()
+                UserDefaults.standard.set(true, forKey: "isGoal")
+            }) {
                 
-                Button(action: {
-                    UserDefaults.standard.set(name, forKey: "goalName")
-                    valueInt = Int(value) ?? 0
-                    UserDefaults.standard.set(valueInt, forKey: "goalValue")
-                    goalShown.toggle()
-                    UserDefaults.standard.set(true, forKey: "isGoal")
-                }) {
+                ZStack{
                     
-                    ZStack{
-                        
-                        RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
-                            .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.70))
-                            .frame(width: 150, height: 25)
-                        
-                        Text("Подтвердить")
-                            .font(.system(size: 13, weight: .semibold))
-                            .foregroundColor((Color.white).opacity(0.9))
-                        
-                    }
+                    RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
+                        .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.70))
+                        .frame(width: 150, height: 25)
                     
-                }.offset(y: 77)
+                    Text("Подтвердить")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundColor((Color.white).opacity(0.9))
+                        .offset(y: -1)
+                    
+                }
                 
             }
-
+            
         }
+        
+    }
         
     }
 }

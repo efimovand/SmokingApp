@@ -157,7 +157,7 @@ struct economyView: View {
             
             if goalShown {
                 newGoalView(goalShown: $goalShown)
-                    .offset(y: 100)
+                    .offset(y: 150)
             }
             
         }
