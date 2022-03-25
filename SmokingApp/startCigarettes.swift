@@ -28,6 +28,8 @@ struct startCigarettes: View {
     
     @Binding var cigarettesShown: Bool
     
+    @EnvironmentObject var data: UserData
+    
     @State var dailyUse: Int = 0
     @State var pricePack = ""
     @State var pricePackInt: Int = 0
@@ -138,12 +140,16 @@ struct startCigarettes: View {
             
             // Next button
             (Button(action: {
+                data.score = 0
+                data.hours = 0
                 UserDefaults.standard.set(0, forKey: "score")
                 UserDefaults.standard.set(0, forKey: "hours")
                 
                 pricePackInt = Int(pricePack) ?? 0
+                data.dailyEconomy = dailyUse * pricePackInt / 20
                 UserDefaults.standard.set(dailyUse * pricePackInt / 20, forKey: "dailyEconomy")
                 
+                data.freeMoney = 0
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(true, forKey: "firstDay")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")
@@ -180,5 +186,6 @@ struct startCigarettes: View {
 struct startCigarettes_Previews: PreviewProvider {
     static var previews: some View {
         startCigarettes(cigarettesShown: .constant(false))
+            .environmentObject(UserData())
     }
 }

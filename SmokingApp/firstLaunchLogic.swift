@@ -16,7 +16,6 @@ class UserData: ObservableObject {
     @Published var attempts = UserDefaults.standard.integer(forKey: "attempts")
     @Published var hours = UserDefaults.standard.integer(forKey: "hours")
     @Published var firstDay = UserDefaults.standard.bool(forKey: "firstDay")
-    
     @Published var isGoal = UserDefaults.standard.bool(forKey: "isGoal")
     @Published var goalValue = UserDefaults.standard.integer(forKey: "goalValue")
     @Published var goalName = UserDefaults.standard.string(forKey: "goalName")

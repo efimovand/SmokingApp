@@ -33,12 +33,11 @@ struct SmokingAppApp: App {
     @StateObject private var dailyEconomy = UserData()
     @StateObject private var attempts = UserData()
     @StateObject private var hours = UserData()
-    
+    @StateObject private var firstDay = UserData()
     @StateObject private var isGoal = UserData()
     @StateObject private var goalValue = UserData()
     @StateObject private var goalName = UserData()
     @StateObject private var freeMoney = UserData()
-    @StateObject private var firstDay = UserData()
     
     var body: some Scene {
         WindowGroup {

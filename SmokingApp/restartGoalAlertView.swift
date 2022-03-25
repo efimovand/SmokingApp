@@ -1,23 +1,17 @@
 //
-//  restartAlertView.swift
+//  restartGoalAlertView.swift
 //  SmokingApp
 //
-//  Created by Андрей Ефимов on 13.03.2022.
+//  Created by Андрей Ефимов on 25.03.2022.
 //
 
 import SwiftUI
 
-enum clickedButton {
-    case ok
-    case cancel
-    case none
-}
-
-struct restartAlertView: View {
+struct restartGoalAlertView: View {
     
     @EnvironmentObject var data: UserData
     
-    @Binding var alertShown: Bool
+    @Binding var alertGoalShown: Bool
     
     var body: some View {
         
@@ -25,7 +19,7 @@ struct restartAlertView: View {
             
             // background
             RoundedRectangle(cornerRadius: 15)
-                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.50))
+                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.5))
                 .frame(width: 232, height: 117)
                 .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))
             
@@ -38,17 +32,26 @@ struct restartAlertView: View {
             // text
             VStack(spacing: 0){
                 
-                Text("Вы уверены?")
-                    .font(.system(size: 22, weight: .bold))
+                Text("Выбрать новую цель")
+                    .font(.system(size: 19, weight: .bold))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
-                    .frame(width: 234, height: 73, alignment: .center)
+                    .frame(width: 234, height: 43, alignment: .center)
+                    .offset(y: 12)
+                
+                Text("Это приведёт к удалению текущей цели")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 234, height: 30, alignment: .center)
+                    .opacity(0.8)
+                    .offset(y: -6)
                 
                 // buttons
                 HStack(spacing: 0){
                     
                     Button(action: {
-                        alertShown.toggle()
+                        alertGoalShown.toggle()
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))
@@ -65,19 +68,12 @@ struct restartAlertView: View {
                         .offset(y: 3)
                     
                     Button(action: {
-                        alertShown.toggle()
-                        data.attempts += 1
-                        data.score = 0
-                        data.hours = 0
+                        alertGoalShown.toggle()
+                        data.goalName = ""
+                        data.goalValue = 0
                         data.freeMoney = 0
-                        data.firstDay = true
-                        UserDefaults.standard.set(data.attempts += 1, forKey: "attempts")
-                        UserDefaults.standard.set(0, forKey: "score")
-                        UserDefaults.standard.set(0, forKey: "hours")
-                        UserDefaults.standard.set(0, forKey: "freeMoney")
-                        UserDefaults.standard.set(true, forKey: "firstDay")
-                        UserDefaults.standard.set(Date(), forKey: "savedTime")
-                        UserDefaults.standard.set(Date(), forKey: "savedHours")
+                        data.isGoal = false
+                        UserDefaults.standard.set(false, forKey: "isGoal")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))
@@ -96,11 +92,10 @@ struct restartAlertView: View {
     }
 }
 
-
-struct restartAlertView_Previews: PreviewProvider {
+struct restartGoalAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        restartAlertView(alertShown: .constant(false))
-            .preferredColorScheme(.dark)
+        restartGoalAlertView(alertGoalShown: .constant(false))
             .environmentObject(UserData())
+            .preferredColorScheme(.dark)
     }
 }

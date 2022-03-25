@@ -13,6 +13,8 @@ struct startVape: View {
     
     @Binding var vapeShown: Bool
     
+    @EnvironmentObject var data: UserData
+    
     @State var monthlyVape = ""
     @State var monthlyVapeInt: Int = 0
     
@@ -88,12 +90,16 @@ struct startVape: View {
             
             // Next button
             (Button(action: {
+                data.score = 0
+                data.hours = 0
                 UserDefaults.standard.set(0, forKey: "score")
                 UserDefaults.standard.set(0, forKey: "hours")
                 
                 monthlyVapeInt = Int(monthlyVape) ?? 0
+                data.dailyEconomy = monthlyVapeInt / 30
                 UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")
                 
+                data.freeMoney = 0
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(true, forKey: "firstDay")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")
@@ -130,5 +136,6 @@ struct startVape: View {
 struct startVape_Previews: PreviewProvider {
     static var previews: some View {
         startVape(vapeShown: .constant(false))
+            .environmentObject(UserData())
     }
 }

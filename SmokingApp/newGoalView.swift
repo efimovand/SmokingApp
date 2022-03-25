@@ -105,10 +105,10 @@ struct newGoalView: View {
                 
                 Circle()
                     .fill(Color(red: 1, green: 1, blue: 1).opacity(0.3))
-                    .frame(width: 18, height: 18)
+                    .frame(width: 21, height: 21)
                     .overlay(Image(systemName: "multiply")
                         .foregroundColor(Color.white)
-                        .font(.system(size: 12)))
+                        .font(.system(size: 14)))
                     .overlay(Circle().stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.80), Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 0.3))
                 
             }.offset(x: 128, y: -55)
@@ -124,6 +124,7 @@ struct newGoalView: View {
                 data.isGoal = true
                 UserDefaults.standard.set(name, forKey: "goalName")
                 UserDefaults.standard.set(Int(value) ?? 0, forKey: "goalValue")
+                UserDefaults.standard.set(0, forKey: "freeMoney")
                 UserDefaults.standard.set(true, forKey: "isGoal")
                 goalShown.toggle()
             }) {
