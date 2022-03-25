@@ -143,7 +143,7 @@ struct nowGoalView: View {
                                     .foregroundColor(Color.white)
                                     .padding(.leading, -2.5)
                             }
-                            else if (((((data.goalValue - data.freeMoney) / data.dailyEconomy != 12) && (((data.goalValue - data.freeMoney) / data.dailyEconomy != 13) && (((data.goalValue - data.freeMoney) / data.dailyEconomy != 14)) && ((((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 2) || (((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 3) || (((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 4))) {
+                            else if ((((data.goalValue - data.freeMoney) / data.dailyEconomy != 12) && ((data.goalValue - data.freeMoney) / data.dailyEconomy != 13) && ((data.goalValue - data.freeMoney) / data.dailyEconomy != 14)) && (((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 2) || ((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 3) || ((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 4))) {
                                 Text("дня")
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(Color.white)
