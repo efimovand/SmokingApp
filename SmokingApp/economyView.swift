@@ -137,6 +137,7 @@ struct economyView: View {
                     // Goal Button
                     Button(action: {
                         goalShown.toggle()
+                        data.goalPicture = ""
                     }) {
                         
                         Circle()
