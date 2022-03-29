@@ -9,11 +9,18 @@ import SwiftUI
 
 struct settingsView: View {
     
+    @EnvironmentObject var data: UserData
+    
     @Binding var settingsShown: Bool
     
-    @State private var darkMode = false
+    @State var darkMode: Bool = false
+    
+    @State var hardRestart: Bool = false
+    @State var isLaunchedBefore = UserDefaults.standard.bool(forKey: "isLaunchedBefore")
     
     var body: some View {
+        
+        ZStack{
         
         ZStack{
             
@@ -56,7 +63,34 @@ struct settingsView: View {
                 
             }.padding(.bottom, 230)
             
+            // hard restart
+            Button(action: {
+                data.isLaunchedBefore = false
+                UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
+                hardRestart.toggle()
+            }) {
+                
+                ZStack{
+                    
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill((Color.white).opacity(0.5))
+                        .frame(width: 230, height: 25)
+                    
+                    Text("Сброс настроек по умолчанию")
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(Color.white)
+                    
+                }
+                
+            }.offset(y: 190)
+            
         }.frame(width: 311, height: 452)
+            
+            if hardRestart {
+                firstLaunchLogic()
+            }
+            
+        }
         
     }
 }
@@ -64,6 +98,7 @@ struct settingsView: View {
 struct settingsView_Previews: PreviewProvider {
     static var previews: some View {
         settingsView(settingsShown: .constant(false))
+            .environmentObject(UserData())
             .preferredColorScheme(.dark)
     }
 }

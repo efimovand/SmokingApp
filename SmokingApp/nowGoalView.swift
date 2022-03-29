@@ -38,7 +38,9 @@ struct nowGoalView: View {
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundColor((Color.white).opacity(0.4))
                         .frame(width: 60, height: 60)
-                        .overlay(Text("Фото").foregroundColor(Color.gray).opacity(0.4))
+                        .overlay(Image(data.goalPicture ?? "")
+                            .resizable()
+                            .frame(width: 60, height: 60))
                     
                     VStack(spacing: 16){
                         
@@ -54,7 +56,7 @@ struct nowGoalView: View {
                                 .fill(Color.white)
                                 .frame(width: 210, height: 10, alignment: .leading)
                             
-                            if ((data.score * data.dailyEconomy + data.freeMoney) >= data.goalValue){
+                            if ((data.score * data.dailyEconomy + data.freeMoney + data.beforeMoney) >= data.goalValue){
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.blue)
                                     .frame(width: 210, height: 10)
@@ -63,7 +65,7 @@ struct nowGoalView: View {
                             else {
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.blue)
-                                    .frame(width: 210 / CGFloat(data.goalValue) * (CGFloat(data.score * data.dailyEconomy) + CGFloat(data.freeMoney)), height: 10)
+                                    .frame(width: 210 / CGFloat(data.goalValue) * (CGFloat(data.score * data.dailyEconomy) + CGFloat(data.freeMoney) + CGFloat(data.beforeMoney)), height: 10)
                                     .opacity(0.6)
                             }
                             
@@ -74,7 +76,7 @@ struct nowGoalView: View {
                 }
                 
                 // completedPicture
-                if ((data.score * data.dailyEconomy + data.freeMoney) >= data.goalValue){
+                if ((data.score * data.dailyEconomy + data.freeMoney + data.beforeMoney) >= data.goalValue){
                     
                     Image(systemName: "checkmark.circle")
                         .resizable()
@@ -121,7 +123,7 @@ struct nowGoalView: View {
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(Color.white)
                             
-                            if ((data.score * data.dailyEconomy + data.freeMoney) >= data.goalValue) {
+                            if ((data.score * data.dailyEconomy + data.freeMoney + data.beforeMoney) >= data.goalValue) {
                                 
                                 Text("0")
                                     .font(.system(size: 16, weight: .semibold))
@@ -130,20 +132,20 @@ struct nowGoalView: View {
                             }
                             else{
                                 
-                                Text(String((data.goalValue - data.freeMoney) / data.dailyEconomy))
+                                Text(String((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy))
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(Color.white)
                                 
                             }
                             
                             // day word switch
-                            if (((data.goalValue - data.freeMoney) / data.dailyEconomy != 11) && ((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 1)) {
+                            if (((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy != 11) && ((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy % 10 == 1)) {
                                 Text("день")
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(Color.white)
                                     .padding(.leading, -2.5)
                             }
-                            else if ((((data.goalValue - data.freeMoney) / data.dailyEconomy != 12) && ((data.goalValue - data.freeMoney) / data.dailyEconomy != 13) && ((data.goalValue - data.freeMoney) / data.dailyEconomy != 14)) && (((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 2) || ((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 3) || ((data.goalValue - data.freeMoney) / data.dailyEconomy % 10 == 4))) {
+                            else if ((((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy != 12) && ((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy != 13) && ((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy != 14)) && (((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy % 10 == 2) || ((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy % 10 == 3) || ((data.goalValue - data.freeMoney - data.beforeMoney) / data.dailyEconomy % 10 == 4))) {
                                 Text("дня")
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(Color.white)

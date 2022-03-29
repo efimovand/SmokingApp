@@ -44,7 +44,7 @@ struct restartGoalAlertView: View {
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .frame(width: 234, height: 30, alignment: .center)
-                    .opacity(0.8)
+                    .opacity(0.9)
                     .offset(y: -6)
                 
                 // buttons
@@ -72,7 +72,9 @@ struct restartGoalAlertView: View {
                         data.goalName = ""
                         data.goalValue = 0
                         data.freeMoney = 0
+                        data.goalPicture = ""
                         data.isGoal = false
+                        UserDefaults.standard.set("", forKey: "goalPicture")
                         UserDefaults.standard.set(false, forKey: "isGoal")
                     }) {
                         Text("Подтвердить")

@@ -33,8 +33,6 @@ struct startView: View {
     @State var sticksShown = false
     @State var vapeShown = false
     
-    @State var number: Int = 0
-    
     var body: some View {
         
         ZStack{
@@ -57,7 +55,7 @@ struct startView: View {
                         GeometryReader { proxy in
                             
                             let scale = getScale(proxy: proxy)
-                        
+                                                
                             images[num]
                                 .resizable()
                                 .scaledToFill()
@@ -115,5 +113,6 @@ struct startView: View {
 struct startView_Previews: PreviewProvider {
     static var previews: some View {
         startView()
+            .environmentObject(UserData())
     }
 }

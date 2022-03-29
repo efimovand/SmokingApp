@@ -99,6 +99,9 @@ struct startVape: View {
                 data.dailyEconomy = monthlyVapeInt / 30
                 UserDefaults.standard.set(monthlyVapeInt / 30, forKey: "dailyEconomy")
                 
+                data.firstDay = true
+                data.attempts = 1
+                data.isGoal = false
                 data.freeMoney = 0
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(true, forKey: "firstDay")

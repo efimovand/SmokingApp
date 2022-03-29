@@ -29,6 +29,7 @@ UserDefaults
 @main
 struct SmokingAppApp: App {
     
+    @StateObject private var isLaunchedBefore = UserData()
     @StateObject private var score = UserData()
     @StateObject private var dailyEconomy = UserData()
     @StateObject private var attempts = UserData()
@@ -39,10 +40,12 @@ struct SmokingAppApp: App {
     @StateObject private var goalName = UserData()
     @StateObject private var freeMoney = UserData()
     @StateObject private var goalPicture = UserData()
+    @StateObject private var beforeMoney = UserData()
     
     var body: some Scene {
         WindowGroup {
             firstLaunchLogic()
+                .environmentObject(isLaunchedBefore)
                 .environmentObject(score)
                 .environmentObject(dailyEconomy)
                 .environmentObject(attempts)
@@ -53,6 +56,7 @@ struct SmokingAppApp: App {
                 .environmentObject(goalName)
                 .environmentObject(freeMoney)
                 .environmentObject(goalPicture)
+                .environmentObject(beforeMoney)
             //startView()
             //.environmentObject(dailyUse)
             //.environmentObject(pricePack)

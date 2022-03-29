@@ -17,7 +17,7 @@ struct newGoalView: View {
     @State var value = ""
     
     @State var picturesShown: Bool = false
-    @State var selectedPicture: String = ""
+    @State var pictureTapped: Bool = false
     
     var body: some View {
         
@@ -51,11 +51,12 @@ struct newGoalView: View {
                         // picture
                         Button(action: {
                             picturesShown.toggle()
+                            pictureTapped = true
                         }) {
                             RoundedRectangle(cornerRadius: 15)
                                 .foregroundColor((Color.white).opacity(0.4))
                                 .frame(width: 80, height: 80)
-                                .overlay(Text("Фото").font(.system(size: 13, weight: .semibold)).foregroundColor(Color.white).opacity(data.goalPicture == "" ? 1 : 0))
+                                .overlay(Text("Фото").font(.system(size: 13, weight: .semibold)).foregroundColor(Color.white).opacity(pictureTapped ? 0 : 1))
                                 .overlay(Image(data.goalPicture ?? "")
                                     .resizable()
                                     .frame(width: 80, height: 80))
@@ -112,6 +113,9 @@ struct newGoalView: View {
                     // Quit Button
                     Button(action: {
                         goalShown.toggle()
+                        data.goalPicture = ""
+                        data.goalName = ""
+                        data.goalValue = 0
                     }) {
                         
                         
@@ -167,7 +171,7 @@ struct newGoalView: View {
                     
                     // background
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.45))
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.64, green: 0.61, blue: 0.96, opacity: 0.3), Color(red: 0.64, green: 0.61, blue: 0.96, opacity: 0.3)]), startPoint: .topTrailing, endPoint: .bottomLeading))
                         .frame(width: 260, height: 345)
                         .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))
                     
@@ -347,7 +351,7 @@ struct newGoalView: View {
                             }
                             
                             Button(action: {
-                                // own image
+                                //
                             }) {
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill((Color("a39cf4")).opacity(1))
@@ -367,6 +371,50 @@ struct newGoalView: View {
             
         }
         
+    }
+}
+
+// Image from photo library
+struct ImagePicker: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) private var presentationMode
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @Binding var selectedImage: UIImage
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = context.coordinator
+
+        return imagePicker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+        var parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                parent.selectedImage = image
+            }
+
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+
     }
 }
 
