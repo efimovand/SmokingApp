@@ -261,7 +261,7 @@ struct achievement: View {
                         .frame(width: 246, height: 10, alignment: .leading)
                         .offset(x: 38, y: 25)
                     
-                    if (data.hours >= value) {
+                    if (data.hours + (data.beforeScore * 24) >= value) {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
                             .frame(width: 246, height: 10)
