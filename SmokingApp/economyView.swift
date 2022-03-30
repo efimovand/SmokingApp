@@ -45,8 +45,8 @@ struct economyView: View {
                         
                         HStack(spacing: 0){
                             
-                            if (data.dailyEconomy * data.score + data.beforeMoney >= 1000) {
-                                Text(String(data.dailyEconomy * data.score + data.beforeMoney))
+                            if ((data.dailyEconomy / 24) * data.hours + data.beforeMoney >= 1000) {
+                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -54,8 +54,8 @@ struct economyView: View {
                                     .offset(y: 20)
                                     .padding(.leading, 30)
                             }
-                            else if (data.dailyEconomy * data.score + data.beforeMoney >= 100) {
-                                Text(String(data.dailyEconomy * data.score + data.beforeMoney))
+                            else if ((data.dailyEconomy / 24) * data.hours + data.beforeMoney >= 100) {
+                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -63,8 +63,8 @@ struct economyView: View {
                                     .offset(y: 20)
                                     .padding(.leading, 30)
                             }
-                            else if (data.dailyEconomy * data.score + data.beforeMoney >= 10) {
-                                Text(String(data.dailyEconomy * data.score + data.beforeMoney))
+                            else if ((data.dailyEconomy / 24) * data.hours + data.beforeMoney >= 10) {
+                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -73,7 +73,7 @@ struct economyView: View {
                                     .padding(.leading, 30)
                             }
                             else {
-                                Text(String(data.dailyEconomy * data.score + data.beforeMoney))
+                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
