@@ -1,19 +1,23 @@
 //
-//  restartAlertView.swift
+//  resetAlertView.swift
 //  SmokingApp
 //
-//  Created by Андрей Ефимов on 13.03.2022.
+//  Created by Андрей Ефимов on 30.03.2022.
 //
 
 import SwiftUI
 
-struct restartAlertView: View {
+struct resetAlertView: View {
     
     @EnvironmentObject var data: UserData
     
-    @Binding var alertShown: Bool
+    @Binding var resetAlertShown: Bool
+    
+    @State var hardReset: Bool = false
     
     var body: some View {
+        
+        ZStack{
         
         ZStack{
             
@@ -33,16 +37,25 @@ struct restartAlertView: View {
             VStack(spacing: 0){
                 
                 Text("Вы уверены?")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 19, weight: .bold))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
-                    .frame(width: 234, height: 73, alignment: .center)
+                    .frame(width: 234, height: 43, alignment: .center)
+                    .offset(y: 10)
+                
+                Text("Это приведёт к сбросу всего прогресса")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 234, height: 30, alignment: .center)
+                    .opacity(0.9)
+                    .offset(y: -5)
                 
                 // buttons
                 HStack(spacing: 0){
                     
                     Button(action: {
-                        alertShown.toggle()
+                        resetAlertShown.toggle()
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))
@@ -59,19 +72,10 @@ struct restartAlertView: View {
                         .offset(y: 3)
                     
                     Button(action: {
-                        alertShown.toggle()
-                        data.attempts += 1
-                        data.beforeMoney += data.score * data.dailyEconomy
-                        data.score = 0
-                        data.hours = 0
-                        data.firstDay = true
-                        UserDefaults.standard.set(data.attempts, forKey: "attempts")
-                        UserDefaults.standard.set(data.beforeMoney, forKey: "beforeMoney")
-                        UserDefaults.standard.set(0, forKey: "score")
-                        UserDefaults.standard.set(0, forKey: "hours")
-                        UserDefaults.standard.set(true, forKey: "firstDay")
-                        UserDefaults.standard.set(Date(), forKey: "savedTime")
-                        UserDefaults.standard.set(Date(), forKey: "savedHours")
+                        data.isLaunchedBefore = false
+                        UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
+                        hardReset.toggle()
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))
@@ -86,14 +90,19 @@ struct restartAlertView: View {
             }.frame(width: 234, height: 109)
             
         }.padding(.top, 50)
+            
+            if hardReset {
+                firstLaunchLogic()
+            }
+            
+        }
         
     }
 }
 
-
-struct restartAlertView_Previews: PreviewProvider {
+struct resetAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        restartAlertView(alertShown: .constant(false))
+        resetAlertView(resetAlertShown: .constant(false))
             .preferredColorScheme(.dark)
             .environmentObject(UserData())
     }
