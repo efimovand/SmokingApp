@@ -218,7 +218,7 @@ struct achievement: View {
                         .frame(width: 246, height: 10, alignment: .leading)
                         .offset(x: 38, y: 25)
                     
-                    if (data.score * data.dailyEconomy >= value){
+                    if (data.hours * (data.dailyEconomy / 24) >= value){
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
                             .frame(width: 246, height: 10)
@@ -228,7 +228,7 @@ struct achievement: View {
                     else {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(data.score * data.dailyEconomy), height: 10)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(data.hours * (data.dailyEconomy / 24)), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.6)
                     }
