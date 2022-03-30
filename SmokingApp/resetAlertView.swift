@@ -73,10 +73,10 @@ struct resetAlertView: View {
                         .offset(y: 3)
                     
                     Button(action: {
+                        data.alertResetShown.toggle()
                         data.isLaunchedBefore = false
                         UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
                         hardReset.toggle()
-                        hapticTouch(power: "soft")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))

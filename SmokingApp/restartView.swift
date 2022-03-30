@@ -74,6 +74,8 @@ struct restartView: View {
             // settingsButton
             Button(action: {
                 settingsShown.toggle()
+                hapticTouch(power: "light")
+                alertShown = false
             }) {
                 if settingsShown{
                     Image("settings_a")

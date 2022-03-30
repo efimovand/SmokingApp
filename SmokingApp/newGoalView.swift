@@ -189,7 +189,7 @@ struct newGoalView: View {
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill((Color.white).opacity(0.4))
                                     .frame(width: 70, height: 70)
-                                    .overlay(Image("pc")
+                                    .overlay(Image("guitar")
                                         .resizable()
                                         .frame(width: 65, height: 65))
                                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))

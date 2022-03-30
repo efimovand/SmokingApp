@@ -70,6 +70,7 @@ struct restartGoalAlertView: View {
                     
                     Button(action: {
                         alertGoalShown.toggle()
+                        data.alertGoalShown.toggle()
                         data.goalName = ""
                         data.goalValue = 0
                         data.freeMoney = 0

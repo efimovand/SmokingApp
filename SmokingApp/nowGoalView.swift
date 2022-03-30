@@ -82,7 +82,7 @@ struct nowGoalView: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color.white)
-                        .offset(x: 125, y: -12)
+                        .offset(x: 128, y: -12)
                     
                 }
                 
