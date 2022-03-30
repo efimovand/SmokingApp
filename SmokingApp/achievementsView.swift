@@ -60,6 +60,7 @@ struct achievementsView: View {
                 // List
                 VStack(spacing: 15) {
                     
+                    // 1
                     Group {
                         
                         VStack(spacing: 15) {
@@ -88,6 +89,7 @@ struct achievementsView: View {
                         }
                     }
                     
+                    // 2
                     Group {
                         
                         VStack(spacing: 15) {
@@ -107,6 +109,7 @@ struct achievementsView: View {
                             
                         }
                     }
+                    
                 }
                 
                 
@@ -218,7 +221,7 @@ struct achievement: View {
                         .frame(width: 246, height: 10, alignment: .leading)
                         .offset(x: 38, y: 25)
                     
-                    if (data.hours * (data.dailyEconomy / 24) >= value){
+                    if (data.hours * (data.dailyEconomy / 24) + data.beforeMoney >= value){
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
                             .frame(width: 246, height: 10)
@@ -228,7 +231,7 @@ struct achievement: View {
                     else {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(data.hours * (data.dailyEconomy / 24)), height: 10)
+                            .frame(width: 246 / CGFloat(value) * CGFloat(data.hours * (data.dailyEconomy / 24) + data.beforeMoney), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.6)
                     }
