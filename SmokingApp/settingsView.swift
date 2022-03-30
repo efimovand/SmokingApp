@@ -66,6 +66,7 @@ struct settingsView: View {
                 // hard reset
                 Button(action: {
                     resetAlertShown.toggle()
+                    data.alertResetShown.toggle()
                     hapticTouch(power: "medium")
                 }) {
                     
@@ -84,6 +85,7 @@ struct settingsView: View {
                 }.offset(y: 200)
                 
             }.frame(width: 311, height: 452)
+                .blur(radius: data.alertResetShown ? 3 : 0)
             
             // showingResetAlert
             if resetAlertShown {

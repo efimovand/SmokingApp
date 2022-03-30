@@ -23,7 +23,7 @@ struct resetAlertView: View {
             
             // background
             RoundedRectangle(cornerRadius: 15)
-                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.50))
+                .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.5))
                 .frame(width: 232, height: 117)
                 .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .topTrailing, endPoint: .bottomLeading), lineWidth: 1))
             
@@ -44,7 +44,7 @@ struct resetAlertView: View {
                     .offset(y: 10)
                 
                 Text("Это приведёт к сбросу всего прогресса")
-                    .font(.system(size: 10, weight: .semibold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .frame(width: 234, height: 30, alignment: .center)
@@ -56,6 +56,7 @@ struct resetAlertView: View {
                     
                     Button(action: {
                         resetAlertShown.toggle()
+                        data.alertResetShown.toggle()
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))

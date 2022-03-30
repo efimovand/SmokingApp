@@ -25,6 +25,7 @@ class UserData: ObservableObject {
     @Published var beforeScore = UserDefaults.standard.integer(forKey: "beforeScore")
     @Published var beforeMoney = UserDefaults.standard.integer(forKey: "beforeMoney")
     @Published var alertGoalShown: Bool = false
+    @Published var alertResetShown: Bool = false
 }
 
 struct firstLaunchLogic: View {

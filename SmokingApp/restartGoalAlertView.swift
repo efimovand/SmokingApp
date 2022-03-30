@@ -40,7 +40,7 @@ struct restartGoalAlertView: View {
                     .offset(y: 12)
                 
                 Text("Это приведёт к удалению текущей цели")
-                    .font(.system(size: 10, weight: .semibold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
                     .frame(width: 234, height: 30, alignment: .center)
