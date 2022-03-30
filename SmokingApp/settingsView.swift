@@ -66,6 +66,7 @@ struct settingsView: View {
                 // hard reset
                 Button(action: {
                     resetAlertShown.toggle()
+                    hapticTouch(power: "medium")
                 }) {
                     
                     ZStack{
