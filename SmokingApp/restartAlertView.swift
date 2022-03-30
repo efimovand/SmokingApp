@@ -61,11 +61,13 @@ struct restartAlertView: View {
                     Button(action: {
                         alertShown.toggle()
                         data.attempts += 1
-                        data.beforeMoney += data.score * data.dailyEconomy
+                        data.beforeScore += data.score
+                        data.beforeMoney += data.hours * (data.dailyEconomy / 24)
                         data.score = 0
                         data.hours = 0
                         data.firstDay = true
                         UserDefaults.standard.set(data.attempts, forKey: "attempts")
+                        UserDefaults.standard.set(data.beforeScore, forKey: "beforeScore")
                         UserDefaults.standard.set(data.beforeMoney, forKey: "beforeMoney")
                         UserDefaults.standard.set(0, forKey: "score")
                         UserDefaults.standard.set(0, forKey: "hours")

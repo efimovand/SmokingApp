@@ -40,6 +40,7 @@ struct SmokingAppApp: App {
     @StateObject private var goalName = UserData()
     @StateObject private var freeMoney = UserData()
     @StateObject private var goalPicture = UserData()
+    @StateObject private var beforeScore = UserData()
     @StateObject private var beforeMoney = UserData()
     
     var body: some Scene {
@@ -56,6 +57,7 @@ struct SmokingAppApp: App {
                 .environmentObject(goalName)
                 .environmentObject(freeMoney)
                 .environmentObject(goalPicture)
+                .environmentObject(beforeScore)
                 .environmentObject(beforeMoney)
             //startView()
             //.environmentObject(dailyUse)

@@ -22,6 +22,7 @@ class UserData: ObservableObject {
     @Published var goalName = UserDefaults.standard.string(forKey: "goalName")
     @Published var freeMoney = UserDefaults.standard.integer(forKey: "freeMoney")
     @Published var goalPicture = UserDefaults.standard.string(forKey: "goalPicture")
+    @Published var beforeScore = UserDefaults.standard.integer(forKey: "beforeScore")
     @Published var beforeMoney = UserDefaults.standard.integer(forKey: "beforeMoney")
 }
 

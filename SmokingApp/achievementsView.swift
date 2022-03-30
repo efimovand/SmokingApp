@@ -195,7 +195,7 @@ struct achievement: View {
                         .frame(width: 246, height: 10, alignment: .leading)
                         .offset(x: 38, y: 25)
                     
-                    if (data.score >= value) {
+                    if (data.score + data.beforeScore >= value) {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
                             .frame(width: 246, height: 10)
@@ -205,7 +205,7 @@ struct achievement: View {
                     else{
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(data.score), height: 10)
+                            .frame(width: 246 / CGFloat(value) * (CGFloat(data.score) + CGFloat(data.beforeScore)), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.6)
                     }
@@ -231,7 +231,7 @@ struct achievement: View {
                     else {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.blue)
-                            .frame(width: 246 / CGFloat(value) * CGFloat(data.hours * (data.dailyEconomy / 24) + data.beforeMoney), height: 10)
+                            .frame(width: 246 / CGFloat(value) * (CGFloat(data.hours * (data.dailyEconomy / 24) + data.beforeMoney)), height: 10)
                             .offset(x: 38, y: 25)
                             .opacity(0.6)
                     }
