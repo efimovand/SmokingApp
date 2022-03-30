@@ -103,6 +103,10 @@ struct startVape: View {
                 data.attempts = 1
                 data.isGoal = false
                 data.freeMoney = 0
+                data.beforeScore = 0
+                data.beforeMoney = 0
+                UserDefaults.standard.set(0, forKey: "beforeScore")
+                UserDefaults.standard.set(0, forKey: "beforeMoney")
                 UserDefaults.standard.set(true, forKey: "isLaunchedBefore")
                 UserDefaults.standard.set(true, forKey: "firstDay")
                 UserDefaults.standard.set(Date(), forKey: "savedTime")

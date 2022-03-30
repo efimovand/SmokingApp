@@ -90,6 +90,7 @@ struct economyView: View {
                         }
                         
                     }.offset(y: -56)
+                        .blur(radius: data.alertGoalShown ? 3 : 0)
                     
                     /*
                      // daily+monthly
@@ -165,7 +166,8 @@ struct economyView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: .infinity, height: .infinity, alignment: .center)
-                    .edgesIgnoringSafeArea(.all))
+                    .edgesIgnoringSafeArea(.all)
+                    .blur(radius: data.alertGoalShown ? 3 : 0))
                 .statusBar(hidden: height >= 812 ? false : true)
                 .blur(radius: goalShown ? 3 : 0)
             

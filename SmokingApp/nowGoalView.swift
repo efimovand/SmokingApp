@@ -221,6 +221,7 @@ struct nowGoalView: View {
                     // reset Button
                     Button(action: {
                         alertGoalShown.toggle()
+                        data.alertGoalShown.toggle()
                         hapticTouch(power: "medium")
                     }) {
                         Circle()
@@ -240,7 +241,7 @@ struct nowGoalView: View {
             
         }.blur(radius: alertGoalShown ? 3 : 0)
             
-            // showingAlert
+            // showing restartGoalAlert
             if alertGoalShown {
                 restartGoalAlertView(alertGoalShown: $alertGoalShown)
                     .offset(y: -220)

@@ -75,7 +75,7 @@ struct resetAlertView: View {
                         data.isLaunchedBefore = false
                         UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
                         hardReset.toggle()
-                        hapticTouch(power: "medium")
+                        hapticTouch(power: "soft")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))

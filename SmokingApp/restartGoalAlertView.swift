@@ -52,6 +52,7 @@ struct restartGoalAlertView: View {
                     
                     Button(action: {
                         alertGoalShown.toggle()
+                        data.alertGoalShown.toggle()
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))
