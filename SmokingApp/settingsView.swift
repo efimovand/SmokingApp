@@ -68,6 +68,7 @@ struct settingsView: View {
                 data.isLaunchedBefore = false
                 UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
                 hardRestart.toggle()
+                hapticTouch(power: "medium")
             }) {
                 
                 ZStack{

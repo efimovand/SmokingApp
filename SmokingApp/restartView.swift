@@ -33,7 +33,10 @@ struct restartView: View {
                     .opacity(alertShown ? 0.5 : 1)
                 
                 // Button
-                Button(action: {alertShown.toggle()}) {
+                Button(action: {
+                    alertShown.toggle()
+                    hapticTouch(power: "medium")
+                }) {
                     
                     ZStack{
                         
@@ -109,108 +112,31 @@ struct restartView: View {
     }
 }
 
-
-
-// NavigationBar
-/*
- VStack{
- 
- Spacer(minLength: 697)
- 
- ZStack{
- 
- HStack{
- // main
- Button(action: {
- self.selected = 0
- }) {
- if self.selected == 0
- {
- Image("main_a")
- .resizable()
- .frame(width: 74, height: 74)
- .offset(x: 1, y: -1)
- }
- else{
- Image("main")
- .resizable()
- .frame(width: 74, height: 74)
- .offset(x: 1, y: -1)
- }
- }
- 
- Spacer(minLength: 10)
- 
- // economy
- Button(action: {
- self.selected = 1
- }) {
- if self.selected == 1
- {
- Image("economy_a")
- .resizable()
- .frame(width: 81, height: 81)
- .offset(x: 1, y: -4)
- }
- else{
- Image("economy")
- .resizable()
- .frame(width: 81, height: 81)
- .offset(x: 1, y: -4)
- }
- }
- 
- Spacer(minLength: 10)
- 
- // achievements
- Button(action: {
- self.selected = 2
- }) {
- if self.selected == 2
- {
- Image("achievements_a")
- .resizable()
- .frame(width: 73, height: 73)
- .offset(x: 1)
- }
- else{
- Image("achievements")
- .resizable()
- .frame(width: 73, height: 73)
- .offset(x: 1)
- }
- }
- 
- Spacer(minLength: 10)
- 
- // restart
- Button(action: {
- self.selected = 3
- }) {
- if self.selected == 3
- {
- Image("restart_test")
- .resizable()
- .frame(width: 67, height: 67)
- .offset(x: 1)
- }
- else{
- Image("restart")
- .resizable()
- .frame(width: 67, height: 67)
- .offset(x: 1)
- }
- }
- }
- .padding(.horizontal, 50)
- .background(RoundedRectangle(cornerRadius: 20)
- .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
- .frame(width: 377, height: 92)
- .overlay(RoundedRectangle(cornerRadius: 20).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.50), Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
- .offset(y: 7))
- }
- }
- */
+// function for Haptic Touch
+func hapticTouch(power: String) {
+    
+    if power == "medium" {
+        let haptic = UIImpactFeedbackGenerator(style: .medium)
+        haptic.impactOccurred()
+    }
+    else if power == "soft" {
+        let haptic = UIImpactFeedbackGenerator(style: .soft)
+        haptic.impactOccurred()
+    }
+    else if power == "light" {
+        let haptic = UIImpactFeedbackGenerator(style: .light)
+        haptic.impactOccurred()
+    }
+    else if power == "heavy" {
+        let haptic = UIImpactFeedbackGenerator(style: .heavy)
+        haptic.impactOccurred()
+    }
+    else if power == "rigid" {
+        let haptic = UIImpactFeedbackGenerator(style: .rigid)
+        haptic.impactOccurred()
+    }
+    
+}
 
 
 struct restartView_Previews: PreviewProvider {

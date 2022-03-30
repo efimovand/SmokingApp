@@ -221,6 +221,7 @@ struct nowGoalView: View {
                     // reset Button
                     Button(action: {
                         alertGoalShown.toggle()
+                        hapticTouch(power: "medium")
                     }) {
                         Circle()
                             .fill(Color(red: 1, green: 1, blue: 1).opacity(0.2))
