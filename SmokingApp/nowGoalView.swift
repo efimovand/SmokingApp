@@ -90,13 +90,13 @@ struct nowGoalView: View {
                 .onTapGesture(perform: {
                     
                     if offset == 0{
-                        withAnimation(.linear(duration: 0.35)){
+                        withAnimation(.linear(duration: 0.3)){
                             self.offset -= 40
                         }
                     }
                     
                     else{
-                        withAnimation(.linear(duration: 0.35)){
+                        withAnimation(.linear(duration: 0.3)){
                             self.offset = 0
                         }
                     }

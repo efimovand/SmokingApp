@@ -182,8 +182,8 @@ struct newGoalView: View {
                         HStack(spacing: 10){
                             
                             Button(action: {
-                                data.goalPicture = "pc"
-                                UserDefaults.standard.set("pc", forKey: "goalPicture")
+                                data.goalPicture = "guitar"
+                                UserDefaults.standard.set("guitar", forKey: "goalPicture")
                                 picturesShown.toggle()
                             }) {
                                 RoundedRectangle(cornerRadius: 5)
