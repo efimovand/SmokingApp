@@ -10,7 +10,7 @@ import Foundation
 
 struct mainView: View {
     
-    @EnvironmentObject var data: UserData // for score
+    @EnvironmentObject var data: UserData
     
     @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
     @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
@@ -20,7 +20,7 @@ struct mainView: View {
     
     // List of healthNow
     @State var healthCase = [
-        healthNow(text: "Нормализуется частота сердечных сокращений, начинает снижаться артериальное давление", picture: Image("heart_1"), description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения."),
+        healthNow(text: "Нормализуется частота сердечных сокращений, начинает снижаться артериальное давление", picture: Image("heartrate"), description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения."),
         
         healthNow(text: "Нормализуется уровень углекислого газа в крови, улучшается снабжение тканей кислородом", picture: Image("co2"), description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения."),
         
@@ -29,14 +29,12 @@ struct mainView: View {
     
     var body: some View {
         
-        VStack(spacing: 0){
+        ZStack{
             
             // Main
             VStack(spacing: 0){
                 
                 if data.firstDay {
-                    
-                    Spacer()
                     
                     //textTop
                     Text("Вы не курите уже")
@@ -92,8 +90,6 @@ struct mainView: View {
                 }
                 
                 else {
-                    
-                    Spacer()
                     
                     //textTop
                     Text("Вы не курите уже")
@@ -158,6 +154,8 @@ struct mainView: View {
                 
                 
             }
+            .offset(y: height >= 812 ? -UIScreen.screenHeight * 0.09 : -UIScreen.screenHeight * 0.12)
+            .blur(radius: data.healthShown ? 3 : 0)
             
             Spacer(minLength: UIScreen.screenHeight * 0.09)
             
@@ -179,10 +177,11 @@ struct mainView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.screenWidth, height: .infinity, alignment: .center)
-                        .edgesIgnoringSafeArea(.all))
+                        .edgesIgnoringSafeArea(.all)
+                        .blur(radius: data.healthShown ? 3 : 0))
         .statusBar(hidden: height >= 812 ? false : true)
            .onAppear(perform: {
-               
+
                 if data.hours > 24 {
                     UserDefaults.standard.set(false, forKey: "firstDay")
                     data.firstDay = false
@@ -191,7 +190,7 @@ struct mainView: View {
                     data.hours += Int((abs(savedHours - now)) / 3600)
                     savedHours = Date()
                 }
-            
+
                 if (abs(saved - now)) > 86400 {
                     data.score += Int((abs(saved - now)) / 86400)
                     saved = Date()
@@ -207,37 +206,81 @@ struct healthNow: View {
     var picture: Image
     var description: String
     
+    @State var offset: CGFloat = 0
+    
+    @EnvironmentObject var data: UserData
+    
     var body: some View {
         
-        VStack{
+        VStack(spacing: 0){
+        
+            VStack{
+                
+                ZStack{
+                    
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                        .frame(width: 317, height: 88)
+                        .opacity(0.4)
+                    
+                    picture
+                        .resizable()
+                        .frame(width: 90, height: 90)
+                        .offset(x: -110)
+                    
+                    Text(text)
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundColor(Color.white)
+                        .frame(width: 200, height: 80, alignment: .leading)
+                        .offset(x: 48)
+                    
+                }
+                
+                ZStack{
+                
+                VStack(spacing: 0){
+                    
+                RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                    .frame(width: 317, height: 37)
+                    .opacity(0.4)
+                
+                RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .bottom, endPoint: .top))
+                    .frame(width: 317, height: 51)
+                    .opacity(offset != 0 ? 0.4 : 0)
+                    
+                }
+                    
+                    Text(description)
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(Color.white)
+                        .frame(width: 300, height: 80, alignment: .topLeading)
+                        .offset(y: 4)
+                        .opacity(offset != 0 ? 1 : 0)
+                    
+                }
+                
+            }.offset(y: offset)
+                .onTapGesture(perform: {
+                    
+                    data.healthShown.toggle()
+                    
+                    if offset == 0{
+                        withAnimation(.linear(duration: 0.3)){
+                            self.offset -= 59
+                        }
+                    }
+                    
+                    else{
+                        withAnimation(.linear(duration: 0.3)){
+                            self.offset = 0
+                        }
+                    }
+                    
+                })
             
-            ZStack{
-                
-            RoundedRectangle(cornerRadius: 15)
-                .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                .frame(width: 317, height: 88)
-                .opacity(0.4)
-                
-                picture
-                    .resizable()
-                    .frame(width: 90, height: 90)
-                    .offset(x: -110)
-                
-                Text(text)
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .frame(width: 200, height: 65, alignment: .topLeading)
-                    .offset(x: 48)
-                
-            }
-            
-            RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
-                .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                .frame(width: 317, height: 37)
-                .opacity(0.4)
-            
-
-        }.padding(.bottom, UIScreen.screenHeight * 0.113)
+        }.offset(y: UIScreen.screenHeight * 0.36) // padding from tabBar
         
     }
 }

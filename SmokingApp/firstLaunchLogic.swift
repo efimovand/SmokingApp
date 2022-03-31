@@ -24,6 +24,7 @@ class UserData: ObservableObject {
     @Published var goalPicture = UserDefaults.standard.string(forKey: "goalPicture")
     @Published var beforeScore = UserDefaults.standard.integer(forKey: "beforeScore")
     @Published var beforeMoney = UserDefaults.standard.integer(forKey: "beforeMoney")
+    @Published var healthShown: Bool = false
     @Published var alertGoalShown: Bool = false
     @Published var alertResetShown: Bool = false
 }

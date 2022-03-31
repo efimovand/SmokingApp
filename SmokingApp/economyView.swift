@@ -185,6 +185,7 @@ struct economyView: View {
 
 
 
+
 struct economyView_Previews: PreviewProvider {
     static var previews: some View {
         economyView()

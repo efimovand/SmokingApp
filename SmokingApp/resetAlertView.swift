@@ -55,7 +55,7 @@ struct resetAlertView: View {
                 HStack(spacing: 0){
                     
                     Button(action: {
-                        resetAlertShown.toggle()
+                        resetAlertShown = false
                         data.alertResetShown.toggle()
                     }) {
                         Text("Отмена")
@@ -73,7 +73,7 @@ struct resetAlertView: View {
                         .offset(y: 3)
                     
                     Button(action: {
-                        data.alertResetShown.toggle()
+                        data.alertResetShown = false
                         data.isLaunchedBefore = false
                         UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
                         hardReset.toggle()

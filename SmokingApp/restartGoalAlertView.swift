@@ -69,7 +69,6 @@ struct restartGoalAlertView: View {
                         .offset(y: 3)
                     
                     Button(action: {
-                        alertGoalShown.toggle()
                         data.alertGoalShown.toggle()
                         data.goalName = ""
                         data.goalValue = 0
