@@ -20,11 +20,25 @@ struct mainView: View {
     
     // List of healthNow
     @State var healthCase = [
+        
+        // default
+        healthNow(text: "Здесь будут отображаться сведения об изменениях в организме", picture: Image("heart_1"), description: "С каждым днем все будет только лучше"),
+        
+        // 1 hour
         healthNow(text: "Нормализуется частота сердечных сокращений, начинает снижаться артериальное давление", picture: Image("heartrate"), description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения."),
         
+        // 12 hours
         healthNow(text: "Нормализуется уровень углекислого газа в крови, улучшается снабжение тканей кислородом", picture: Image("co2"), description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения."),
         
-        healthNow(text: "Снижается риск развития инфаркта", picture: Image("heart_3"), description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку")
+        // 1 day
+        healthNow(text: "Снижается риск развития инфаркта", picture: Image("heart_3"), description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку"),
+        
+        // 2 day
+        healthNow(text: "Вкусы и запахи становятся ярче", picture: Image("pie"), description: "В этот период восстанавливаются поврежденные дымом нервные окончания"),
+        
+        // 3 day
+        healthNow(text: "Дышать становится легче", picture: Image("wings"), description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает")
+        
     ]
     
     var body: some View {
@@ -163,11 +177,20 @@ struct mainView: View {
             switch data.score{
                 
             case 0:
-                healthCase[0]
-            case 1...1000:
-                healthCase[1]
+                if data.hours < 12 {
+                    healthCase[1]
+                }
+                else {
+                    healthCase[2]
+                }
+            case 1:
+                healthCase[3]
+            case 2:
+                healthCase[4]
+            case 3:
+                healthCase[4]
             default:
-                Text("")
+                healthCase[5]
                 
             }
             
@@ -232,7 +255,7 @@ struct healthNow: View {
                         .font(.system(size: 15, weight: .bold))
                         .foregroundColor(Color.white)
                         .frame(width: 200, height: 80, alignment: .leading)
-                        .offset(x: 48)
+                        .offset(x: 40)
                     
                 }
                 
@@ -253,9 +276,10 @@ struct healthNow: View {
                 }
                     
                     Text(description)
-                        .font(.system(size: 12, weight: .semibold))
+                        .font(.system(size: 11.8, weight: .semibold))
                         .foregroundColor(Color.white)
-                        .frame(width: 300, height: 80, alignment: .topLeading)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 295, height: 80, alignment: .top)
                         .offset(y: 4)
                         .opacity(offset != 0 ? 1 : 0)
                     
