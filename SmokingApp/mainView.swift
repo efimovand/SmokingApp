@@ -286,23 +286,45 @@ struct healthNow: View {
                 }
                 
             }.offset(y: offset)
-                .onTapGesture(perform: {
-                    
-                    data.healthShown.toggle()
-                    
-                    if offset == 0{
-                        withAnimation(.linear(duration: 0.3)){
-                            self.offset -= 59
-                        }
-                    }
-                    
-                    else{
-                        withAnimation(.linear(duration: 0.3)){
-                            self.offset = 0
-                        }
-                    }
-                    
-                })
+//                .onTapGesture(perform: {
+//
+//                    data.healthShown.toggle()
+//
+//                    if offset == 0{
+//                        withAnimation(.linear(duration: 0.3)){
+//                            self.offset -= 59
+//                        }
+//                    }
+//
+//                    else{
+//                        withAnimation(.linear(duration: 0.3)){
+//                            self.offset = 0
+//                        }
+//                    }
+//
+//                })
+                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                    .onEnded({ value in
+                        
+                        if value.translation.height < 0 || value.translation.height > 0 {
+                                                    
+                            data.healthShown.toggle()
+                            
+                            if offset == 0{
+                                withAnimation(.linear(duration: 0.28)){
+                                    self.offset -= 59
+                                }
+                            }
+                            
+                            else{
+                                withAnimation(.linear(duration: 0.28)){
+                                    self.offset = 0
+                                }
+                            }
+                            
+                                                }
+                        
+                    }))
             
         }.offset(y: UIScreen.screenHeight * 0.36) // padding from tabBar
         
