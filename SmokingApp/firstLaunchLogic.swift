@@ -20,7 +20,7 @@ class UserData: ObservableObject {
     @Published var isGoal = UserDefaults.standard.bool(forKey: "isGoal")
     @Published var goalValue = UserDefaults.standard.integer(forKey: "goalValue")
     @Published var goalName = UserDefaults.standard.string(forKey: "goalName")
-    @Published var freeMoney = UserDefaults.standard.integer(forKey: "freeMoney")
+    @Published var freeMoney = UserDefaults.standard.integer(forKey: "freeMoney") >= 0 ? UserDefaults.standard.integer(forKey: "freeMoney") : 0
     @Published var goalPicture = UserDefaults.standard.string(forKey: "goalPicture")
     @Published var beforeScore = UserDefaults.standard.integer(forKey: "beforeScore")
     @Published var beforeMoney = UserDefaults.standard.integer(forKey: "beforeMoney")

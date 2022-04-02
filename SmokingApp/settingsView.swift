@@ -14,6 +14,7 @@ struct settingsView: View {
     @Binding var settingsShown: Bool
     
     @State var darkMode: Bool = false
+    @State var notifications: Bool = true
     
     @State var resetAlertShown = false
     @State var isLaunchedBefore = UserDefaults.standard.bool(forKey: "isLaunchedBefore")
@@ -38,8 +39,21 @@ struct settingsView: View {
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
                         .frame(width: 137, height: 23, alignment: .top)
+                    
                 }   .padding(.horizontal, 10)
                     .offset(y: -180)
+                
+                // noticications
+                Toggle(isOn: $notifications){
+                    
+                    Text("Уведомления")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 150, height: 23, alignment: .top)
+                    
+                }   .padding(.horizontal, 10)
+                    .offset(y: -120)
                 
                 // language
                 HStack(spacing: 100){
@@ -61,7 +75,7 @@ struct settingsView: View {
                             .clipShape(Capsule())
                     }
                     
-                }.padding(.bottom, 230)
+                }.padding(.bottom, 105)
                 
                 // hard reset
                 Button(action: {

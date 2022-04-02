@@ -56,7 +56,7 @@ struct nowGoalView: View {
                                 .fill(Color.white)
                                 .frame(width: 210, height: 10, alignment: .leading)
                             
-                            if ((data.score * data.dailyEconomy + data.freeMoney + data.beforeMoney) >= data.goalValue){
+                            if ((data.dailyEconomy / 24 * data.hours + data.freeMoney + data.beforeMoney) >= data.goalValue){
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.blue)
                                     .frame(width: 210, height: 10)
@@ -65,7 +65,7 @@ struct nowGoalView: View {
                             else {
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.blue)
-                                    .frame(width: 210 / CGFloat(data.goalValue) * (CGFloat(data.score * data.dailyEconomy) + CGFloat(data.freeMoney) + CGFloat(data.beforeMoney)), height: 10)
+                                    .frame(width: 210 / CGFloat(data.goalValue) * (CGFloat(data.dailyEconomy / 24 * data.hours) + CGFloat(data.freeMoney) + CGFloat(data.beforeMoney)), height: 10)
                                     .opacity(0.6)
                             }
                             
@@ -76,7 +76,7 @@ struct nowGoalView: View {
                 }
                 
                 // completedPicture
-                if ((data.score * data.dailyEconomy + data.freeMoney + data.beforeMoney) >= data.goalValue){
+                if ((data.dailyEconomy / 24 * data.hours + data.freeMoney + data.beforeMoney) >= data.goalValue){
                     
                     Image(systemName: "checkmark.circle")
                         .resizable()
