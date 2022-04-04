@@ -17,6 +17,8 @@ struct economyView: View {
     @State var goalShown = false
     
     @State var height: Float = Float(UIScreen.screenHeight)
+    @State var restartBlurRadius : CGFloat = 0
+    @State var newGoalBlurRadius : CGFloat = 0
     
     var body: some View {
         
@@ -90,7 +92,13 @@ struct economyView: View {
                         }
                         
                     }.offset(y: -56)
-                        .blur(radius: data.alertGoalShown ? 3 : 0)
+                        .blur(radius: restartBlurRadius)
+                        .onChange(of: data.alertGoalShown, perform: { value in
+                            switch value {
+                            case false : withAnimation { restartBlurRadius = 0 }
+                            case true: withAnimation { restartBlurRadius = 3 }
+                            }
+                        })
                     
                     /*
                      // daily+monthly
@@ -167,9 +175,21 @@ struct economyView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: .infinity, height: .infinity, alignment: .center)
                     .edgesIgnoringSafeArea(.all)
-                    .blur(radius: data.alertGoalShown ? 3 : 0))
+                    .blur(radius: restartBlurRadius)
+                    .onChange(of: data.alertGoalShown, perform: { value in
+                        switch value {
+                        case false : withAnimation { restartBlurRadius = 0 }
+                        case true: withAnimation { restartBlurRadius = 3 }
+                        }
+                    }))
                 .statusBar(hidden: height >= 812 ? false : true)
-                .blur(radius: goalShown ? 3 : 0)
+                .blur(radius: newGoalBlurRadius)
+                .onChange(of: goalShown, perform: { value in
+                    switch value {
+                    case false : withAnimation { newGoalBlurRadius = 0 }
+                    case true: withAnimation { newGoalBlurRadius = 3 }
+                    }
+                })
             
             if goalShown {
                 newGoalView(goalShown: $goalShown)

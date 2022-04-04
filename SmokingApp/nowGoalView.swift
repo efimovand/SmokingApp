@@ -14,6 +14,7 @@ struct nowGoalView: View {
     @State var offset: CGFloat = 0
     @State var set: Bool = false
     @State var alertGoalShown = false
+    @State var blurRadius : CGFloat = 0
     
     @AppStorage("freeMoney") var freeMoney: Int = 0
     
@@ -239,7 +240,13 @@ struct nowGoalView: View {
                 
             }
             
-        }.blur(radius: alertGoalShown ? 3 : 0)
+        }.blur(radius: blurRadius)
+                .onChange(of: data.alertGoalShown, perform: { value in
+                    switch value {
+                    case false : withAnimation { blurRadius = 0 }
+                    case true: withAnimation { blurRadius = 3 }
+                    }
+                })
             
             // showing restartGoalAlert
             if alertGoalShown {

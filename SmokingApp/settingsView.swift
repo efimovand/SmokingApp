@@ -18,6 +18,7 @@ struct settingsView: View {
     
     @State var resetAlertShown = false
     @State var isLaunchedBefore = UserDefaults.standard.bool(forKey: "isLaunchedBefore")
+    @State var blurRadius: CGFloat = 0
     
     var body: some View {
         
@@ -99,7 +100,13 @@ struct settingsView: View {
                 }.offset(y: 200)
                 
             }.frame(width: 311, height: 452)
-                .blur(radius: data.alertResetShown ? 3 : 0)
+                .blur(radius: blurRadius)
+                .onChange(of: data.alertResetShown, perform: { value in
+                    switch value {
+                    case false : withAnimation { blurRadius = 0 }
+                    case true: withAnimation { blurRadius = 3 }
+                    }
+                })
             
             // showingResetAlert
             if resetAlertShown {
