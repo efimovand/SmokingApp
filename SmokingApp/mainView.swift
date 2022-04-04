@@ -12,11 +12,12 @@ struct mainView: View {
     
     @EnvironmentObject var data: UserData
     
-    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
-    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    @State var now = Date()
+//    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+//    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+//    @State var now = Date()
     
     @State var height: Float = Float(UIScreen.screenHeight)
+    @State var blurRadius : CGFloat = 0
     
     // List of healthNow
     @State var healthCase = [
@@ -169,7 +170,13 @@ struct mainView: View {
                 
             }
             .offset(y: height >= 812 ? -UIScreen.screenHeight * 0.09 : -UIScreen.screenHeight * 0.12)
-            .blur(radius: data.healthShown ? 3 : 0)
+            .blur(radius: blurRadius)
+            .onChange(of: data.healthShown, perform: { value in
+                switch value {
+                case false : withAnimation { blurRadius = 0 }
+                case true: withAnimation { blurRadius = 3 }
+                }
+            })
             
             Spacer(minLength: UIScreen.screenHeight * 0.09)
             
@@ -203,33 +210,35 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all)
                         .blur(radius: data.healthShown ? 3 : 0))
         .statusBar(hidden: height >= 812 ? false : true)
-           .onAppear(perform: {
-
-                if data.hours > 24 {
-                    UserDefaults.standard.set(false, forKey: "firstDay")
-                    data.firstDay = false
-                }
-                else if (abs(savedHours - now)) > 3600 {
-                    data.hours += Int((abs(savedHours - now)) / 3600)
-                    savedHours = Date()
-                }
-
-                if (abs(saved - now)) > 86400 {
-                    data.score += Int((abs(saved - now)) / 86400)
-                    saved = Date()
-                }
-            })
+//           .onAppear(perform: {
+//
+//                if data.hours > 24 {
+//                    UserDefaults.standard.set(false, forKey: "firstDay")
+//                    data.firstDay = false
+//                }
+//                else if (abs(savedHours - now)) > 3600 {
+//                    data.hours += Int((abs(savedHours - now)) / 3600)
+//                    savedHours = Date()
+//                }
+//
+//                if (abs(saved - now)) > 86400 {
+//                    data.score += Int((abs(saved - now)) / 86400)
+//                    saved = Date()
+//                }
+//            })
         
     }
 }
 
+
+// healthNow struct
 struct healthNow: View {
     
     var text: String
     var picture: Image
     var description: String
     
-    @State var offset: CGFloat = 0
+    @State var size : CGFloat = (UIScreen.screenHeight * 0.374)
     
     @EnvironmentObject var data: UserData
     
@@ -260,76 +269,76 @@ struct healthNow: View {
                 }
                 
                 ZStack{
-                
-                VStack(spacing: 0){
                     
-                RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                    .frame(width: 317, height: 37)
-                    .opacity(0.4)
-                
-                RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .bottom, endPoint: .top))
-                    .frame(width: 317, height: 51)
-                    .opacity(offset != 0 ? 0.4 : 0)
-                    
-                }
+                    VStack(spacing: 0){
+                                        
+                                    RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                                        .frame(width: 317, height: 36)
+                                        .opacity(0.4)
+                                    
+                                    RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
+                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .bottom, endPoint: .top))
+                                        .frame(width: 317, height: 74)
+                                        .opacity(size == UIScreen.screenHeight * 0.374 ? 0 : 0.4)
+                                        
+                                    }
                     
                     Text(description)
-                        .font(.system(size: 11.8, weight: .semibold))
+                        .font(.system(size: 12.5, weight: .semibold))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
-                        .frame(width: 295, height: 80, alignment: .top)
-                        .offset(y: 4)
-                        .opacity(offset != 0 ? 1 : 0)
+                        .frame(width: 295, height: 100, alignment: .top)
+                        .offset(y: 2)
+                        .opacity(size == UIScreen.screenHeight * 0.374 ? 0 : 1)
                     
                 }
                 
-            }.offset(y: offset)
-//                .onTapGesture(perform: {
-//
-//                    data.healthShown.toggle()
-//
-//                    if offset == 0{
-//                        withAnimation(.linear(duration: 0.3)){
-//                            self.offset -= 59
-//                        }
-//                    }
-//
-//                    else{
-//                        withAnimation(.linear(duration: 0.3)){
-//                            self.offset = 0
-//                        }
-//                    }
-//
-//                })
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onEnded({ value in
-                        
-                        if value.translation.height < 0 || value.translation.height > 0 {
-                                                    
-                            data.healthShown.toggle()
-                            
-                            if offset == 0{
-                                withAnimation(.linear(duration: 0.28)){
-                                    self.offset -= 59
-                                }
-                            }
-                            
-                            else{
-                                withAnimation(.linear(duration: 0.28)){
-                                    self.offset = 0
-                                }
-                            }
-                            
-                                                }
-                        
-                    }))
+            }
             
-        }.offset(y: UIScreen.screenHeight * 0.36) // padding from tabBar
+        }.offset(y: size)
+            .gesture(DragGesture()
+                           .onChanged({ (value) in
+                               
+                               if value.translation.height > 0{
+                                   data.healthShown = false
+                                   let temp = UIScreen.screenHeight * 0.374 / 1.4
+                                   self.size = temp + value.translation.height
+                               }
+                               else{
+                                   data.healthShown = true
+                                   let temp = UIScreen.screenHeight * 0.374
+                                   self.size = temp + value.translation.height
+                               }
+                           })
+                           .onEnded({ (value) in
+                               
+                               if value.translation.height > 0{
+                                
+                                   if value.translation.height < -5{
+                                       self.size = UIScreen.screenHeight * 0.374 / 1.4
+                                   }
+                                   else{
+                                       self.size = UIScreen.screenHeight * 0.374
+                                   }
+                               }
+                               else{
+                                   
+                                   if value.translation.height > 5{
+                                       self.size = UIScreen.screenHeight * 0.374
+                                   }
+                                   else{
+                                       self.size = UIScreen.screenHeight * 0.374 / 1.4
+                                   }
+                               }
+                               
+                           })).animation(.spring(), value: size)
         
     }
 }
+
+
+
 
 // RoundedCorners function
 struct RoundedCorners: Shape {
