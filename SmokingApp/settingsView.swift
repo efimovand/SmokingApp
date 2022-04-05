@@ -68,6 +68,7 @@ struct settingsView: View {
                     
                     Button(action: {
                         // change language
+                        hapticTouch(power: "medium")
                     }) {
                         Image("flagRus")
                             .resizable()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct mapView: View {
     
-    @EnvironmentObject var data: UserData // for beforeScore
+    @EnvironmentObject var data: UserData // for maxScoreHours
     
     @Binding var mapShown: Bool
     
@@ -131,7 +131,7 @@ struct youHere: View {
                     .foregroundColor(Color.white)
                 
 //                // switch days
-//                if data.maxScoreHours >= 86400 {
+//                if data.maxScoreHours >= 24 {
 //
 //                    if ((data.maxScoreHours / 24 != 11) && (data.maxScoreHours / 24 % 10 == 1)){
 //                        Text("день")
