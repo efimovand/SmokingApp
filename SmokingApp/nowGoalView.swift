@@ -230,7 +230,6 @@ struct nowGoalView: View {
                         case false : withAnimation(.easeIn(duration: 0.45)) { descriptionOpacity = 0 }
                         case true: withAnimation(.easeInOut(duration: 0.8)) { descriptionOpacity = 1 }
                         }
-                        
                     })
                 
             }.offset(y: size)

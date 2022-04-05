@@ -12,9 +12,9 @@ struct mainView: View {
     
     @EnvironmentObject var data: UserData
     
-    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
-    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    @State var now = Date()
+//    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+//    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+//    @State var now = Date()
     
     @State var height: Float = Float(UIScreen.screenHeight)
     @State var blurRadius : CGFloat = 0
@@ -210,22 +210,22 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all)
                         .blur(radius: data.healthShown ? 3 : 0))
         .statusBar(hidden: height >= 812 ? false : true)
-           .onAppear(perform: {
-
-                if data.hours > 24 {
-                    UserDefaults.standard.set(false, forKey: "firstDay")
-                    data.firstDay = false
-                }
-                else if (abs(savedHours - now)) > 3600 {
-                    data.hours += Int((abs(savedHours - now)) / 3600)
-                    savedHours = Date()
-                }
-
-                if (abs(saved - now)) > 86400 {
-                    data.score += Int((abs(saved - now)) / 86400)
-                    saved = Date()
-                }
-            })
+//           .onAppear(perform: {
+//
+//                if data.hours > 24 {
+//                    UserDefaults.standard.set(false, forKey: "firstDay")
+//                    data.firstDay = false
+//                }
+//                else if (abs(savedHours - now)) > 3600 {
+//                    data.hours += Int((abs(savedHours - now)) / 3600)
+//                    savedHours = Date()
+//                }
+//
+//                if (abs(saved - now)) > 86400 {
+//                    data.score += Int((abs(saved - now)) / 86400)
+//                    saved = Date()
+//                }
+//            })
         
     }
 }
@@ -239,6 +239,7 @@ struct healthNow: View {
     var description: String
     
     @State var size : CGFloat = (UIScreen.screenHeight * 0.374)
+    @State var descriptionOpacity : CGFloat = 0
     
     @EnvironmentObject var data: UserData
     
@@ -248,6 +249,7 @@ struct healthNow: View {
         
             VStack{
                 
+                // healthNow
                 ZStack{
                     
                     RoundedRectangle(cornerRadius: 15)
@@ -260,14 +262,67 @@ struct healthNow: View {
                         .frame(width: 90, height: 90)
                         .offset(x: -110)
                     
-                    Text(text)
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundColor(Color.white)
-                        .frame(width: 200, height: 80, alignment: .leading)
-                        .offset(x: 40)
-                    
+                    switch text.count {
+                        
+                    case 1...10: Text(text)
+                            .font(.system(size: 35, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 11...23: Text(text)
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 24...33: Text(text)
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 34...42: Text(text)
+                            .font(.system(size: 19, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 205, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 43...48: Text(text)
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 49...55: Text(text)
+                            .font(.system(size: 15.5, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 80...119: Text(text)
+                            .font(.system(size: 14.5, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    case 100...120: Text(text)
+                            .font(.system(size: 12.5, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    default: Text(text)
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        
+                    }
+
                 }
                 
+                // description
                 ZStack{
                     
                     VStack(spacing: 0){
@@ -290,7 +345,13 @@ struct healthNow: View {
                         .multilineTextAlignment(.leading)
                         .frame(width: 295, height: 100, alignment: .top)
                         .offset(y: 2)
-                        .opacity(size == UIScreen.screenHeight * 0.374 ? 0 : 1)
+                        .opacity(descriptionOpacity)
+                        .onChange(of: data.healthShown, perform: { value in
+                            switch value {
+                            case false : withAnimation(.easeIn(duration: 0.6)) { descriptionOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            }
+                        })
                     
                 }
                 
