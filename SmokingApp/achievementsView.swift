@@ -70,19 +70,19 @@ struct achievementsView: View {
                             
                             achievement(name: "Первые дивиденды", description: "Сэкономить 500Р", picture: Image("coin"), type: 1, value: 500)
                             
-                            achievement(name: "Идём на снижение", description: "Провести 3 дня без курения", picture: Image("nikotine"), type: 0, value: 3)
+                            achievement(name: "Идём на снижение", description: "Провести 3 дня без курения", picture: Image("nicotine"), type: 0, value: 3)
                             
                             achievement(name: "Денежное дерево", description: "Сэкономить 1000Р", picture: Image("moneytree"), type: 1, value: 1000)
                             
                             achievement(name: "Неделя очищения", description: "Провести 7 дней без курения", picture: Image("wings"), type: 0, value: 7)
                             
-                            achievement(name: "Спорт это жизнь", description: "Избавиться от одышки", picture: Image("walking"), type: 0, value: 1000)
+                            achievement(name: "Спорт это жизнь", description: "Избавиться от одышки", picture: Image("walking_1"), type: 0, value: 1000)
                             
                             achievement(name: "С кем не бывает", description: "Начать вторую попытку", picture: Image("heartballoon"), type: 2, value: 2)
                             
                             achievement(name: "Стонкс", description: "Сэкономить 2500Р", picture: Image("stonks"), type: 1, value: 2500)
                             
-                            achievement(name: "Железная выдержка", description: "Провести 14 дней без курения", picture: Image("yoga"), type: 0, value: 14)
+                            achievement(name: "Железная выдержка", description: "Провести 14 дней без курения", picture: Image("meditation_2"), type: 0, value: 14)
                             
                             achievement(name: "Красивое зеркало", description: "Восстановить состояние кожи", picture: Image("beauty"), type: 0, value: 1000)
                             
