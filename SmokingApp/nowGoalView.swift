@@ -24,7 +24,7 @@ struct nowGoalView: View {
     
     var body: some View {
         
-        VStack(spacing: 0){
+        ZStack{
             
             // nowGoal
             VStack(spacing: 0){
@@ -234,6 +234,10 @@ struct nowGoalView: View {
                     })
                 
             }.offset(y: size)
+                .onTapGesture(perform: {
+                    goalDescriptionShown ? (self.size = UIScreen.screenHeight * 0.048) : (self.size = UIScreen.screenHeight * 0.048 - 90)
+                    goalDescriptionShown.toggle()
+                })
                 .gesture(DragGesture()
                     .onChanged({ (value) in
                         
