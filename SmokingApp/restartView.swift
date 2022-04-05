@@ -13,10 +13,13 @@ struct restartView: View {
     @State var settingsShown = false
     
     @State var height: Float = Float(UIScreen.screenHeight)
+    @State var blurRadius: CGFloat = 0
     
     var body: some View {
         
         ZStack{
+            
+            ZStack{
             
             // Restart
             VStack(spacing: 0){
@@ -44,7 +47,7 @@ struct restartView: View {
                             .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
                             .frame(width: 293, height: 163)
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), lineWidth: 1))
-                            .opacity(alertShown ? 0.2 : 1)
+                            .opacity(alertShown ? 0.5 : 1)
                         
                         Text("Начать заново")
                             .font(.system(size: 36, weight: .bold))
@@ -91,6 +94,15 @@ struct restartView: View {
                 }
             }   .padding(.bottom, height >= 812 ? (UIScreen.screenHeight * 0.79) : (UIScreen.screenHeight * 0.82))
                 .padding(.leading, UIScreen.screenWidth * 0.8)
+            
+            }.blur(radius: blurRadius)
+                .onChange(of: alertShown, perform: { value in
+                    switch value {
+                    case false : withAnimation { blurRadius = 0 }
+                    case true: withAnimation { blurRadius = 3 }
+                    }
+                })
+            
             
             // showingAlert
             if alertShown {

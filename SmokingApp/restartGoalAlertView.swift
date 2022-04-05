@@ -53,6 +53,7 @@ struct restartGoalAlertView: View {
                     Button(action: {
                         alertGoalShown.toggle()
                         data.alertGoalShown.toggle()
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))
@@ -77,6 +78,7 @@ struct restartGoalAlertView: View {
                         data.isGoal = false
                         UserDefaults.standard.set("", forKey: "goalPicture")
                         UserDefaults.standard.set(false, forKey: "isGoal")
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))

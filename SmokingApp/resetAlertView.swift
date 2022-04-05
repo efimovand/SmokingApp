@@ -57,6 +57,7 @@ struct resetAlertView: View {
                     Button(action: {
                         resetAlertShown = false
                         data.alertResetShown.toggle()
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))
@@ -77,6 +78,7 @@ struct resetAlertView: View {
                         data.isLaunchedBefore = false
                         UserDefaults.standard.set(false, forKey: "isLaunchedBefore")
                         hardReset.toggle()
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))

@@ -43,6 +43,7 @@ struct restartAlertView: View {
                     
                     Button(action: {
                         alertShown.toggle()
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Отмена")
                             .font(.system(size: 13.5, weight: .bold))
@@ -74,6 +75,7 @@ struct restartAlertView: View {
                         UserDefaults.standard.set(true, forKey: "firstDay")
                         UserDefaults.standard.set(Date(), forKey: "savedTime")
                         UserDefaults.standard.set(Date(), forKey: "savedHours")
+                        hapticTouch(power: "medium")
                     }) {
                         Text("Подтвердить")
                             .font(.system(size: 13.5, weight: .bold))
