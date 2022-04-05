@@ -13,7 +13,7 @@ struct mapView: View {
     
     @Binding var mapShown: Bool
     
-    @State var testScore: Int = 2
+    @State var testScore: Int = 3
     
     var body: some View {
         
@@ -63,6 +63,7 @@ struct mapView: View {
                         Image("heart_1")
                             .resizable()
                             .frame(width: 200, height: 200)
+                            .overlay((testScore > 2 && testScore < 4) ? youHere() : youHere())
                             
                         }
                         
@@ -96,6 +97,84 @@ struct mapView: View {
         
     }
     
+}
+
+
+// maxScore pin
+struct youHere: View {
+    
+    @EnvironmentObject var data: UserData
+    
+    var body: some View{
+        
+        ZStack{
+            
+            // background
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white)
+                .frame(width: 130, height: 15)
+                .opacity(0.6)
+            
+            // text
+            HStack(spacing: 3){
+                
+                Text("Ваш рекорд: ")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundColor(Color.white)
+                
+                Text( "24" /* String(data.maxScoreHours / 24) */)
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(Color.white)
+                
+                Text("дня")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundColor(Color.white)
+                
+//                // switch days
+//                if data.maxScoreHours >= 86400 {
+//
+//                    if ((data.maxScoreHours / 24 != 11) && (data.maxScoreHours / 24 % 10 == 1)){
+//                        Text("день")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//                    }
+//                    else if (((data.maxScoreHours / 24 != 12) && (data.maxScoreHours / 24 != 13) && (data.maxScoreHours / 24 != 14)) && ((data.maxScoreHours / 24 % 10 == 2) || (data.maxScoreHours / 24 % 10 == 3) || (data.maxScoreHours / 24 % 10 == 4))){
+//                        Text("дня")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//                    }
+//                    else{
+//                        Text("дней")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//                    }
+//
+//                }
+//
+//                // switch hours
+//                else {
+//
+//                    if ((data.maxScoreHours  != 11) && (data.maxScoreHours  % 10 == 1)){
+//                        Text("час")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//                    }
+//                    else if (((data.maxScoreHours  != 12) && (data.maxScoreHours  != 13) && (data.maxScoreHours  != 14)) && ((data.maxScoreHours  % 10 == 2) || (data.maxScoreHours  % 10 == 3) || (data.maxScoreHours  % 10 == 4))){
+//                        Text("часа")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//                    }
+//                    else{
+//                        Text("часов")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//                    }
+//                }
+                
+            }
+            
+        }.offset(y: -90)
+    }
 }
 
 

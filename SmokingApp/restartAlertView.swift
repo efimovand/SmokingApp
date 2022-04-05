@@ -61,6 +61,10 @@ struct restartAlertView: View {
                     
                     Button(action: {
                         alertShown.toggle()
+                        if data.hours >= data.maxScoreHours {
+                            data.maxScoreHours = data.hours
+                            UserDefaults.standard.set(data.hours, forKey: "maxScoreHours")
+                        }
                         data.attempts += 1
                         data.beforeScore += data.score
                         data.beforeMoney += data.hours * (data.dailyEconomy / 24)

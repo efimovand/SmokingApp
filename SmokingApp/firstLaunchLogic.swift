@@ -23,6 +23,7 @@ class UserData: ObservableObject {
     @Published var freeMoney = UserDefaults.standard.integer(forKey: "freeMoney") >= 0 ? UserDefaults.standard.integer(forKey: "freeMoney") : 0
     @Published var goalPicture = UserDefaults.standard.string(forKey: "goalPicture")
     @Published var beforeScore = UserDefaults.standard.integer(forKey: "beforeScore")
+    @Published var maxScoreHours = UserDefaults.standard.integer(forKey: "maxScoreHours")
     @Published var beforeMoney = UserDefaults.standard.integer(forKey: "beforeMoney")
     @Published var healthShown: Bool = false
     @Published var alertGoalShown: Bool = false
