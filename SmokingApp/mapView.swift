@@ -64,84 +64,6 @@ struct mapView: View {
 }
 
 
-// maxScore pin
-struct youHere: View {
-    
-    @EnvironmentObject var data: UserData
-    
-    var body: some View{
-        
-        ZStack{
-            
-            // background
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .frame(width: 140, height: 15)
-                .opacity(0.6)
-            
-            // text
-            HStack(spacing: 3){
-                
-                Text("Ваш рекорд: ")
-                    .font(.system(size: 11, weight: .bold))
-                    .foregroundColor(Color.white)
-                
-                Text(String(data.maxScoreHours / 24))
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundColor(Color.white)
-                
-//                Text("дня")
-//                    .font(.system(size: 11, weight: .bold))
-//                    .foregroundColor(Color.white)
-                
-                // switch days
-                if data.maxScoreHours >= 24 {
-
-                    if ((data.maxScoreHours / 24 != 11) && (data.maxScoreHours / 24 % 10 == 1)){
-                        Text("день")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                    }
-                    else if (((data.maxScoreHours / 24 != 12) && (data.maxScoreHours / 24 != 13) && (data.maxScoreHours / 24 != 14)) && ((data.maxScoreHours / 24 % 10 == 2) || (data.maxScoreHours / 24 % 10 == 3) || (data.maxScoreHours / 24 % 10 == 4))){
-                        Text("дня")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                    }
-                    else{
-                        Text("дней")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                    }
-
-                }
-
-                // switch hours
-                else {
-
-                    if ((data.maxScoreHours  != 11) && (data.maxScoreHours  % 10 == 1)){
-                        Text("час")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                    }
-                    else if (((data.maxScoreHours  != 12) && (data.maxScoreHours  != 13) && (data.maxScoreHours  != 14)) && ((data.maxScoreHours  % 10 == 2) || (data.maxScoreHours  % 10 == 3) || (data.maxScoreHours  % 10 == 4))){
-                        Text("часа")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                    }
-                    else{
-                        Text("часов")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                    }
-                }
-                
-            }
-            
-        }.offset(y: -90)
-    }
-}
-
-
 struct mapPoint: View {
     
     @EnvironmentObject private var data: UserData
@@ -153,12 +75,12 @@ struct mapPoint: View {
     
     @State private var textShown: Bool = false
     @State private var ringOpacity: CGFloat = 0.5
-    @State private var testScore: Int = 100
+//    @State private var testScore: Int = 3
     
     var body: some View{
         
-//        if (data.maxScoreHours / 24) >= number {
-        if testScore >= number {
+        if (data.maxScoreHours / 24) >= number {
+//        if testScore >= number {
             
         ZStack{
             
@@ -200,6 +122,7 @@ struct mapPoint: View {
                 })
 
             
+            // unlocked
             if textShown {
                 
                 ZStack{
@@ -263,7 +186,7 @@ struct mapPoint: View {
                         
                     }
                     
-                }.offset(y: -150)
+                }.offset(y: -165)
                     
                     Button(action: {
                         textShown = false
@@ -301,6 +224,8 @@ struct mapPoint: View {
                     })
                 
                 if textShown {
+                    
+                    ZStack{
                     
                     ZStack{
                         
@@ -342,6 +267,16 @@ struct mapPoint: View {
                         textShown.toggle()
                     })
                     .offset(y: -55)
+                        
+                        Button(action: {
+                            textShown = false
+                        }) {
+                            Rectangle()
+                                .frame(width: .infinity, height: .infinity)
+                                .opacity(0)
+                        }
+                        
+                    }
                     
                 }
                 
@@ -365,12 +300,12 @@ struct mapPointHours: View {
     
     @State private var textShown: Bool = false
     @State private var ringOpacity: CGFloat = 0.5
-    @State private var testScore: Int = 12
+//    @State private var testScore: Int = 12
     
     var body: some View{
         
-//        if (data.maxScoreHours) >= number {
-        if testScore >= number {
+        if data.maxScoreHours >= number {
+//        if testScore >= number {
             
         ZStack{
             
@@ -412,6 +347,7 @@ struct mapPointHours: View {
                 })
 
             
+            // unlocked
             if textShown {
                 
                 ZStack{
@@ -475,7 +411,7 @@ struct mapPointHours: View {
                         
                     }
                     
-                }.offset(y: -150)
+                }.offset(y: -165)
                 
                 Button(action: {
                     textShown = false
@@ -575,6 +511,84 @@ struct mapPointHours: View {
         
     }
     
+}
+
+
+// maxScore pin
+struct youHere: View {
+    
+    @EnvironmentObject var data: UserData
+    
+    var body: some View{
+        
+        ZStack{
+            
+            // background
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white)
+                .frame(width: 140, height: 15)
+                .opacity(0.6)
+            
+            // text
+            HStack(spacing: 3){
+                
+                Text("Ваш рекорд: ")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundColor(Color.white)
+                
+                Text(String(data.maxScoreHours / 24))
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(Color.white)
+                
+//                Text("дня")
+//                    .font(.system(size: 11, weight: .bold))
+//                    .foregroundColor(Color.white)
+                
+                // switch days
+                if data.maxScoreHours >= 24 {
+
+                    if ((data.maxScoreHours / 24 != 11) && (data.maxScoreHours / 24 % 10 == 1)){
+                        Text("день")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.white)
+                    }
+                    else if (((data.maxScoreHours / 24 != 12) && (data.maxScoreHours / 24 != 13) && (data.maxScoreHours / 24 != 14)) && ((data.maxScoreHours / 24 % 10 == 2) || (data.maxScoreHours / 24 % 10 == 3) || (data.maxScoreHours / 24 % 10 == 4))){
+                        Text("дня")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.white)
+                    }
+                    else{
+                        Text("дней")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.white)
+                    }
+
+                }
+
+                // switch hours
+                else {
+
+                    if ((data.maxScoreHours  != 11) && (data.maxScoreHours  % 10 == 1)){
+                        Text("час")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.white)
+                    }
+                    else if (((data.maxScoreHours  != 12) && (data.maxScoreHours  != 13) && (data.maxScoreHours  != 14)) && ((data.maxScoreHours  % 10 == 2) || (data.maxScoreHours  % 10 == 3) || (data.maxScoreHours  % 10 == 4))){
+                        Text("часа")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.white)
+                    }
+                    else{
+                        Text("часов")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.white)
+                    }
+                }
+                
+            }
+            
+        }.offset(y: -90)
+    }
 }
 
 
