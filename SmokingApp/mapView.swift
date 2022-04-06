@@ -9,11 +9,9 @@ import SwiftUI
 
 struct mapView: View {
     
-    @EnvironmentObject var data: UserData // for maxScoreHours
+    @EnvironmentObject var data: UserData
     
     @Binding var mapShown: Bool
-    
-    @State var testScore: Int = 3
     
     var body: some View {
         
@@ -26,68 +24,33 @@ struct mapView: View {
                 .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.white, lineWidth: 10).frame(width: 325, height: 440).opacity(0.8))
             
             // mapNow
-            ScrollView([.horizontal, .vertical] , showsIndicators: true) {
+            ScrollView([.horizontal, .vertical] , showsIndicators: false) {
                 
                 ZStack{
                     
                     // mapBackground
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.red)
+                        .fill(Color.pink)
                         .frame(width: 1200, height: 1200)
                     
                     
-                    // 1 day
-                    ZStack{
-                        
-                        Button(action: {
-                            print("lungs tapped")
-                        }) {
-                            
-                        Image("lungs")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            
-                        }
-                        
-                    }.offset(x: -450, y: 500)
-                    .opacity(testScore >= 1 ? 1 : 0)
+                    mapPointHours(picture: Image("heartrate"), name: "Нормализуется частота сердечных сокращений", description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения", number: 1).offset(x: -460, y: 520)
                     
+                    mapPointHours(picture: Image("co2"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения", number: 12).offset(x: -320, y: 440)
                     
-                    // 2 day
-                    ZStack{
-                        
-                        Button(action: {
-                            print("heart tapped")
-                        }) {
-                            
-                        Image("heart_1")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .overlay((testScore > 2 && testScore < 4) ? youHere() : youHere())
-                            
-                        }
-                        
-                        Rectangle()
-                            .fill(Color.white)
-                            .frame(width: 15, height: 50)
-                            .rotationEffect(.degrees(45))
-                            .offset(x: -65, y: 60)
-                        
-                        Rectangle()
-                            .fill(Color.white)
-                            .frame(width: 15, height: 50)
-                            .rotationEffect(.degrees(45))
-                            .offset(x: -115, y: 105)
-                        
-                    }.offset(x: -250, y: 350)
-                    .opacity(testScore >= 2 ? 1 : 0)
+                    mapPoint(picture: Image("heart_3"), name: "Снижается риск развития инфаркта", description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку", number: 1).offset(x: -200, y: 330)
+                    
+                    mapPoint(picture: Image("pizza"), name: "Вкусы и запахи становятся ярче", description: "В этот период восстанавливаются поврежденные дымом нервные окончания", number: 2).offset(x: -45, y: 380)
+                    
+                    mapPoint(picture: Image("wings"), name: "Дышать становится легче", description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает", number: 3).offset(x: 50, y: 260)
+                    
+                    mapPoint(picture: Image("nicotine"), name: "Запасы никотина в организме истощаются", description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма", number: 4).offset(x: 170, y: 150)
                     
 
                 }.rotationEffect(Angle(degrees: 180))
                     .scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                 
             }.frame(width: 315, height: 430)
-                .background(Color.white)
                 .cornerRadius(10)
                 .rotationEffect(Angle(degrees: 180))
                 .scaleEffect(x: -1.0, y: 1.0, anchor: .center)
@@ -181,23 +144,21 @@ struct youHere: View {
 
 struct mapPoint: View {
     
-    @EnvironmentObject var data: UserData
+    @EnvironmentObject private var data: UserData
     
     @State var picture: Image
     @State var name: String
     @State var description: String
-    @State var textShown: Bool = false
-    @State var number1: Int
-    @State var number2: Int
+    @State var number: Int
     
-    @State var ringOpacity: CGFloat = 0.5
-    
-    @State var testScore: Int = 4
+    @State private var textShown: Bool = false
+    @State private var ringOpacity: CGFloat = 0.5
+    @State private var testScore: Int = 100
     
     var body: some View{
         
-//        if (data.maxScoreHours / 24) >= number 1 {
-        if testScore >= number1 {
+//        if (data.maxScoreHours / 24) >= number {
+        if testScore >= number {
             
         ZStack{
             
@@ -241,6 +202,8 @@ struct mapPoint: View {
             
             if textShown {
                 
+                ZStack{
+                
                 VStack(spacing: 0){
                     
                     ZStack{
@@ -276,14 +239,14 @@ struct mapPoint: View {
                             // text
                             HStack(spacing: 2){
                                 
-                                Text(String(number1))
+                                Text(String(number))
                                     .font(.system(size: 14, weight: .bold))
                                 
-                                if ((number1 != 11) && (number1 % 10 == 1)){
+                                if ((number != 11) && (number % 10 == 1)){
                                     Text("день")
                                         .font(.system(size: 12, weight: .bold))
                                 }
-                                else if (((number1 != 12) && (number1 != 13) && (number1 != 14)) && ((number1 % 10 == 2) || (number1 % 10 == 3) || (number1 % 10 == 4))){
+                                else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
                                     Text("дня")
                                         .font(.system(size: 12, weight: .bold))
                                 }
@@ -294,13 +257,23 @@ struct mapPoint: View {
                                 
                             }
                             
-                        }.offset(x: 90, y: 30)
+                        }.offset(x: 90, y: 31)
                         
                         
                         
                     }
                     
                 }.offset(y: -150)
+                    
+                    Button(action: {
+                        textShown = false
+                    }) {
+                        Rectangle()
+                            .frame(width: .infinity, height: .infinity)
+                            .opacity(0)
+                    }
+                    
+                }
                 
             }
             
@@ -308,15 +281,303 @@ struct mapPoint: View {
             
         }
         
+        // locked
         else {
             
-            //
+            ZStack{
+                
+                // bottom ring
+                Ellipse()
+                    .frame(width: 65, height: 35)
+                    .opacity(0)
+                    .overlay(Ellipse().stroke(Color.gray, lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
+                        switch value {
+                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.7 }
+                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 0.3 }
+                        }
+                    }))
+                    .onTapGesture(perform: {
+                        textShown.toggle()
+                    })
+                
+                if textShown {
+                    
+                    ZStack{
+                        
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.gray)
+                            .frame(width: 100, height: 30)
+                            .opacity(0.8)
+                        
+                        HStack(spacing: 8){
+                            
+                            Image(systemName: "lock.fill")
+                                .resizable()
+                                .frame(width: 16, height: 21)
+                            
+                            // days value
+                            HStack(spacing: 3){
+                                
+                            Text(String(number))
+                                .font(.system(size: 19, weight: .bold))
+                            
+                            if ((number != 11) && (number % 10 == 1)){
+                                Text("день")
+                                    .font(.system(size: 18, weight: .bold))
+                            }
+                            else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
+                                Text("дня")
+                                    .font(.system(size: 18, weight: .bold))
+                            }
+                            else{
+                                Text("дней")
+                                    .font(.system(size: 18, weight: .bold))
+                            }
+                                
+                            }
+                            
+                        }
+                        
+                    }.onTapGesture(perform: {
+                        textShown.toggle()
+                    })
+                    .offset(y: -55)
+                    
+                }
+                
+            }
             
         }
         
     }
     
 }
+
+
+struct mapPointHours: View {
+    
+    @EnvironmentObject private var data: UserData
+    
+    @State var picture: Image
+    @State var name: String
+    @State var description: String
+    @State var number: Int
+    
+    @State private var textShown: Bool = false
+    @State private var ringOpacity: CGFloat = 0.5
+    @State private var testScore: Int = 12
+    
+    var body: some View{
+        
+//        if (data.maxScoreHours) >= number {
+        if testScore >= number {
+            
+        ZStack{
+            
+            // bottom ring
+            Ellipse()
+                .frame(width: 65, height: 35)
+                .opacity(0)
+                .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
+                        switch value {
+                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
+                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        }
+                }))
+            
+            // main button
+                ZStack{
+                    
+                    // shape
+                    RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0)
+                        .fill(Color.red)
+                        .opacity(0)
+                        .overlay(RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0).stroke(Color.white, lineWidth: 5))
+                        .frame(width: 65, height: 65)
+                    
+                    picture
+                        .resizable()
+                        .frame(width: 75, height: 75)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(width: 65, height: 65).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 5)))
+                    
+                    Triangle()
+                        .foregroundColor(Color.white)
+                        .frame(width: 70.6, height: 20)
+                        .rotationEffect(.degrees(180))
+                        .offset(y: 45.1)
+                    
+                }.offset(y: -60)
+                .onTapGesture(perform: {
+                    textShown.toggle()
+                })
+
+            
+            if textShown {
+                
+                ZStack{
+                
+                VStack(spacing: 0){
+                    
+                    ZStack{
+                        
+                        RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0)
+                            .fill((Color.white).opacity(0.8))
+                            .frame(width: 250, height: 40)
+                        
+                        Text(name)
+                            .font(.system(size: 13, weight: .bold))
+                            .frame(width: 250, height: 35, alignment: .center)
+                        
+                    }
+                    
+                    ZStack{
+                        
+                        RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10)
+                            .fill((Color.white).opacity(0.6))
+                            .frame(width: 250, height: 90)
+                        
+                        Text(description)
+                            .font(.system(size: 11, weight: .semibold))
+                            .frame(width: 235, height: 80, alignment: .topLeading)
+                        
+                        // days value
+                        ZStack{
+                            
+                            // background
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color("a39cf4"))
+                                .frame(width: 70, height: 28)
+                            
+                            // text
+                            HStack(spacing: 2){
+                                
+                                Text(String(number))
+                                    .font(.system(size: 13.5, weight: .bold))
+                                
+                                if ((number != 11) && (number % 10 == 1)){
+                                    Text("час")
+                                        .font(.system(size: 13, weight: .bold))
+                                }
+                                else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
+                                    Text("часа")
+                                        .font(.system(size: 13, weight: .bold))
+                                }
+                                else{
+                                    Text("часов")
+                                        .font(.system(size: 13, weight: .bold))
+                                }
+                                
+                            }
+                            
+                        }.offset(x: 90, y: 31)
+                        
+                        
+                        
+                    }
+                    
+                }.offset(y: -150)
+                
+                Button(action: {
+                    textShown = false
+                }) {
+                    Rectangle()
+                        .frame(width: .infinity, height: .infinity)
+                        .opacity(0)
+                }
+                
+            }
+                
+            }
+            
+        }
+            
+        }
+        
+        // locked
+        else {
+            
+            ZStack{
+                
+                // bottom ring
+                Ellipse()
+                    .frame(width: 65, height: 35)
+                    .opacity(0)
+                    .overlay(Ellipse().stroke(Color.gray, lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
+                        switch value {
+                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.7 }
+                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 0.3 }
+                        }
+                    }))
+                    .onTapGesture(perform: {
+                        textShown.toggle()
+                    })
+                
+                if textShown {
+                    
+                    ZStack{
+                    
+                    ZStack{
+                        
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.gray)
+                            .frame(width: 100, height: 30)
+                            .opacity(0.8)
+                        
+                        HStack(spacing: 5){
+                            
+                            Image(systemName: "lock.fill")
+                                .resizable()
+                                .frame(width: 16, height: 21)
+                            
+                            // days value
+                            HStack(spacing: 2){
+                                
+                            Text(String(number))
+                                .font(.system(size: 16, weight: .bold))
+                            
+                            if ((number != 11) && (number % 10 == 1)){
+                                Text("час")
+                                    .font(.system(size: 15, weight: .bold))
+                            }
+                            else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
+                                Text("часа")
+                                    .font(.system(size: 15, weight: .bold))
+                            }
+                            else{
+                                Text("часов")
+                                    .font(.system(size: 15, weight: .bold))
+                            }
+                                
+                            }
+                            
+                        }
+                        
+                    }.onTapGesture(perform: {
+                        textShown.toggle()
+                    })
+                    .offset(y: -60)
+                        
+                        Button(action: {
+                            textShown = false
+                        }) {
+                            Rectangle()
+                                .frame(width: .infinity, height: .infinity)
+                                .opacity(0)
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+
 
 
 // triangle shape
@@ -331,7 +592,6 @@ struct Triangle: Shape {
     }
 }
 
-
 // modifier for disabling ScrollView bounce
 struct SomeModifier: ViewModifier {
     init() {
@@ -345,11 +605,11 @@ struct SomeModifier: ViewModifier {
 
 struct mapView_Previews: PreviewProvider {
     static var previews: some View {
-//        mapView(mapShown: .constant(false))
-//            .environmentObject(UserData())
-//            .preferredColorScheme(.dark)
-        mapPoint(picture: Image("lungs"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения.", number1: 4, number2: 6)
-            .preferredColorScheme(.dark)
+        mapView(mapShown: .constant(false))
             .environmentObject(UserData())
+            .preferredColorScheme(.dark)
+//        mapPoint(picture: Image("lungs"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения.", number: 4)
+//            .preferredColorScheme(.dark)
+//            .environmentObject(UserData())
     }
 }
