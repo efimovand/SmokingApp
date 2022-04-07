@@ -41,14 +41,15 @@ struct achievementsView: View {
                     
                     Rectangle()
                         .fill(Color(red: 1, green: 1, blue: 1, opacity: 0.40))
-                        .frame(width: UIScreen.screenWidth, height: 52)
+                        .frame(width: UIScreen.screenWidth, height: 62)
                         .border(LinearGradient(gradient: Gradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 0.60), Color(red: 1, green: 1, blue: 1, opacity: 0.30)]), startPoint: .trailing, endPoint: .leading), width: 1)
                     
                     Text("Достижения")
                         .foregroundColor(Color.white)
                         .font(.system(size: 28, weight: .heavy))
                         .multilineTextAlignment(.center)
-                        .frame(width: 252, height: 27, alignment: .center)
+                        .frame(width: UIScreen.screenWidth, height: 62, alignment: .center)
+                        .offset(y: 5)
                     
                 }
                 
@@ -114,9 +115,7 @@ struct achievementsView: View {
                 
                 
             }
-            .frame(width: UIScreen.screenWidth, height: height >= 812 ? UIScreen.screenHeight * 0.7881 : UIScreen.screenHeight * 0.82)
-            
-            //Spacer(minLength: UIScreen.screenHeight * 0.113)
+            .frame(width: UIScreen.screenWidth, height: height >= 812 ? UIScreen.screenHeight * 0.7881 : UIScreen.screenHeight * 0.8045)
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.top, height >= 812 ? CGFloat(height * 0.084) : CGFloat(height * 0.062))

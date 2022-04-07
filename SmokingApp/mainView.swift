@@ -243,8 +243,9 @@ struct healthNow: View {
     var picture: Image
     var description: String
     
-    @State var size : CGFloat = (UIScreen.screenHeight * 0.374)
+    @State var size : CGFloat = (UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.374 : UIScreen.screenHeight * 0.37745)
     @State var descriptionOpacity : CGFloat = 0
+    @State var height: Float = Float(UIScreen.screenHeight)
     
     @EnvironmentObject var data: UserData
     
@@ -340,7 +341,7 @@ struct healthNow: View {
                                     RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
                                         .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .bottom, endPoint: .top))
                                         .frame(width: 317, height: 74)
-                                        .opacity(size == UIScreen.screenHeight * 0.374 ? 0 : 0.4)
+                                        .opacity(size == UIScreen.screenHeight * 0.374 || size == UIScreen.screenHeight * 0.37745 ? 0 : 0.4)
                                         
                                     }
                     
@@ -364,11 +365,26 @@ struct healthNow: View {
             
         }.offset(y: size)
             .onTapGesture(perform: {
+                
+                if height >= 812 {
+                    
                 data.healthShown ? (self.size = UIScreen.screenHeight * 0.374) : (self.size = UIScreen.screenHeight * 0.374 / 1.4)
                 data.healthShown.toggle()
+                    
+                }
+                
+                else {
+                    
+                    data.healthShown ? (self.size = UIScreen.screenHeight * 0.37745) : (self.size = UIScreen.screenHeight * 0.37745 / 1.5)
+                    data.healthShown.toggle()
+                    
+                }
+                
             })
             .gesture(DragGesture()
                            .onChanged({ (value) in
+                               
+                               if height >= 812 {
                                
                                if value.translation.height > 0{
                                    data.healthShown = false
@@ -380,8 +396,28 @@ struct healthNow: View {
                                    let temp = UIScreen.screenHeight * 0.374
                                    self.size = temp + value.translation.height
                                }
+                                   
+                               }
+                               
+                               else {
+                                   
+                                   if value.translation.height > 0{
+                                       data.healthShown = false
+                                       let temp = UIScreen.screenHeight * 0.37745 / 1.5
+                                       self.size = temp + value.translation.height
+                                   }
+                                   else{
+                                       data.healthShown = true
+                                       let temp = UIScreen.screenHeight * 0.37745
+                                       self.size = temp + value.translation.height
+                                   }
+                                   
+                               }
+                               
                            })
                            .onEnded({ (value) in
+                               
+                               if height >= 812 {
                                
                                if value.translation.height > 0{
                                 
@@ -400,6 +436,31 @@ struct healthNow: View {
                                    else{
                                        self.size = UIScreen.screenHeight * 0.374 / 1.4
                                    }
+                               }
+                                   
+                               }
+                               
+                               else {
+                                   
+                                   if value.translation.height > 0{
+                                    
+                                       if value.translation.height < -5{
+                                           self.size = UIScreen.screenHeight * 0.37745 / 1.5
+                                       }
+                                       else{
+                                           self.size = UIScreen.screenHeight * 0.37745
+                                       }
+                                   }
+                                   else{
+                                       
+                                       if value.translation.height > 5{
+                                           self.size = UIScreen.screenHeight * 0.37745
+                                       }
+                                       else{
+                                           self.size = UIScreen.screenHeight * 0.37745 / 1.5
+                                       }
+                                   }
+                                   
                                }
                                
                            })).animation(.spring(), value: size)
