@@ -11,10 +11,10 @@ import Foundation
 struct mainView: View {
     
     @EnvironmentObject var data: UserData
-    
     @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
     @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
     @State var now = Date()
+    
     
     @State var height: Float = Float(UIScreen.screenHeight)
     @State var blurRadius : CGFloat = 0
@@ -22,23 +22,57 @@ struct mainView: View {
     // List of healthNow
     @State var healthCase = [
         
-        // default
+        // default [0]
         healthNow(text: "Здесь будут отображаться сведения об изменениях в организме", picture: Image("heart_1"), description: "С каждым днем все будет только лучше"),
         
-        // 1 hour
+        // 1 hour [1]
         healthNow(text: "Нормализуется частота сердечных сокращений, начинает снижаться артериальное давление", picture: Image("heartrate"), description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начинают двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения."),
         
-        // 12 hours
+        // 12 hours [2]
         healthNow(text: "Нормализуется уровень углекислого газа в крови, улучшается снабжение тканей кислородом", picture: Image("co2"), description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения."),
         
-        // 1 day
+        // 1 day [3]
         healthNow(text: "Снижается риск развития инфаркта", picture: Image("heart_3"), description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку"),
         
-        // 2 day
-        healthNow(text: "Вкусы и запахи становятся ярче", picture: Image("pie"), description: "В этот период восстанавливаются поврежденные дымом нервные окончания"),
+        // 2 days [4]
+        healthNow(text: "Вкусы и запахи становятся ярче", picture: Image("pie"), description: "В этот период восстанавливаются поврежденные дымом нервные окончания."),
         
-        // 3 day
-        healthNow(text: "Дышать становится легче", picture: Image("wings"), description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает")
+        // 3 days [5]
+        healthNow(text: "Дышать становится легче", picture: Image("wings"), description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает."),
+        
+        // 4 days [6]
+        healthNow(text: "Запасы никотина в организме истощаются", picture: Image("nicotine"), description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма."),
+        
+        // 6 days [7]
+        healthNow(text: "Улучшается кровообращение и работа легких", picture: Image("lungs"), description: "-"),
+        
+        // 7 days [8]
+        healthNow(text: "Зависимость ослабевает", picture: Image("handcuffs"), description: "Этап в одну неделю важен не только для вашего здоровья, но и для успешного отказа от курения в долгосрочной перспективе. Курильщики, которые успешно выдерживают одну неделю без курения, в девять раз чаще успешно бросают курить."),
+        
+        // 14 days [9]
+        healthNow(text: "Повседневные физические нагрузки проходят легче", picture: Image("walking"), description: "Это происходит благодаря улучшению кровообращения и оксигенации, так как функционирование легких улучшается примерно на 30 процентов - университет Мичигана."),
+        
+        // 30 days [10]
+        healthNow(text: "Восстанавливается нормальное функционирование легких", picture: Image("lungs"), description: "Уменьшается кашель и одышка. Повышается физическая выносливость организма."),
+        
+        // 30 days [11]
+        healthNow(text: "Повышается уровень энергии", picture: Image("battery"), description: "Вы также можете заметить, что многие симптомы, связанные с курением, уменьшились. Например, заложенность носовых пазух и одышка при физических нагрузках."),
+        
+        // 30 days [12]
+        healthNow(text: "Укрепление иммунитета", picture: Image("virus"), description: "Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций."),
+        
+        // 30-90 days [13]
+        healthNow(text: "Кислородный обмен продолжает улучшаться", picture: Image("medicalreport"), description: "-"),
+        
+        // 90 days [14]
+        healthNow(text: "Увеличивается уровень фертильности", picture: Image("baby"), description: "Репродуктивная функция улучшается, снижается риск преждевременных родов."),
+        
+        // 180 days [15]
+        healthNow(text: "Повышается стрессоустойчивость", picture: Image("yoga"), description: "Вы можете переносить стрессовые ситуации без потребности в курении."),
+        
+        // 180 days [16]
+        healthNow(text: "Снижается уровень слизи и мокроты в легких", picture: Image("lungs"), description: "Дыхательные пути гораздо меньше воспаляются без постоянного воздействия и содержащихся в нем химических веществ."),
+        
         
     ]
     
@@ -195,9 +229,24 @@ struct mainView: View {
             case 2:
                 healthCase[4]
             case 3:
-                healthCase[4]
-            default:
                 healthCase[5]
+            case 4:
+                healthCase[6]
+            case 6:
+                healthCase[7]
+            case 7:
+                healthCase[8]
+            case 14:
+                healthCase[9]
+            case 30:
+                healthCase[10] // 10 or 11 or 12
+            // case 30...90: healthCase[13]
+            case 90:
+                healthCase[14]
+            case 180:
+                healthCase[15] // 15 or 16
+            default:
+                healthCase[0]
                 
             }
             
@@ -225,14 +274,15 @@ struct mainView: View {
                     data.score += Int((abs(saved - now)) / 86400)
                     saved = Date()
                 }
-               
+
                if data.hours >= data.maxScoreHours {
                    data.maxScoreHours = data.hours
                }
-               
+
             })
         
     }
+    
 }
 
 
@@ -345,19 +395,104 @@ struct healthNow: View {
                                         
                                     }
                     
-                    Text(description)
-                        .font(.system(size: 12.5, weight: .semibold))
+                    switch description.count {
+                        
+                    case 65...75: Text(description)
+                            .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
-                        .frame(width: 295, height: 100, alignment: .top)
-                        .offset(y: 2)
+                        .frame(width: 295, height: 100, alignment: .topLeading)
+                        .offset(x: 3, y: 2)
                         .opacity(descriptionOpacity)
                         .onChange(of: data.healthShown, perform: { value in
                             switch value {
-                            case false : withAnimation(.easeIn(duration: 0.6)) { descriptionOpacity = 0 }
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
                             case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
                             }
                         })
+                        
+                    case 110...120: Text(description)
+                            .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 295, height: 100, alignment: .top)
+                        .offset(y: 7)
+                        .opacity(descriptionOpacity)
+                        .onChange(of: data.healthShown, perform: { value in
+                            switch value {
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            }
+                        })
+                        
+                    case 150...165: Text(description)
+                            .font(.system(size: 14.8, weight: .semibold))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 295, height: 100, alignment: .center)
+                        .offset(y: -3)
+                        .opacity(descriptionOpacity)
+                        .onChange(of: data.healthShown, perform: { value in
+                            switch value {
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            }
+                        })
+                        
+                    case 166...189: Text(description)
+                            .font(.system(size: 13.9, weight: .semibold))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: 295, height: 100, alignment: .center)
+                        .opacity(descriptionOpacity)
+                        .onChange(of: data.healthShown, perform: { value in
+                            switch value {
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            }
+                        })
+                        
+                    case 190...205: Text(description)
+                            .font(.system(size: 13.5, weight: .semibold))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: 295, height: 100, alignment: .top)
+                            .opacity(descriptionOpacity)
+                            .onChange(of: data.healthShown, perform: { value in
+                                switch value {
+                                case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
+                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                                }
+                            })
+                        
+                    case 206...230: Text(description)
+                            .font(.system(size: 12.8, weight: .semibold))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: 295, height: 100, alignment: .top)
+                            .offset(y: 2)
+                            .opacity(descriptionOpacity)
+                            .onChange(of: data.healthShown, perform: { value in
+                                switch value {
+                                case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
+                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                                }
+                            })
+                        
+                    default: Text(description)
+                            .font(.system(size: 14.5, weight: .semibold))
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: 295, height: 100, alignment: .top)
+                            .opacity(descriptionOpacity)
+                            .onChange(of: data.healthShown, perform: { value in
+                                switch value {
+                                case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
+                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                                }
+                            })
+                        
+                    }
                     
                 }
                 
@@ -522,8 +657,15 @@ extension Date {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        mainView()
+//        mainView()
+//            .environmentObject(UserData())
+        
+        healthNow(text: "Здесь будут отображаться сведения об изменениях в организме", picture: Image("heart_1"), description: "Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций.")
             .environmentObject(UserData())
+            .background(Image("background")
+                .resizable()
+                .frame(width: 830, height: 830))
+        
     }
 }
 
@@ -554,7 +696,7 @@ struct ContentView_Previews: PreviewProvider {
 
 3 день:
 Дышать становится легче (wings)
-(Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает)
+(Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает.)
 
 
 4 день:
@@ -581,10 +723,10 @@ struct ContentView_Previews: PreviewProvider {
 (Уменьшается кашель и одышка. Повышается физическая выносливость организма)
 
 Повышается уровень энергии (battery / energy)
-(Вы также можете заметить, что многие симптомы, связанные с курением, уменьшились, например, заложенность носовых пазух и одышка при физических нагрузках.)
+(Вы также можете заметить, что многие симптомы, связанные с курением, уменьшились, например, заложенность носовых пазух и одышка при физических нагрузках)
 
 Укрепление иммунитета (virus)
-(Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций.)
+(Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций)
 
 
 30-90 день:
@@ -593,7 +735,7 @@ struct ContentView_Previews: PreviewProvider {
 
 90 дней:
 Увеличивается уровень фертильности (baby)
-(Репродуктивная функция улучшается, снижается риск преждевременных родов.)
+(Репродуктивная функция улучшается, снижается риск преждевременных родов)
 
 
 180 дней:
@@ -601,7 +743,7 @@ struct ContentView_Previews: PreviewProvider {
 (Вы можете переносить стрессовые ситуации без потребности в курении)
 
 Снижается уровень слизи и мокроты в легких (lungs)
-(Дыхательные пути гораздо меньше воспаляются без постоянного воздействия и содержащихся в нем химических веществ.)
+(Дыхательные пути гораздо меньше воспаляются без постоянного воздействия и содержащихся в нем химических веществ)
  
  */
 

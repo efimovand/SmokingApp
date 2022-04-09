@@ -141,7 +141,7 @@ struct mapView: View {
                 .cornerRadius(10)
                 .rotationEffect(Angle(degrees: 180))
                 .scaleEffect(x: -1.0, y: 1.0, anchor: .center)
-                .modifier(SomeModifier())
+                .modifier(bounceOff())
             
             
         }
@@ -702,19 +702,6 @@ struct mapPointHours: View {
 
 
 
-
-// triangle shape
-struct Triangle: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
-        return path
-    }
-}
-
 // line shape
 struct Line: Shape {
     func path(in rect: CGRect) -> Path {
@@ -730,8 +717,22 @@ struct Line: Shape {
     }
 }
 
+
+// triangle shape
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        return path
+    }
+}
+
+
 // modifier for disabling ScrollView bounce
-struct SomeModifier: ViewModifier {
+struct bounceOff: ViewModifier {
     init() {
         UIScrollView.appearance().bounces = false
     }

@@ -114,8 +114,7 @@ struct achievementsView: View {
                 }
                 
                 
-            }
-            .frame(width: UIScreen.screenWidth, height: height >= 812 ? UIScreen.screenHeight * 0.7881 : UIScreen.screenHeight * 0.8045)
+            }.frame(width: UIScreen.screenWidth, height: height >= 812 ? UIScreen.screenHeight * 0.7881 : UIScreen.screenHeight * 0.8045)
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.top, height >= 812 ? CGFloat(height * 0.084) : CGFloat(height * 0.062))
