@@ -33,18 +33,47 @@ struct mapView: View {
                         .fill(Color.pink)
                         .frame(width: 1200, height: 1200)
                     
+                    // List of points 1
+                    Group{
+                        
+                        mapPointHours(picture: Image("heartrate"), name: "Нормализуется частота сердечных сокращений", description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения", number: 1).offset(x: -460, y: 520)
+                        
+                        mapPointHours(picture: Image("co2"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения", number: 12).offset(x: -320, y: 440)
+                        
+                        mapPoint(picture: Image("heart_3"), name: "Снижается риск развития инфаркта", description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку", number: 1).offset(x: -182, y: 356)
+                        
+                        mapPoint(picture: Image("pizza"), name: "Вкусы и запахи становятся ярче", description: "В этот период восстанавливаются поврежденные дымом нервные окончания", number: 2).offset(x: 14, y: 428)
+                        
+                        mapPoint(picture: Image("wings"), name: "Дышать становится легче", description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает", number: 3).offset(x: 175, y: 308)
+                        
+                        mapPoint(picture: Image("nicotine"), name: "Запасы никотина в организме истощаются", description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма", number: 4).offset(x: 340, y: 193)
+                        
+                        mapPoint(picture: Image("lungs"), name: "Улучшается кровообращение и работа легких", description: "-", number: 6).offset(x: 370, y: 150)
+                        
+                        mapPoint(picture: Image("handcuffs"), name: "Зависимость ослабевает", description: "Этап в одну неделю важен не только для вашего здоровья, но и для успешного отказа от курения в долгосрочной перспективе. Курильщики, которые успешно выдерживают одну неделю без курения, в девять раз чаще успешно бросают курить", number: 7).offset(x: 370, y: 150)
+                        
+                        mapPoint(picture: Image("walking"), name: "Повседневные физические нагрузки проходят легче", description: "Это происходит благодаря улучшению кровообращения и оксигенации, так как функционирование легких улучшается примерно на 30 процентов - университет Мичигана", number: 14).offset(x: 370, y: 150)
+                        
+//                        mapPoint(picture: Image("lungs"), name: "Восстанавливается нормальное функционирование легких", description: "Уменьшается кашель и одышка. Повышается физическая выносливость организма", number: 30).offset(x: 370, y: 150)
+                        
+                    }
                     
-                    mapPointHours(picture: Image("heartrate"), name: "Нормализуется частота сердечных сокращений", description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения", number: 1).offset(x: -460, y: 520)
-                    
-                    mapPointHours(picture: Image("co2"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения", number: 12).offset(x: -320, y: 440)
-                    
-                    mapPoint(picture: Image("heart_3"), name: "Снижается риск развития инфаркта", description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку", number: 1).offset(x: -182, y: 356)
-                    
-                    mapPoint(picture: Image("pizza"), name: "Вкусы и запахи становятся ярче", description: "В этот период восстанавливаются поврежденные дымом нервные окончания", number: 2).offset(x: 14, y: 428)
-                    
-                    mapPoint(picture: Image("wings"), name: "Дышать становится легче", description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает", number: 3).offset(x: 250, y: 260)
-                    
-                    mapPoint(picture: Image("nicotine"), name: "Запасы никотина в организме истощаются", description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма", number: 4).offset(x: 370, y: 150)
+                    // List of points 2
+                    Group {
+                        
+                        mapPoint(picture: Image("battery"), name: "Повышается уровень энергии", description: "Вы также можете заметить, что многие симптомы, связанные с курением, уменьшились. Например, заложенность носовых пазух и одышка при физических нагрузках", number: 30).offset(x: 370, y: 150)
+//                        
+//                        mapPoint(picture: Image("virus"), name: "Укрепление иммунитета", description: "Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций", number: 30).offset(x: 370, y: 150)
+                        
+//                        mapPoint(picture: Image("medicalReport"), name: "Кислородный обмен продолжает улучшаться", description: "-", number: 30).offset(x: 370, y: 150)
+                        
+                        mapPoint(picture: Image("baby"), name: "Увеличивается уровень фертильности", description: "Репродуктивная функция улучшается, снижается риск преждевременных родов", number: 90).offset(x: 370, y: 150)
+                        
+                        mapPoint(picture: Image("yoga"), name: "Повышается стрессоустойчивость", description: "Вы можете переносить стрессовые ситуации без потребности в курении", number: 180).offset(x: 370, y: 150)
+                        
+                        mapPoint(picture: Image("lungs"), name: "Снижается уровень слизи и мокроты в легких", description: "Дыхательные пути гораздо меньше воспаляются без постоянного воздействия и содержащихся в нем химических веществ", number: 90).offset(x: 370, y: 150)
+                        
+                    }
                     
                     //mapPin().offset(x: -460, y: 520)
                     
@@ -130,6 +159,74 @@ struct mapView: View {
                                 .foregroundColor(data.maxScoreHours > 40 ? Color.white : Color.gray)
                             
                         }.offset(x: -150, y: 420)
+                        
+                        // 4 stack
+                        ZStack{
+                            
+                            // 1 (> 48 hours)
+                            Line()
+                                .frame(width: 80, height: 145)
+                                .scaleEffect(0.45)
+                                .scaleEffect(y: 0.15)
+                                .scaleEffect(y: -1)
+                                .rotationEffect(.degrees(135))
+                                .offset(x: 20, y: -15)
+                                .foregroundColor(data.maxScoreHours > 48 ? Color.white : Color.gray)
+                            
+                            // 2 (> 56 hours)
+                            Line()
+                                .frame(width: 82, height: 145)
+                                .scaleEffect(0.45)
+                                .scaleEffect(y: 0.15)
+                                .rotationEffect(.degrees(135))
+                                .offset(x: 49, y: -45)
+                                .foregroundColor(data.maxScoreHours > 56 ? Color.white : Color.gray)
+                            
+                            // 3 (> 64 hours)
+                            Line()
+                                .frame(width: 82, height: 145)
+                                .scaleEffect(0.45)
+                                .scaleEffect(y: 0.15)
+                                .scaleEffect(y: -1)
+                                .rotationEffect(.degrees(135))
+                                .offset(x: 80, y: -74)
+                                .foregroundColor(data.maxScoreHours > 64 ? Color.white : Color.gray)
+                            
+                        }.offset(x: 46, y: 415)
+                        
+                        // 5 stack
+                        ZStack{
+                            
+                            // 1 (> 72 hours)
+                            Line()
+                                .frame(width: 150, height: 132)
+                                .scaleEffect(0.24)
+                                .scaleEffect(y: 0.3)
+                                .scaleEffect(y: -1)
+                                .rotationEffect(.degrees(-43))
+                                .offset(x: -16, y: -6)
+                                .foregroundColor(data.maxScoreHours > 72 ? Color.white : Color.gray)
+                            
+                            // 2 (> 80 hours)
+                            Line()
+                                .frame(width: 150, height: 134)
+                                .scaleEffect(0.24)
+                                .scaleEffect(y: 0.3)
+                                .rotationEffect(.degrees(-43))
+                                .offset(x: 15, y: -33)
+                                .foregroundColor(data.maxScoreHours > 80 ? Color.white : Color.gray)
+                            
+                            // 3 (> 88 hours)
+                            Line()
+                                .frame(width: 150, height: 132)
+                                .scaleEffect(0.24)
+                                .scaleEffect(y: 0.3)
+                                .scaleEffect(y: -1)
+                                .rotationEffect(.degrees(-43))
+                                .offset(x: 45, y: -62)
+                                .foregroundColor(data.maxScoreHours > 88 ? Color.white : Color.gray)
+                            
+                        }.offset(x: 242, y: 284)
                         
                     }
                     
@@ -265,6 +362,7 @@ struct mapPoint: View {
     
     var body: some View{
         
+        // unlocked
         if (data.maxScoreHours / 24) >= number {
 //                    if testScore >= number {
             
@@ -308,7 +406,6 @@ struct mapPoint: View {
                     })
                 
                 
-                // unlocked
                 if textShown {
                     
                     ZStack{
@@ -401,7 +498,7 @@ struct mapPoint: View {
                     .opacity(0)
                     .overlay(Ellipse().stroke(Color.gray, lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
                         switch value {
-                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.7 }
+                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
                         case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 0.3 }
                         }
                     }))
@@ -626,7 +723,7 @@ struct mapPointHours: View {
                     .opacity(0)
                     .overlay(Ellipse().stroke(Color.gray, lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
                         switch value {
-                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.7 }
+                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
                         case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 0.3 }
                         }
                     }))
