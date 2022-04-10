@@ -36,12 +36,12 @@ struct mapView: View {
                     // List of points 1
                     Group{
                         
-                        mapPointHours(picture: Image("heartrate"), name: "Нормализуется частота сердечных сокращений", description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения", number: 1).offset(x: -460, y: 520)
+                        mapPoint(picture: Image("heart_3"), name: "Снижается риск развития инфаркта", description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку", number: 1).offset(x: -182, y: 356)
                         
                         mapPointHours(picture: Image("co2"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения", number: 12).offset(x: -320, y: 440)
                         
-                        mapPoint(picture: Image("heart_3"), name: "Снижается риск развития инфаркта", description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку", number: 1).offset(x: -182, y: 356)
-                        
+                        mapPointHours(picture: Image("heartrate"), name: "Нормализуется частота сердечных сокращений", description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начнут двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения", number: 1).offset(x: -460, y: 520)
+
                         mapPoint(picture: Image("pizza"), name: "Вкусы и запахи становятся ярче", description: "В этот период восстанавливаются поврежденные дымом нервные окончания", number: 2).offset(x: 14, y: 428)
                         
                         mapPoint(picture: Image("wings"), name: "Дышать становится легче", description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает", number: 3).offset(x: 175, y: 308)
@@ -587,7 +587,8 @@ struct mapPointHours: View {
     
     var body: some View{
         
-        if data.maxScoreHours >= number {
+        // unlocked
+        if data.maxScoreHours <= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -602,6 +603,7 @@ struct mapPointHours: View {
                         case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
                         }
                     }))
+                    .zIndex(1)
                 
                 // main button
                 ZStack{
@@ -628,9 +630,9 @@ struct mapPointHours: View {
                     .onTapGesture(perform: {
                         textShown.toggle()
                     })
+                    .zIndex(2)
                 
                 
-                // unlocked
                 if textShown {
                     
                     ZStack{
@@ -658,46 +660,89 @@ struct mapPointHours: View {
                                 Text(description)
                                     .font(.system(size: 11, weight: .semibold))
                                     .frame(width: 235, height: 80, alignment: .topLeading)
-                                
-                                // days value
-                                ZStack{
-                                    
-                                    // background
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color("a39cf4"))
-                                        .frame(width: 70, height: 28)
-                                    
-                                    // text
-                                    HStack(spacing: 2){
-                                        
-                                        Text(String(number))
-                                            .font(.system(size: 13.5, weight: .bold))
-                                        
-                                        if ((number != 11) && (number % 10 == 1)){
-                                            Text("час")
-                                                .font(.system(size: 13, weight: .bold))
-                                        }
-                                        else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
-                                            Text("часа")
-                                                .font(.system(size: 13, weight: .bold))
-                                        }
-                                        else{
-                                            Text("часов")
-                                                .font(.system(size: 13, weight: .bold))
-                                        }
-                                        
-                                    }
-                                    
-                                }.offset(x: 90, y: 31)
-                                
-                                
-                                
+
                             }
                             
                         }.offset(y: -165)
+                            .zIndex(3)
+                            
+                        
+                        // days value
+                        ZStack{
+                            
+                            // background
+                            ZStack{
+                                
+                                Ellipse()
+                                    .frame(width: 953, height: 30)
+                                    .opacity(0)
+                                    .overlay(Ellipse().trim(from: 0.25, to: 0.525).stroke(Color.purple, lineWidth: 12.3).scaleEffect(x: 0.17, y: 3.4).scaleEffect(0.5))
+                                    .offset(x: 0.2, y: 6)
+                                    .zIndex(-1)
+                                
+                                Ellipse()
+                                    .frame(width: 953, height: 30)
+                                    .opacity(0)
+                                    .overlay(Ellipse().trim(from: 0.25, to: 0.525).stroke(Color.purple, lineWidth: 12.3).scaleEffect(x: 0.17, y: 3.4).scaleEffect(0.5))
+                                    .offset(x: 0.2, y: 6)
+                                    .scaleEffect(x: -1, anchor: .center)
+                                    .zIndex(-1)
+                                
+                            }.offset(x: 0.14, y: 3.9)
+                            
+                            // save
+//                            Ellipse()
+//                                .trim(from: 0.0, to: 0.50)
+//                                .frame(width: 585, height: 35)
+//                                .opacity(0)
+//                                .overlay(Ellipse().trim(from: 0.01, to: 0.49).stroke(Color("a39cf4"), lineWidth: 12).scaleEffect(x: 0.279, y: 3).scaleEffect(0.5))
+//                                .offset(x: 0.1, y: 4)
+                            
+                            // save 2
+//                            Ellipse()
+//                                .trim(from: 0.0, to: 0.50)
+//                                .frame(width: 885, height: 37)
+//                                .opacity(0)
+//                                .overlay(Ellipse().trim(from: 0.01, to: 0.49).stroke(Color.purple, lineWidth: 12).scaleEffect(x: 0.183, y: 3).scaleEffect(0.5))
+//                                .offset(x: 0.1, y: 6)
+                            
+                            // save 3
+//                            Ellipse()
+//                                .trim(from: 0.0, to: 0.50)
+//                                .frame(width: 853, height: 30)
+//                                .opacity(0)
+//                                .overlay(Ellipse().trim(from: 0.01, to: 0.49).stroke(Color.purple, lineWidth: 12).scaleEffect(x: 0.189, y: 3.4).scaleEffect(0.5))
+//                                .offset(x: 0, y: 4)
+                                
+                            
+                            // text
+                            HStack(spacing: 2){
+                                
+                                Text(String(number))
+                                    .font(.system(size: 13.5, weight: .bold))
+                                
+                                if ((number != 11) && (number % 10 == 1)){
+                                    Text("час")
+                                        .font(.system(size: 13, weight: .bold))
+                                }
+                                else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
+                                    Text("часа")
+                                        .font(.system(size: 13, weight: .bold))
+                                }
+                                else{
+                                    Text("часов")
+                                        .font(.system(size: 13, weight: .bold))
+                                }
+                                
+                            }.offset(y: 32)
+                                .opacity(0)
+                            
+                        }//.opacity(textShown ? 1 : 0)
                         
                         Button(action: {
+                            
                             textShown = false
+                            
                         }) {
                             Rectangle()
                                 .frame(width: .infinity, height: .infinity)
