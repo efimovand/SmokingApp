@@ -28,6 +28,7 @@ class UserData: ObservableObject {
     @Published var healthShown: Bool = false
     @Published var alertGoalShown: Bool = false
     @Published var alertResetShown: Bool = false
+    @Published var mapPointShown: Int = 0
 }
 
 struct firstLaunchLogic: View {

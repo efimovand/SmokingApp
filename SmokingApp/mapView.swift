@@ -240,6 +240,22 @@ struct mapView: View {
                 .scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                 .modifier(bounceOff())
             
+            // health
+            ZStack{
+                
+                switch data.mapPointShown {
+                    
+                case 1: healthNow(text: "Снижается риск развития инфаркта", picture: Image("heart_3"), description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку.").scaleEffect(0.75)
+                case 2: healthNow(text: "Вкусы и запахи становятся ярче", picture: Image("pie"), description: "В этот период восстанавливаются поврежденные дымом нервные окончания.").scaleEffect(0.75)
+                case 3: healthNow(text: "Дышать становится легче", picture: Image("wings"), description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает.").scaleEffect(0.75)
+                case 4: healthNow(text: "Запасы никотина в организме истощаются", picture: Image("nicotine"), description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма.").scaleEffect(0.75)
+                default: Text("")
+                    
+                }
+                
+            }.frame(width: 315, height: 500, alignment: .center)
+                .clipped()
+                .offset(y: -35)
             
         }
         
@@ -249,102 +265,102 @@ struct mapView: View {
 
 
 // maxScore pin
-struct mapPin: View {
-    
-    @EnvironmentObject var data: UserData
-    
-    @State var pinShown: Bool = false
-    
-    var body: some View{
-        
-        ZStack{
-            
-            Button(action: {
-                pinShown.toggle()
-            }) {
-                
-                Image("pin")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                
-            }
-            
-            if pinShown{
-                
-                ZStack{
-                    
-                    // background
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.white)
-                        .frame(width: 140, height: 15)
-                        .opacity(0.6)
-                    
-                    // text
-                    HStack(spacing: 3){
-                        
-                        Text("Ваш рекорд: ")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundColor(Color.white)
-                        
-                        Text(String(data.maxScoreHours / 24))
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundColor(Color.white)
-                        
-                        //                Text("дня")
-                        //                    .font(.system(size: 11, weight: .bold))
-                        //                    .foregroundColor(Color.white)
-                        
-                        // switch days
-                        if data.maxScoreHours >= 24 {
-                            
-                            if ((data.maxScoreHours / 24 != 11) && (data.maxScoreHours / 24 % 10 == 1)){
-                                Text("день")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(Color.white)
-                            }
-                            else if (((data.maxScoreHours / 24 != 12) && (data.maxScoreHours / 24 != 13) && (data.maxScoreHours / 24 != 14)) && ((data.maxScoreHours / 24 % 10 == 2) || (data.maxScoreHours / 24 % 10 == 3) || (data.maxScoreHours / 24 % 10 == 4))){
-                                Text("дня")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(Color.white)
-                            }
-                            else{
-                                Text("дней")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(Color.white)
-                            }
-                            
-                        }
-                        
-                        // switch hours
-                        else {
-                            
-                            if ((data.maxScoreHours  != 11) && (data.maxScoreHours  % 10 == 1)){
-                                Text("час")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(Color.white)
-                            }
-                            else if (((data.maxScoreHours  != 12) && (data.maxScoreHours  != 13) && (data.maxScoreHours  != 14)) && ((data.maxScoreHours  % 10 == 2) || (data.maxScoreHours  % 10 == 3) || (data.maxScoreHours  % 10 == 4))){
-                                Text("часа")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(Color.white)
-                            }
-                            else{
-                                Text("часов")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(Color.white)
-                            }
-                        }
-                        
-                    }
-                    
-                }.offset(y: -35)
-                
-            }
-            
-        }
-        
-    }
-}
+//struct mapPin: View {
+//
+//    @EnvironmentObject var data: UserData
+//
+//    @State var pinShown: Bool = false
+//
+//    var body: some View{
+//
+//        ZStack{
+//
+//            Button(action: {
+//                pinShown.toggle()
+//            }) {
+//
+//                Image("pin")
+//                    .resizable()
+//                    .frame(width: 60, height: 60)
+//
+//            }
+//
+//            if pinShown{
+//
+//                ZStack{
+//
+//                    // background
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .fill(Color.white)
+//                        .frame(width: 140, height: 15)
+//                        .opacity(0.6)
+//
+//                    // text
+//                    HStack(spacing: 3){
+//
+//                        Text("Ваш рекорд: ")
+//                            .font(.system(size: 11, weight: .bold))
+//                            .foregroundColor(Color.white)
+//
+//                        Text(String(data.maxScoreHours / 24))
+//                            .font(.system(size: 12, weight: .bold))
+//                            .foregroundColor(Color.white)
+//
+//                        //                Text("дня")
+//                        //                    .font(.system(size: 11, weight: .bold))
+//                        //                    .foregroundColor(Color.white)
+//
+//                        // switch days
+//                        if data.maxScoreHours >= 24 {
+//
+//                            if ((data.maxScoreHours / 24 != 11) && (data.maxScoreHours / 24 % 10 == 1)){
+//                                Text("день")
+//                                    .font(.system(size: 11, weight: .bold))
+//                                    .foregroundColor(Color.white)
+//                            }
+//                            else if (((data.maxScoreHours / 24 != 12) && (data.maxScoreHours / 24 != 13) && (data.maxScoreHours / 24 != 14)) && ((data.maxScoreHours / 24 % 10 == 2) || (data.maxScoreHours / 24 % 10 == 3) || (data.maxScoreHours / 24 % 10 == 4))){
+//                                Text("дня")
+//                                    .font(.system(size: 11, weight: .bold))
+//                                    .foregroundColor(Color.white)
+//                            }
+//                            else{
+//                                Text("дней")
+//                                    .font(.system(size: 11, weight: .bold))
+//                                    .foregroundColor(Color.white)
+//                            }
+//
+//                        }
+//
+//                        // switch hours
+//                        else {
+//
+//                            if ((data.maxScoreHours  != 11) && (data.maxScoreHours  % 10 == 1)){
+//                                Text("час")
+//                                    .font(.system(size: 11, weight: .bold))
+//                                    .foregroundColor(Color.white)
+//                            }
+//                            else if (((data.maxScoreHours  != 12) && (data.maxScoreHours  != 13) && (data.maxScoreHours  != 14)) && ((data.maxScoreHours  % 10 == 2) || (data.maxScoreHours  % 10 == 3) || (data.maxScoreHours  % 10 == 4))){
+//                                Text("часа")
+//                                    .font(.system(size: 11, weight: .bold))
+//                                    .foregroundColor(Color.white)
+//                            }
+//                            else{
+//                                Text("часов")
+//                                    .font(.system(size: 11, weight: .bold))
+//                                    .foregroundColor(Color.white)
+//                            }
+//                        }
+//
+//                    }
+//
+//                }.offset(y: -35)
+//
+//            }
+//
+//        }
+//
+//    }
+//}
 
 
 struct mapPoint: View {
@@ -363,7 +379,7 @@ struct mapPoint: View {
     var body: some View{
         
         // unlocked
-        if (data.maxScoreHours / 24) >= number {
+        if (data.maxScoreHours / 24) <= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -404,87 +420,28 @@ struct mapPoint: View {
                     .onTapGesture(perform: {
                         textShown.toggle()
                     })
+                    .onChange(of: textShown, perform: { value in
+                        switch value {
+                        case true: do { data.mapPointShown = number }
+                        case false: do { data.mapPointShown = 0 }
+                        }
+                    })
                 
-                
+                // invisible quit button
                 if textShown {
                     
-                    ZStack{
-                        
-                        VStack(spacing: 0){
-                            
-                            ZStack{
-                                
-                                RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0)
-                                    .fill((Color.white).opacity(0.8))
-                                    .frame(width: 250, height: 40)
-                                
-                                Text(name)
-                                    .font(.system(size: 13, weight: .bold))
-                                    .frame(width: 250, height: 35, alignment: .center)
-                                
-                            }
-                            
-                            ZStack{
-                                
-                                RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10)
-                                    .fill((Color.white).opacity(0.6))
-                                    .frame(width: 250, height: 90)
-                                
-                                Text(description)
-                                    .font(.system(size: 11, weight: .semibold))
-                                    .frame(width: 235, height: 80, alignment: .topLeading)
-                                
-                                // days value
-                                ZStack{
-                                    
-                                    // background
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color("a39cf4"))
-                                        .frame(width: 70, height: 28)
-                                    
-                                    // text
-                                    HStack(spacing: 2){
-                                        
-                                        Text(String(number))
-                                            .font(.system(size: 14, weight: .bold))
-                                        
-                                        if ((number != 11) && (number % 10 == 1)){
-                                            Text("день")
-                                                .font(.system(size: 12, weight: .bold))
-                                        }
-                                        else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
-                                            Text("дня")
-                                                .font(.system(size: 12, weight: .bold))
-                                        }
-                                        else{
-                                            Text("дней")
-                                                .font(.system(size: 12, weight: .bold))
-                                        }
-                                        
-                                    }
-                                    
-                                }.offset(x: 90, y: 31)
-                                
-                                
-                                
-                            }
-                            
-                        }.offset(y: -165)
-                        
-                        Button(action: {
-                            textShown = false
-                        }) {
-                            Rectangle()
-                                .frame(width: .infinity, height: .infinity)
-                                .opacity(0)
-                        }
-                        
+                    Button(action: {
+                        textShown = false
+                    }) {
+                        Rectangle()
+                            .frame(width: 1200, height: 1200)
+                            .opacity(0)
                     }
                     
                 }
                 
             }
-            
+
         }
         
         // locked
