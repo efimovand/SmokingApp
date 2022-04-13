@@ -32,6 +32,7 @@ struct mapView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.pink)
                         .frame(width: 1200, height: 1200)
+                        .blur(radius: (data.mapPointShown != 0) ? 3 : 0)
                     
                     // List of points 1
                     Group{
@@ -228,7 +229,7 @@ struct mapView: View {
                             
                         }.offset(x: 242, y: 284)
                         
-                    }
+                    }.blur(radius: (data.mapPointShown != 0) ? 3 : 0)
                     
                     
                 }.rotationEffect(Angle(degrees: 180))
@@ -245,15 +246,24 @@ struct mapView: View {
                 
                 switch data.mapPointShown {
                     
-                case 1: healthNow(text: "Снижается риск развития инфаркта", picture: Image("heart_3"), description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку.").scaleEffect(0.75)
-                case 2: healthNow(text: "Вкусы и запахи становятся ярче", picture: Image("pie"), description: "В этот период восстанавливаются поврежденные дымом нервные окончания.").scaleEffect(0.75)
-                case 3: healthNow(text: "Дышать становится легче", picture: Image("wings"), description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает.").scaleEffect(0.75)
-                case 4: healthNow(text: "Запасы никотина в организме истощаются", picture: Image("nicotine"), description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма.").scaleEffect(0.75)
+                case 1 * 1000: healthNow(text: "Нормализуется частота сердечных сокращений, начинает снижаться артериальное давление", picture: Image("heartrate"), description: "Волокна в бронхах, которые ранее плохо функционировали из-за постоянного воздействия дыма, снова начинают двигаться. Эти волокна помогают выводить раздражители и бактерии из легких, снижая риск заражения.")
+                    
+                case 12 * 1000: healthNow(text: "Нормализуется уровень углекислого газа в крови, улучшается снабжение тканей кислородом", picture: Image("co2"), description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения.")
+                    
+                case 1: healthNow(text: "Снижается риск развития инфаркта", picture: Image("heart_3"), description: "Это связано с нормализацией артериального давления и улучшением кислородного обмена. Вам становится легче выполнять упражнения и переносить физическую нагрузку.")
+                    
+                case 2: healthNow(text: "Вкусы и запахи становятся ярче", picture: Image("pie"), description: "В этот период восстанавливаются поврежденные дымом нервные окончания.")
+                    
+                case 3: healthNow(text: "Дышать становится легче", picture: Image("wings"), description: "Бронхи внутри легких начали расслабляться и открываться больше. Это облегчает обмен воздуха между углекислым газом и кислородом. Кроме того, способность легких наполняться воздухом возрастает.")
+                    
+                case 4: healthNow(text: "Запасы никотина в организме истощаются", picture: Image("nicotine"), description: "Вы можете стать более раздражительным, может возникать головная боль, но это все — признаки восстановления организма.")
+                    
                 default: Text("")
                     
                 }
                 
-            }.frame(width: 315, height: 500, alignment: .center)
+            }.scaleEffect(0.75)
+                .frame(width: 315, height: 500, alignment: .center)
                 .clipped()
                 .offset(y: -35)
             
@@ -379,7 +389,7 @@ struct mapPoint: View {
     var body: some View{
         
         // unlocked
-        if (data.maxScoreHours / 24) >= number {
+        if (data.maxScoreHours / 24) <= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -388,10 +398,10 @@ struct mapPoint: View {
                 Ellipse()
                     .frame(width: 65, height: 35)
                     .opacity(0)
-                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
+                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: data.mapPointShown, perform: { value in
                         switch value {
-                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
-                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        case number: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        default: withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
                         }
                     }))
                 
@@ -418,13 +428,14 @@ struct mapPoint: View {
                     
                 }.offset(y: -60)
                     .onTapGesture(perform: {
+                        
                         textShown.toggle()
-                    })
-                    .onChange(of: textShown, perform: { value in
-                        switch value {
-                        case true: do { data.mapPointShown = number }
-                        case false: do { data.mapPointShown = 0 }
+                        
+                        switch data.mapPointShown {
+                        case 0: data.mapPointShown = number
+                        default: data.mapPointShown = 0
                         }
+                        
                     })
                 
                 // invisible quit button
@@ -432,6 +443,7 @@ struct mapPoint: View {
                     
                     Button(action: {
                         textShown = false
+                        data.mapPointShown = 0
                     }) {
                         Rectangle()
                             .frame(width: 1200, height: 1200)
@@ -440,7 +452,7 @@ struct mapPoint: View {
                     
                 }
                 
-            }
+            }.blur(radius: (data.mapPointShown == 0 || data.mapPointShown == number) ? 0 : 3)
 
         }
         
@@ -484,19 +496,19 @@ struct mapPoint: View {
                                 HStack(spacing: 3){
                                     
                                     Text(String(number))
-                                        .font(.system(size: 19, weight: .bold))
+                                        .font(.system(size: 16, weight: .bold))
                                     
                                     if ((number != 11) && (number % 10 == 1)){
                                         Text("день")
-                                            .font(.system(size: 18, weight: .bold))
+                                            .font(.system(size: 15, weight: .bold))
                                     }
                                     else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
                                         Text("дня")
-                                            .font(.system(size: 18, weight: .bold))
+                                            .font(.system(size: 15, weight: .bold))
                                     }
                                     else{
                                         Text("дней")
-                                            .font(.system(size: 18, weight: .bold))
+                                            .font(.system(size: 15, weight: .bold))
                                     }
                                     
                                 }
@@ -545,7 +557,7 @@ struct mapPointHours: View {
     var body: some View{
         
         // unlocked
-        if data.maxScoreHours >= number {
+        if data.maxScoreHours <= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -554,13 +566,12 @@ struct mapPointHours: View {
                 Ellipse()
                     .frame(width: 65, height: 35)
                     .opacity(0)
-                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
+                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: data.mapPointShown, perform: { value in
                         switch value {
-                        case false : withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
-                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        case number * 1000: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        default: withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
                         }
                     }))
-                    .zIndex(1)
                 
                 // main button
                 ZStack{
@@ -585,132 +596,31 @@ struct mapPointHours: View {
                     
                 }.offset(y: -60)
                     .onTapGesture(perform: {
+                        
                         textShown.toggle()
-                    })
-                    .zIndex(2)
-                
-                
-                if textShown {
-                    
-                    ZStack{
                         
-                        VStack(spacing: 0){
-                            
-                            ZStack{
-                                
-                                RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0)
-                                    .fill((Color.white).opacity(0.8))
-                                    .frame(width: 250, height: 40)
-                                
-                                Text(name)
-                                    .font(.system(size: 13, weight: .bold))
-                                    .frame(width: 250, height: 35, alignment: .center)
-                                
-                            }
-                            
-                            ZStack{
-                                
-                                RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10)
-                                    .fill((Color.white).opacity(0.6))
-                                    .frame(width: 250, height: 90)
-                                
-                                Text(description)
-                                    .font(.system(size: 11, weight: .semibold))
-                                    .frame(width: 235, height: 80, alignment: .topLeading)
-
-                            }
-                            
-                        }.offset(y: -165)
-                            .zIndex(3)
-                            
-                        
-                        // days value
-                        ZStack{
-                            
-                            // background
-                            ZStack{
-                                
-                                Ellipse()
-                                    .frame(width: 953, height: 30)
-                                    .opacity(0)
-                                    .overlay(Ellipse().trim(from: 0.25, to: 0.525).stroke(Color.purple, lineWidth: 12.3).scaleEffect(x: 0.17, y: 3.4).scaleEffect(0.5))
-                                    .offset(x: 0.2, y: 6)
-                                    .zIndex(-1)
-                                
-                                Ellipse()
-                                    .frame(width: 953, height: 30)
-                                    .opacity(0)
-                                    .overlay(Ellipse().trim(from: 0.25, to: 0.525).stroke(Color.purple, lineWidth: 12.3).scaleEffect(x: 0.17, y: 3.4).scaleEffect(0.5))
-                                    .offset(x: 0.2, y: 6)
-                                    .scaleEffect(x: -1, anchor: .center)
-                                    .zIndex(-1)
-                                
-                            }.offset(x: 0.14, y: 3.9)
-                            
-                            // save
-//                            Ellipse()
-//                                .trim(from: 0.0, to: 0.50)
-//                                .frame(width: 585, height: 35)
-//                                .opacity(0)
-//                                .overlay(Ellipse().trim(from: 0.01, to: 0.49).stroke(Color("a39cf4"), lineWidth: 12).scaleEffect(x: 0.279, y: 3).scaleEffect(0.5))
-//                                .offset(x: 0.1, y: 4)
-                            
-                            // save 2
-//                            Ellipse()
-//                                .trim(from: 0.0, to: 0.50)
-//                                .frame(width: 885, height: 37)
-//                                .opacity(0)
-//                                .overlay(Ellipse().trim(from: 0.01, to: 0.49).stroke(Color.purple, lineWidth: 12).scaleEffect(x: 0.183, y: 3).scaleEffect(0.5))
-//                                .offset(x: 0.1, y: 6)
-                            
-                            // save 3
-//                            Ellipse()
-//                                .trim(from: 0.0, to: 0.50)
-//                                .frame(width: 853, height: 30)
-//                                .opacity(0)
-//                                .overlay(Ellipse().trim(from: 0.01, to: 0.49).stroke(Color.purple, lineWidth: 12).scaleEffect(x: 0.189, y: 3.4).scaleEffect(0.5))
-//                                .offset(x: 0, y: 4)
-                                
-                            
-                            // text
-                            HStack(spacing: 2){
-                                
-                                Text(String(number))
-                                    .font(.system(size: 13.5, weight: .bold))
-                                
-                                if ((number != 11) && (number % 10 == 1)){
-                                    Text("час")
-                                        .font(.system(size: 13, weight: .bold))
-                                }
-                                else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
-                                    Text("часа")
-                                        .font(.system(size: 13, weight: .bold))
-                                }
-                                else{
-                                    Text("часов")
-                                        .font(.system(size: 13, weight: .bold))
-                                }
-                                
-                            }.offset(y: 32)
-                                .opacity(0)
-                            
-                        }//.opacity(textShown ? 1 : 0)
-                        
-                        Button(action: {
-                            
-                            textShown = false
-                            
-                        }) {
-                            Rectangle()
-                                .frame(width: .infinity, height: .infinity)
-                                .opacity(0)
+                        switch data.mapPointShown {
+                        case 0: data.mapPointShown = number * 1000
+                        default: data.mapPointShown = 0
                         }
                         
+                    })
+                
+                // invisible quit button
+                if textShown {
+                    
+                    Button(action: {
+                        textShown = false
+                        data.mapPointShown = 0
+                    }) {
+                        Rectangle()
+                            .frame(width: 1200, height: 1200)
+                            .opacity(0)
                     }
                     
                 }
                 
-            }
+            }.blur(radius: (data.mapPointShown == 0 || data.mapPointShown == number * 1000) ? 0 : 3)
             
         }
         
