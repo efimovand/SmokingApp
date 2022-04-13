@@ -379,7 +379,7 @@ struct mapPoint: View {
     var body: some View{
         
         // unlocked
-        if (data.maxScoreHours / 24) <= number {
+        if (data.maxScoreHours / 24) >= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -545,7 +545,7 @@ struct mapPointHours: View {
     var body: some View{
         
         // unlocked
-        if data.maxScoreHours <= number {
+        if data.maxScoreHours >= number {
 //                    if testScore >= number {
             
             ZStack{

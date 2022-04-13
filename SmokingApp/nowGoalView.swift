@@ -147,7 +147,7 @@ struct nowGoalView: View {
                             }
                             
                         }.padding(.bottom, 5)
-                        //
+                        
                         // freeMoney
                         HStack(spacing: 5){
                             

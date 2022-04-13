@@ -11,10 +11,9 @@ import Foundation
 struct mainView: View {
     
     @EnvironmentObject var data: UserData
-    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
-    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    @State var now = Date()
-    
+//    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+//    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+//    @State var now = Date()
     
     @State var height: Float = Float(UIScreen.screenHeight)
     @State var blurRadius : CGFloat = 0
@@ -215,40 +214,45 @@ struct mainView: View {
             Spacer(minLength: UIScreen.screenHeight * 0.09)
             
             //healthNow
-            switch data.score{
+            ZStack{
                 
-            case 0:
-                if data.hours < 12 {
-                    healthCase[1]
+                switch data.score{
+                    
+                case 0:
+                    if data.hours < 12 {
+                        healthCase[1]
+                    }
+                    else {
+                        healthCase[2]
+                    }
+                case 1:
+                    healthCase[3]
+                case 2:
+                    healthCase[4]
+                case 3:
+                    healthCase[5]
+                case 4:
+                    healthCase[6]
+                case 6:
+                    healthCase[7]
+                case 7:
+                    healthCase[8]
+                case 14:
+                    healthCase[9]
+                case 30:
+                    healthCase[10] // 10 or 11 or 12
+                    // case 30...90: healthCase[13]
+                case 90:
+                    healthCase[14]
+                case 180:
+                    healthCase[15] // 15 or 16
+                default:
+                    healthCase[0]
+                    
                 }
-                else {
-                    healthCase[2]
-                }
-            case 1:
-                healthCase[3]
-            case 2:
-                healthCase[4]
-            case 3:
-                healthCase[5]
-            case 4:
-                healthCase[6]
-            case 6:
-                healthCase[7]
-            case 7:
-                healthCase[8]
-            case 14:
-                healthCase[9]
-            case 30:
-                healthCase[10] // 10 or 11 or 12
-            // case 30...90: healthCase[13]
-            case 90:
-                healthCase[14]
-            case 180:
-                healthCase[15] // 15 or 16
-            default:
-                healthCase[0]
                 
-            }
+            }.frame(height: 666, alignment: .center)
+                .clipped()
             
         }.ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -259,27 +263,27 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all)
                         .blur(radius: data.healthShown ? 3 : 0))
         .statusBar(hidden: height >= 812 ? false : true)
-           .onAppear(perform: {
-
-                if data.hours > 24 {
-                    UserDefaults.standard.set(false, forKey: "firstDay")
-                    data.firstDay = false
-                }
-                else if (abs(savedHours - now)) > 3600 {
-                    data.hours += Int((abs(savedHours - now)) / 3600)
-                    savedHours = Date()
-                }
-
-                if (abs(saved - now)) > 86400 {
-                    data.score += Int((abs(saved - now)) / 86400)
-                    saved = Date()
-                }
-
-               if data.hours >= data.maxScoreHours {
-                   data.maxScoreHours = data.hours
-               }
-
-            })
+//           .onAppear(perform: {
+//
+//                if data.hours > 24 {
+//                    UserDefaults.standard.set(false, forKey: "firstDay")
+//                    data.firstDay = false
+//                }
+//                else if (abs(savedHours - now)) > 3600 {
+//                    data.hours += Int((abs(savedHours - now)) / 3600)
+//                    savedHours = Date()
+//                }
+//
+//                if (abs(saved - now)) > 86400 {
+//                    data.score += Int((abs(saved - now)) / 86400)
+//                    saved = Date()
+//                }
+//
+//               if data.hours >= data.maxScoreHours {
+//                   data.maxScoreHours = data.hours
+//               }
+//
+//            })
         
     }
     
@@ -295,11 +299,14 @@ struct healthNow: View {
     
     @State var size : CGFloat = (UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.374 : UIScreen.screenHeight * 0.37745)
     @State var descriptionOpacity : CGFloat = 0
+    @State var descriptionTextOpacity : CGFloat = 0
     @State var height: Float = Float(UIScreen.screenHeight)
     
     @EnvironmentObject var data: UserData
     
     var body: some View {
+        
+        ZStack{
         
         VStack(spacing: 0){
         
@@ -382,18 +389,13 @@ struct healthNow: View {
                 ZStack{
                     
                     VStack(spacing: 0){
-                                        
-                                    RoundedCorners(tl: 15, tr: 15, bl: 0, br: 0)
-                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                                        .frame(width: 317, height: 36)
-                                        .opacity(0.4)
-                                    
-                                    RoundedCorners(tl: 0, tr: 0, bl: 15, br: 15)
-                                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .bottom, endPoint: .top))
-                                        .frame(width: 317, height: 74)
-                                        .opacity(size == UIScreen.screenHeight * 0.374 || size == UIScreen.screenHeight * 0.37745 ? 0 : 0.4)
-                                        
-                                    }
+                        
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                            .frame(width: 317, height: 110)
+                            .opacity(0.4)
+                        
+                    }
                     
                     switch description.count {
                         
@@ -403,11 +405,11 @@ struct healthNow: View {
                         .multilineTextAlignment(.leading)
                         .frame(width: 295, height: 100, alignment: .topLeading)
                         .offset(x: 3, y: 2)
-                        .opacity(descriptionOpacity)
+                        .opacity(descriptionTextOpacity)
                         .onChange(of: data.healthShown, perform: { value in
                             switch value {
-                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                             }
                         })
                         
@@ -417,11 +419,11 @@ struct healthNow: View {
                         .multilineTextAlignment(.leading)
                         .frame(width: 295, height: 100, alignment: .top)
                         .offset(y: 7)
-                        .opacity(descriptionOpacity)
+                        .opacity(descriptionTextOpacity)
                         .onChange(of: data.healthShown, perform: { value in
                             switch value {
-                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                             }
                         })
                         
@@ -431,11 +433,11 @@ struct healthNow: View {
                         .multilineTextAlignment(.leading)
                         .frame(width: 295, height: 100, alignment: .center)
                         .offset(y: -3)
-                        .opacity(descriptionOpacity)
+                        .opacity(descriptionTextOpacity)
                         .onChange(of: data.healthShown, perform: { value in
                             switch value {
-                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                             }
                         })
                         
@@ -444,11 +446,11 @@ struct healthNow: View {
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
                         .frame(width: 295, height: 100, alignment: .center)
-                        .opacity(descriptionOpacity)
+                        .opacity(descriptionTextOpacity)
                         .onChange(of: data.healthShown, perform: { value in
                             switch value {
-                            case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                            case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                            case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                             }
                         })
                         
@@ -457,11 +459,11 @@ struct healthNow: View {
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.leading)
                             .frame(width: 295, height: 100, alignment: .top)
-                            .opacity(descriptionOpacity)
+                            .opacity(descriptionTextOpacity)
                             .onChange(of: data.healthShown, perform: { value in
                                 switch value {
-                                case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                                case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                                 }
                             })
                         
@@ -471,11 +473,11 @@ struct healthNow: View {
                             .multilineTextAlignment(.leading)
                             .frame(width: 295, height: 100, alignment: .top)
                             .offset(y: 2)
-                            .opacity(descriptionOpacity)
+                            .opacity(descriptionTextOpacity)
                             .onChange(of: data.healthShown, perform: { value in
                                 switch value {
-                                case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                                case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                                 }
                             })
                         
@@ -484,11 +486,11 @@ struct healthNow: View {
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.leading)
                             .frame(width: 295, height: 100, alignment: .top)
-                            .opacity(descriptionOpacity)
+                            .opacity(descriptionTextOpacity)
                             .onChange(of: data.healthShown, perform: { value in
                                 switch value {
-                                case false : withAnimation(.linear(duration: 0.35)) { descriptionOpacity = 0 }
-                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionOpacity = 1 }
+                                case false : withAnimation(.linear(duration: 0.35)) { descriptionTextOpacity = 0 }
+                                case true: withAnimation(.easeInOut(duration: 0.9)) { descriptionTextOpacity = 1 }
                                 }
                             })
                         
@@ -599,6 +601,8 @@ struct healthNow: View {
                                }
                                
                            })).animation(.spring(), value: size)
+            
+        }
         
     }
 }
@@ -657,14 +661,14 @@ extension Date {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        mainView()
-//            .environmentObject(UserData())
-        
-        healthNow(text: "Здесь будут отображаться сведения об изменениях в организме", picture: Image("heart_1"), description: "Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций.")
+        mainView()
             .environmentObject(UserData())
-            .background(Image("background")
-                .resizable()
-                .frame(width: 830, height: 830))
+        
+//        healthNow(text: "Здесь будут отображаться сведения об изменениях в организме", picture: Image("heart_1"), description: "Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций.")
+//            .environmentObject(UserData())
+//            .background(Image("background")
+//                .resizable()
+//                .frame(width: 830, height: 830))
         
     }
 }

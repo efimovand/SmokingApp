@@ -166,6 +166,8 @@ struct economyView: View {
                     
                     nowGoalView()
                         .offset(y: height >= 812 ? UIScreen.screenHeight * 0.363 : UIScreen.screenHeight * 0.3745)
+                        .frame(height: 666, alignment: .center)
+                        .clipped()
                     
                 }
                 
