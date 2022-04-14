@@ -11,9 +11,9 @@ import Foundation
 struct mainView: View {
     
     @EnvironmentObject var data: UserData
-//    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
-//    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-//    @State var now = Date()
+    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+    @State var now = Date()
     
     @State var height: Float = Float(UIScreen.screenHeight)
     @State var blurRadius : CGFloat = 0
@@ -263,27 +263,27 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all)
                         .blur(radius: data.healthShown ? 3 : 0))
         .statusBar(hidden: height >= 812 ? false : true)
-//           .onAppear(perform: {
-//
-//                if data.hours > 24 {
-//                    UserDefaults.standard.set(false, forKey: "firstDay")
-//                    data.firstDay = false
-//                }
-//                else if (abs(savedHours - now)) > 3600 {
-//                    data.hours += Int((abs(savedHours - now)) / 3600)
-//                    savedHours = Date()
-//                }
-//
-//                if (abs(saved - now)) > 86400 {
-//                    data.score += Int((abs(saved - now)) / 86400)
-//                    saved = Date()
-//                }
-//
-//               if data.hours >= data.maxScoreHours {
-//                   data.maxScoreHours = data.hours
-//               }
-//
-//            })
+           .onAppear(perform: {
+
+                if data.hours > 24 {
+                    UserDefaults.standard.set(false, forKey: "firstDay")
+                    data.firstDay = false
+                }
+                else if (abs(savedHours - now)) > 3600 {
+                    data.hours += Int((abs(savedHours - now)) / 3600)
+                    savedHours = Date()
+                }
+
+                if (abs(saved - now)) > 86400 {
+                    data.score += Int((abs(saved - now)) / 86400)
+                    saved = Date()
+                }
+
+               if data.hours >= data.maxScoreHours {
+                   data.maxScoreHours = data.hours
+               }
+
+            })
         
     }
     

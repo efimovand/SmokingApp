@@ -241,7 +241,7 @@ struct mapView: View {
                 .scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                 .modifier(bounceOff())
             
-            // health
+            // mapPointHealth
             ZStack{
                 
                 switch data.mapPointShown {
@@ -389,7 +389,7 @@ struct mapPoint: View {
     var body: some View{
         
         // unlocked
-        if (data.maxScoreHours / 24) <= number {
+        if (data.maxScoreHours / 24) >= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -398,10 +398,10 @@ struct mapPoint: View {
                 Ellipse()
                     .frame(width: 65, height: 35)
                     .opacity(0)
-                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: data.mapPointShown, perform: { value in
+                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
                         switch value {
-                        case number: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
-                        default: withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
+                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        case false: withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
                         }
                     }))
                 
@@ -429,11 +429,15 @@ struct mapPoint: View {
                 }.offset(y: -60)
                     .onTapGesture(perform: {
                         
-                        textShown.toggle()
-                        
-                        switch data.mapPointShown {
-                        case 0: data.mapPointShown = number
-                        default: data.mapPointShown = 0
+                        if (data.mapPointShown == 0 || data.mapPointShown == number) {
+                            
+                            textShown.toggle()
+                            
+                            switch data.mapPointShown {
+                            case 0: data.mapPointShown = number
+                            default: data.mapPointShown = 0
+                            }
+                            
                         }
                         
                     })
@@ -557,7 +561,7 @@ struct mapPointHours: View {
     var body: some View{
         
         // unlocked
-        if data.maxScoreHours <= number {
+        if data.maxScoreHours >= number {
 //                    if testScore >= number {
             
             ZStack{
@@ -566,10 +570,10 @@ struct mapPointHours: View {
                 Ellipse()
                     .frame(width: 65, height: 35)
                     .opacity(0)
-                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: data.mapPointShown, perform: { value in
+                    .overlay(Ellipse().stroke(Color("a39cf4"), lineWidth: 15).opacity(ringOpacity).onChange(of: textShown, perform: { value in
                         switch value {
-                        case number * 1000: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
-                        default: withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
+                        case true: withAnimation(.easeInOut(duration: 0.3)) { ringOpacity = 1 }
+                        case false: withAnimation(.easeIn(duration: 0.2)) { ringOpacity = 0.5 }
                         }
                     }))
                 
@@ -597,11 +601,15 @@ struct mapPointHours: View {
                 }.offset(y: -60)
                     .onTapGesture(perform: {
                         
-                        textShown.toggle()
-                        
-                        switch data.mapPointShown {
-                        case 0: data.mapPointShown = number * 1000
-                        default: data.mapPointShown = 0
+                        if (data.mapPointShown == 0 || data.mapPointShown == number * 1000) {
+                            
+                            textShown.toggle()
+                            
+                            switch data.mapPointShown {
+                            case 0: data.mapPointShown = number * 1000
+                            default: data.mapPointShown = 0
+                            }
+                            
                         }
                         
                     })
