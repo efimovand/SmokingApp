@@ -602,6 +602,37 @@ struct healthNow: View {
                                
                            })).animation(.spring(), value: size)
             
+            // invisible quit button
+            if (size != UIScreen.screenHeight * 0.374 && size != UIScreen.screenHeight * 0.37745) {
+                
+                Button(action: {
+                        
+                        if height >= 812 {
+                            
+                        self.size = UIScreen.screenHeight * 0.374
+                        data.healthShown = false
+                            
+                        }
+                        
+                        else {
+                            
+                            self.size = UIScreen.screenHeight * 0.37745
+                            data.healthShown = false
+                            
+                        }
+                    
+                }) {
+                
+                Rectangle()
+                    .fill(Color.white)
+                    .frame(width: .infinity, height: 455)
+                    .offset(y: UIScreen.screenHeight >= 812 ? -UIScreen.screenHeight * 0.145 : -UIScreen.screenHeight * 0.25)
+                    .opacity(0)
+                    
+                }
+                
+            }
+            
         }
         
     }

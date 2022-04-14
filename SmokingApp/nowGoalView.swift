@@ -281,6 +281,26 @@ struct nowGoalView: View {
                     }
                 })
             
+            // invisible goalDescriptionShown quit button
+            if (size != UIScreen.screenHeight * 0.048) {
+                
+                Button(action: {
+                    
+                    self.size = UIScreen.screenHeight * 0.048
+                    goalDescriptionShown = false
+
+                }) {
+                    
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width: .infinity, height: 460)
+                        .offset(y: UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.45 : -UIScreen.screenHeight * 0.56)
+                        .opacity(0)
+                    
+                }
+                
+            }
+            
             // showing restartGoalAlert
             if alertGoalShown {
                 restartGoalAlertView(alertGoalShown: $alertGoalShown)
