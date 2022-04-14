@@ -440,6 +440,8 @@ struct mapPoint: View {
                             
                         }
                         
+                        hapticTouch(power: "light")
+                        
                     })
                 
                 // invisible quit button
@@ -477,6 +479,7 @@ struct mapPoint: View {
                     }))
                     .onTapGesture(perform: {
                         textShown.toggle()
+                        hapticTouch(power: "light")
                     })
                 
                 if textShown {
@@ -612,6 +615,8 @@ struct mapPointHours: View {
                             
                         }
                         
+                        hapticTouch(power: "light")
+                        
                     })
                 
                 // invisible quit button
@@ -648,7 +653,11 @@ struct mapPointHours: View {
                         }
                     }))
                     .onTapGesture(perform: {
+                        
                         textShown.toggle()
+                        
+                        hapticTouch(power: "light")
+                        
                     })
                 
                 if textShown {
