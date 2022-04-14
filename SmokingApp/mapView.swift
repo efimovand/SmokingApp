@@ -539,7 +539,7 @@ struct mapPoint: View {
                     
                 }
                 
-            }
+            }.blur(radius: (data.mapPointShown == 0 || data.mapPointShown == number) ? 0 : 3)
             
         }
         
@@ -717,7 +717,7 @@ struct mapPointHours: View {
                     
                 }
                 
-            }
+            }.blur(radius: (data.mapPointShown == 0 || data.mapPointShown == number * 1000) ? 0 : 3)
             
         }
         
