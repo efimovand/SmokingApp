@@ -126,8 +126,8 @@ struct restartView: View {
             }.blur(radius: blurRadius)
                 .onChange(of: alertShown, perform: { value in
                     switch value {
-                    case false : withAnimation { blurRadius = 0 }
-                    case true: withAnimation { blurRadius = 3 }
+                    case false : withAnimation(.linear(duration: 0.15)) { blurRadius = 0 }
+                    case true: withAnimation(.linear(duration: 0.35)) { blurRadius = 3 }
                     }
                 })
             
