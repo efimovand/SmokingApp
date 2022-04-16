@@ -11,9 +11,9 @@ import Foundation
 struct mainView: View {
     
     @EnvironmentObject var data: UserData
-    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
-    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
-    @State var now = Date()
+//    @State var savedHours = UserDefaults.standard.object(forKey: "savedHours") as! Date
+//    @State var saved = UserDefaults.standard.object(forKey: "savedTime") as! Date
+//    @State var now = Date()
     
     @State var height: Float = Float(UIScreen.screenHeight)
     @State var blurRadius : CGFloat = 0
@@ -213,7 +213,7 @@ struct mainView: View {
             
             Spacer(minLength: UIScreen.screenHeight * 0.09)
             
-            //healthNow
+            // healthNow
             ZStack{
                 
                 switch data.score{
@@ -254,6 +254,13 @@ struct mainView: View {
             }.frame(height: 666, alignment: .center)
                 .clipped()
             
+            // statsNow
+            ZStack{
+                
+                statsNow()
+                
+            }.frame(width: UIScreen.screenWidth, alignment: .trailing)
+            
         }.ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Image("background")
@@ -263,27 +270,27 @@ struct mainView: View {
                         .edgesIgnoringSafeArea(.all)
                         .blur(radius: data.healthShown ? 3 : 0))
         .statusBar(hidden: height >= 812 ? false : true)
-           .onAppear(perform: {
-
-                if data.hours > 24 {
-                    UserDefaults.standard.set(false, forKey: "firstDay")
-                    data.firstDay = false
-                }
-                else if (abs(savedHours - now)) > 3600 {
-                    data.hours += Int((abs(savedHours - now)) / 3600)
-                    savedHours = Date()
-                }
-
-                if (abs(saved - now)) > 86400 {
-                    data.score += Int((abs(saved - now)) / 86400)
-                    saved = Date()
-                }
-
-               if data.hours >= data.maxScoreHours {
-                   data.maxScoreHours = data.hours
-               }
-
-            })
+//           .onAppear(perform: {
+//
+//                if data.hours > 24 {
+//                    UserDefaults.standard.set(false, forKey: "firstDay")
+//                    data.firstDay = false
+//                }
+//                else if (abs(savedHours - now)) > 3600 {
+//                    data.hours += Int((abs(savedHours - now)) / 3600)
+//                    savedHours = Date()
+//                }
+//
+//                if (abs(saved - now)) > 86400 {
+//                    data.score += Int((abs(saved - now)) / 86400)
+//                    saved = Date()
+//                }
+//
+//               if data.hours >= data.maxScoreHours {
+//                   data.maxScoreHours = data.hours
+//               }
+//
+//            })
         
     }
     
@@ -297,9 +304,8 @@ struct healthNow: View {
     var picture: Image
     var description: String
     
-    @State var size : CGFloat = (UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.374 : UIScreen.screenHeight * 0.37745)
-    @State var descriptionOpacity : CGFloat = 0
-    @State var descriptionTextOpacity : CGFloat = 0
+    @State var size: CGFloat = (UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.374 : UIScreen.screenHeight * 0.37745)
+    @State var descriptionTextOpacity: CGFloat = 0
     @State var height: Float = Float(UIScreen.screenHeight)
     
     @EnvironmentObject var data: UserData
@@ -639,6 +645,147 @@ struct healthNow: View {
 }
 
 
+// statsNow struct
+struct statsNow: View {
+    
+    @EnvironmentObject var data: UserData
+    
+    @State var nonSmoked: Int = 1
+    @State var resin: Int = 125
+    @State var size: CGFloat = UIScreen.screenWidth / 1.8
+    
+    var body: some View {
+        
+        HStack(spacing: 0){
+            
+            // Open Button
+            ZStack {
+                
+                RoundedCorners(tl: 20, tr: 0, bl: 20, br: 0)
+                    .fill(Color.white)
+                    .opacity(0.4)
+                    .overlay(Image(systemName: "triangle.fill")
+                        .resizable()
+                        .frame(width: 26, height: 21)
+                        .foregroundColor(Color.white)
+                        .opacity(0.6)
+                        .rotationEffect(.degrees(-90)))
+                    .frame(width: 30, height: 120)
+                    .offset(y: -100)
+                
+            }.onTapGesture(perform: {
+                
+                if size == 0{
+                    self.size += UIScreen.screenWidth / 1.8
+                }
+                else {
+                    self.size -= UIScreen.screenWidth / 1.8
+                }
+                
+            })
+            
+            // Stats
+            ZStack {
+                
+                // background
+                Rectangle()
+                    .fill(Color("a39cf4"))
+                    .frame(width: UIScreen.screenWidth / 1.8, height: UIScreen.screenHeight)
+                
+                VStack{
+                    
+                    // non smoked cigarettes
+                    ZStack{
+                        
+                        // background
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.white)
+                            .opacity(0.25)
+                            .frame(width: 195, height: 60)
+                        
+                        HStack(spacing: 2) {
+                            
+                            Image("yoga")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).opacity(0.2))
+                            
+                            Text("Вы не выкурили \(nonSmoked) сигарет")
+                                .font(.system(size: 14.5, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color.white)
+                                .frame(width: 130, height: 50)
+                            
+                        }
+                        
+                    }
+                    
+                    // non got resin
+                    ZStack{
+                        
+                        // background
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.white)
+                            .opacity(0.25)
+                            .frame(width: 195, height: 60)
+                        
+                        HStack(spacing: 2) {
+                            
+                            Image("balance")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).opacity(0.2))
+                            
+                            Text("\(resin)мг смолы не попало вам в легкие")
+                                .font(.system(size: 12, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color.white)
+                                .frame(width: 130, height: 50)
+                            
+                        }
+                        
+                    }
+                    
+                    // completed achievements
+                    ZStack{
+                        
+                        // background
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.white)
+                            .opacity(0.25)
+                            .frame(width: 195, height: 60)
+                        
+                        HStack(spacing: 2) {
+                            
+                            Image("win")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .background(RoundedRectangle(cornerRadius: 15).fill(Color.white).opacity(0.2))
+                            
+                            VStack{
+                                
+                            Text("Достижений выполнено")
+                                .font(.system(size: 10, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color.white)
+                                .frame(width: 130)
+                                
+                                // progressBar
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }.frame(width: UIScreen.screenWidth / 1.8, height: UIScreen.screenHeight)
+            
+        }.offset(x: size)
+        
+    }
+}
 
 
 // RoundedCorners function
@@ -695,7 +842,7 @@ struct ContentView_Previews: PreviewProvider {
         mainView()
             .environmentObject(UserData())
         
-//        healthNow(text: "Здесь будут отображаться сведения об изменениях в организме", picture: Image("heart_1"), description: "Волокна в легких, которые помогают поддерживать здоровье легких, отрастают. Эти волокна помогают уменьшать избыточное накопление слизи и защищают от бактериальных инфекций.")
+//        statsNow()
 //            .environmentObject(UserData())
 //            .background(Image("background")
 //                .resizable()
