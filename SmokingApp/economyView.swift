@@ -47,8 +47,8 @@ struct economyView: View {
                         
                         HStack(spacing: 0){
                             
-                            if ((data.dailyEconomy / 24) * data.hours + data.beforeMoney >= 1000) {
-                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
+                            if (Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney)) >= 1000) {
+                                Text(String(Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney))))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -56,8 +56,8 @@ struct economyView: View {
                                     .offset(y: 20)
                                     .padding(.leading, 30)
                             }
-                            else if ((data.dailyEconomy / 24) * data.hours + data.beforeMoney >= 100) {
-                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
+                            else if (Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney)) >= 100) {
+                                Text(String(Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney))))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -65,8 +65,8 @@ struct economyView: View {
                                     .offset(y: 20)
                                     .padding(.leading, 30)
                             }
-                            else if ((data.dailyEconomy / 24) * data.hours + data.beforeMoney >= 10) {
-                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
+                            else if (Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney)) >= 10) {
+                                Text(String(Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney))))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
@@ -75,7 +75,7 @@ struct economyView: View {
                                     .padding(.leading, 30)
                             }
                             else {
-                                Text(String((data.dailyEconomy / 24) * data.hours + data.beforeMoney))
+                                Text(String(Int((Float(data.dailyEconomy) / Float(24)) * Float(data.hours) + Float(data.beforeMoney))))
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 72, weight: .heavy))
                                     .multilineTextAlignment(.center)
