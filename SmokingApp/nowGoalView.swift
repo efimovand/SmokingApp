@@ -294,10 +294,9 @@ struct nowGoalView: View {
                     Rectangle()
                         .fill(Color.white)
                         .frame(width: .infinity, height: 460)
-                        .offset(y: UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.45 : -UIScreen.screenHeight * 0.56)
                         .opacity(0)
                     
-                }
+                }.offset(y: UIScreen.screenHeight >= 812 ? -UIScreen.screenHeight * 0.45 : -UIScreen.screenHeight * 0.56)
                 
             }
             

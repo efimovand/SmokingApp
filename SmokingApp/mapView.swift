@@ -78,8 +78,6 @@ struct mapView: View {
                         
                     }
                     
-                    //mapPin().offset(x: -460, y: 520)
-                    
                     // lines
                     ZStack{
                         

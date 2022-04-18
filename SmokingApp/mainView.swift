@@ -781,10 +781,9 @@ struct healthNow: View {
                 Rectangle()
                     .fill(Color.white)
                     .frame(width: .infinity, height: 455)
-                    .offset(y: UIScreen.screenHeight >= 812 ? -UIScreen.screenHeight * 0.145 : -UIScreen.screenHeight * 0.25)
                     .opacity(0)
                     
-                }
+                }.offset(y: UIScreen.screenHeight >= 812 ? -UIScreen.screenHeight * 0.145 : -UIScreen.screenHeight * 0.25)
                 
             }
             
