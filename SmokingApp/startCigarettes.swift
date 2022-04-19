@@ -9,20 +9,6 @@ import SwiftUI
 import Combine
 import UIKit
 
-// Closing keyboard
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
-// Picker weight
-extension UIPickerView {
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric + 80, height: super.intrinsicContentSize.height)
-    }
-}
-
 
 struct startCigarettes: View {
     
@@ -30,9 +16,8 @@ struct startCigarettes: View {
     
     @EnvironmentObject var data: UserData
     
-    @State var dailyUse: Int = 0
-    @State var pricePack = ""
-    @State var pricePackInt: Int = 0
+    @State var dailyUse: String = ""
+    @State var pricePack: String = ""
     
     var body: some View {
         
@@ -82,17 +67,16 @@ struct startCigarettes: View {
                                 .padding(.trailing, 30)
                                 .offset(x: -8, y: 12)
                             
-                            Picker("DailyUse", selection: $dailyUse) {
-                                ForEach(1..<31) {
-                                    Text("\($0)")
-                                        .foregroundColor(Color.black)
-                                }
-                            }.pickerStyle(.wheel)
+                            TextField("", text: $dailyUse)
+                                .keyboardType(.numberPad)
+                                .foregroundColor(Color.black)
                                 .labelsHidden()
                                 .frame(width: 50, height: 32)
                                 .clipped()
-                                .background((Color.white).opacity(0.9))
+                                .background((Color.white).opacity(0.6))
                                 .cornerRadius(15)
+                                .multilineTextAlignment(.center)
+                                .offset(x: -1)
                                 .offset(x: 5, y: 12)
                             
                             
@@ -115,8 +99,7 @@ struct startCigarettes: View {
                                 .labelsHidden()
                                 .frame(width: 50, height: 32)
                                 .clipped()
-                                .background((Color.gray).opacity(0.1))
-                                .background((Color.white).opacity(0.9))
+                                .background((Color.white).opacity(0.6))
                                 .cornerRadius(15)
                                 .multilineTextAlignment(.center)
                                 .offset(x: -1)
@@ -145,9 +128,10 @@ struct startCigarettes: View {
                 UserDefaults.standard.set(0, forKey: "score")
                 UserDefaults.standard.set(0, forKey: "hours")
                 
-                pricePackInt = Int(pricePack) ?? 0
-                data.dailyEconomy = dailyUse * pricePackInt / 20
-                UserDefaults.standard.set(dailyUse * pricePackInt / 20, forKey: "dailyEconomy")
+                let dailyUseInt = Int(dailyUse) ?? 0
+                let pricePackInt = Int(pricePack) ?? 0
+                data.dailyEconomy = dailyUseInt * pricePackInt / 20
+                UserDefaults.standard.set(dailyUseInt * pricePackInt / 20, forKey: "dailyEconomy")
                 
                 data.firstDay = true
                 data.attempts = 1
@@ -190,6 +174,13 @@ struct startCigarettes: View {
         
     }
     
+}
+
+// Closing keyboard for TextField
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
 
 struct startCigarettes_Previews: PreviewProvider {

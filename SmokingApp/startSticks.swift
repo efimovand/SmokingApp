@@ -15,9 +15,8 @@ struct startSticks: View {
     
     @EnvironmentObject var data: UserData
     
-    @State var dailyUse: Int = 0
-    @State var pricePack = ""
-    @State var pricePackInt: Int = 0
+    @State var dailyUse: String = ""
+    @State var pricePack: String = ""
     
     var body: some View {
         
@@ -67,17 +66,16 @@ struct startSticks: View {
                                 .padding(.trailing, 30)
                                 .offset(x: -8, y: 12)
                             
-                            Picker("DailyUse", selection: $dailyUse) {
-                                ForEach(1..<31) {
-                                    Text("\($0)")
-                                        .foregroundColor(Color.black)
-                                }
-                            }.pickerStyle(.wheel)
+                            TextField("", text: $dailyUse)
+                                .keyboardType(.numberPad)
+                                .foregroundColor(Color.black)
                                 .labelsHidden()
                                 .frame(width: 50, height: 32)
                                 .clipped()
-                                .background((Color.white).opacity(0.9))
+                                .background((Color.white).opacity(0.6))
                                 .cornerRadius(15)
+                                .multilineTextAlignment(.center)
+                                .offset(x: -1)
                                 .offset(x: 5, y: 12)
                             
                         }.padding(.top, 60)
@@ -129,9 +127,10 @@ struct startSticks: View {
                 UserDefaults.standard.set(0, forKey: "score")
                 UserDefaults.standard.set(0, forKey: "hours")
                 
-                pricePackInt = Int(pricePack) ?? 0
-                data.dailyEconomy = dailyUse * pricePackInt / 20
-                UserDefaults.standard.set(dailyUse * pricePackInt / 20, forKey: "dailyEconomy")
+                let pricePackInt = Int(pricePack) ?? 0
+                let dailyUseInt = Int(dailyUse) ?? 0
+                data.dailyEconomy = dailyUseInt * pricePackInt / 20
+                UserDefaults.standard.set(dailyUseInt * pricePackInt / 20, forKey: "dailyEconomy")
                 
                 data.firstDay = true
                 data.attempts = 1
