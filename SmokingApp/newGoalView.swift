@@ -22,7 +22,6 @@ struct newGoalView: View {
     @State var pickerShown: Bool = false
     @State var userImage = UIImage(named: "image")!
     
-    
     var body: some View {
         
         ZStack{
@@ -161,8 +160,13 @@ struct newGoalView: View {
                         
                         if userImage != UIImage(named: "image") {
                             data.userImageBool = true
+                            UserDefaults.standard.set(true, forKey: "userImageBool")
                             data.userImage = Image(uiImage: userImage)
-                            
+                            UserDefaults.standard.setValue(userImage.pngData(), forKey: "userImage")
+                        }
+                        else{
+                            data.userImageBool = false
+                            UserDefaults.standard.set(false, forKey: "userImageBool")
                         }
                         
                         data.goalName = name
@@ -397,7 +401,8 @@ struct newGoalView: View {
                                     .frame(width: 70, height: 70)
                                     .overlay(Image(uiImage: userImage)
                                         .resizable()
-                                        .frame(width: 65, height: 65))
+                                        .frame(width: 65, height: 65)
+                                        .cornerRadius(5))
                             }
                             
                         }
@@ -415,35 +420,6 @@ struct newGoalView: View {
     }
 }
 
-extension View {
-// This function changes our View to UIView, then calls another function
-// to convert the newly-made UIView to a UIImage.
-    public func asUIImage() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        
-        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
-        UIApplication.shared.windows.first!.rootViewController?.view.addSubview(controller.view)
-        
-        let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
-        controller.view.bounds = CGRect(origin: .zero, size: size)
-        controller.view.sizeToFit()
-        
-// here is the call to the function that converts UIView to UIImage: `.asUIImage()`
-        let image = controller.view.asUIImage()
-        controller.view.removeFromSuperview()
-        return image
-    }
-}
-
-extension UIView {
-// This is the function to convert UIView to UIImage
-    public func asUIImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
 
 struct newGoalView_Previews: PreviewProvider {
     static var previews: some View {

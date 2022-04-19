@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-func loadImage() {
-     guard let data = UserDefaults.standard.data(forKey: "KEY") else { return }
-     let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
-     let image = UIImage(data: decoded)
-}
-
 struct nowGoalView: View {
     
     @EnvironmentObject var data: UserData
@@ -27,6 +21,15 @@ struct nowGoalView: View {
     @State var size : CGFloat = (UIScreen.screenHeight * 0.048)
     @State var descriptionOpacity : CGFloat = 0
     @State var goalDescriptionShown: Bool = false
+    
+    @State private var image: UIImage?
+    
+    // load userImage
+    init() {
+            if let imageData = UserDefaults.standard.data(forKey: "userImage") {
+                self._image = State(wrappedValue: UIImage(data: imageData))
+            }
+        }
     
     var body: some View {
         
@@ -48,22 +51,24 @@ struct nowGoalView: View {
                         // picture
                         switch data.userImageBool {
                             
+                        // user image
                         case true:
                             RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor((Color.white).opacity(0.4))
-                            .frame(width: 60, height: 60)
-                            .overlay(Image(uiImage: data.userImage)
-                                .resizable()
+                                .foregroundColor((Color.white).opacity(0.4))
                                 .frame(width: 60, height: 60)
-                                .cornerRadius(15))
+                                .overlay(Image(uiImage: image!)
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .cornerRadius(15))
                             
+                        // standart image
                         case false:
                             RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor((Color.white).opacity(0.4))
-                            .frame(width: 60, height: 60)
-                            .overlay(Image(data.goalPicture ?? "")
-                                .resizable()
-                                .frame(width: 60, height: 60))
+                                .foregroundColor((Color.white).opacity(0.4))
+                                .frame(width: 60, height: 60)
+                                .overlay(Image(data.goalPicture ?? "")
+                                    .resizable()
+                                    .frame(width: 60, height: 60))
                             
                         }
                         
