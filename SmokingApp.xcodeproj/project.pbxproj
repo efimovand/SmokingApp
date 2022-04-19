@@ -24,6 +24,7 @@
 		5565A84F27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */; };
 		556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F556D27DB9DD800E1A29F /* achievementsView.swift */; };
 		5591F9FD27E0F20A009728E2 /* startSticks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591F9FC27E0F20A009728E2 /* startSticks.swift */; };
+		5592BA37280F02D8002D9029 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5592BA36280F02D8002D9029 /* PhotoPicker.swift */; };
 		5596C83227F4902800E82C19 /* resetAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596C83127F4902800E82C19 /* resetAlertView.swift */; };
 		55ACB8B827EDDCCA00566063 /* restartGoalAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55ACB8B727EDDCCA00566063 /* restartGoalAlertView.swift */; };
 		55D97BE027E0F4B000A7DFBF /* startVape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D97BDF27E0F4B000A7DFBF /* startVape.swift */; };
@@ -70,6 +71,7 @@
 		5565A84E27C8F6B2009C6ACD /* SmokingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		556F556D27DB9DD800E1A29F /* achievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = achievementsView.swift; sourceTree = "<group>"; };
 		5591F9FC27E0F20A009728E2 /* startSticks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startSticks.swift; sourceTree = "<group>"; };
+		5592BA36280F02D8002D9029 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		5596C83127F4902800E82C19 /* resetAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetAlertView.swift; sourceTree = "<group>"; };
 		55ACB8B727EDDCCA00566063 /* restartGoalAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restartGoalAlertView.swift; sourceTree = "<group>"; };
 		55D97BDF27E0F4B000A7DFBF /* startVape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startVape.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				5565A83327C8F6B0009C6ACD /* mainView.swift */,
 				55DEE8F027DACC4B002DF6D3 /* economyView.swift */,
 				5516411A27EB549800A2A24A /* newGoalView.swift */,
+				5592BA36280F02D8002D9029 /* PhotoPicker.swift */,
 				554DF5D227EBE450004AA5FA /* nowGoalView.swift */,
 				55ACB8B727EDDCCA00566063 /* restartGoalAlertView.swift */,
 				556F556D27DB9DD800E1A29F /* achievementsView.swift */,
@@ -312,6 +315,7 @@
 				55DEE8F327DAD8B2002DF6D3 /* restartView.swift in Sources */,
 				55449FC627DFE0AC00146E17 /* startView.swift in Sources */,
 				554536F727E1555C0016F1B2 /* firstLaunchLogic.swift in Sources */,
+				5592BA37280F02D8002D9029 /* PhotoPicker.swift in Sources */,
 				556F556E27DB9DD900E1A29F /* achievementsView.swift in Sources */,
 				55DEE8F127DACC4B002DF6D3 /* economyView.swift in Sources */,
 				555B553227DD57AB00449868 /* TabBarStructure.swift in Sources */,

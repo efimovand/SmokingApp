@@ -40,6 +40,8 @@ struct SmokingAppApp: App {
     @StateObject private var goalName = UserData()
     @StateObject private var freeMoney = UserData()
     @StateObject private var goalPicture = UserData()
+    @StateObject private var userImage = UserData()
+    @StateObject private var userImageBool = UserData()
     @StateObject private var beforeScore = UserData() // user's summary score with all restarts
     @StateObject private var maxScoreHours = UserData() // user's score record in hours
     @StateObject private var beforeMoney = UserData() // user's summary economy with all restarts
@@ -62,6 +64,8 @@ struct SmokingAppApp: App {
                 .environmentObject(goalName)
                 .environmentObject(freeMoney)
                 .environmentObject(goalPicture)
+                .environmentObject(userImage)
+                .environmentObject(userImageBool)
                 .environmentObject(beforeScore)
                 .environmentObject(maxScoreHours)
                 .environmentObject(beforeMoney)

@@ -19,6 +19,10 @@ struct newGoalView: View {
     @State var picturesShown: Bool = false
     @State var pictureTapped: Bool = false
     
+    @State var pickerShown: Bool = false
+    @State var userImage = UIImage(named: "image")!
+    
+    
     var body: some View {
         
         ZStack{
@@ -53,6 +57,9 @@ struct newGoalView: View {
                             picturesShown.toggle()
                             pictureTapped = true
                         }) {
+                            
+                            if userImage == UIImage(named: "image"){
+                                
                             RoundedRectangle(cornerRadius: 15)
                                 .foregroundColor((Color.white).opacity(0.4))
                                 .frame(width: 80, height: 80)
@@ -60,9 +67,25 @@ struct newGoalView: View {
                                 .overlay(Image(data.goalPicture ?? "")
                                     .resizable()
                                     .frame(width: 80, height: 80))
+                                
+                            }
+                            
+                            else {
+                                
+                                RoundedRectangle(cornerRadius: 15)
+                                    .foregroundColor((Color.white).opacity(0.4))
+                                    .frame(width: 80, height: 80)
+                                    .overlay(Text("Фото").font(.system(size: 13, weight: .semibold)).foregroundColor(Color.white).opacity(pictureTapped ? 0 : 1))
+                                    .overlay(Image(uiImage: userImage)
+                                        .resizable()
+                                        .frame(width: 80, height: 80)
+                                        .cornerRadius(15))
+                                
+                            }
+                            
                         }
                         
-                        // textFields
+                        // Text Form
                         VStack(spacing: 5){
                             
                             // name
@@ -135,6 +158,13 @@ struct newGoalView: View {
                 if (name != "") && (value != ""){
                     
                     Button(action: {
+                        
+                        if userImage != UIImage(named: "image") {
+                            data.userImageBool = true
+                            data.userImage = Image(uiImage: userImage)
+                            
+                        }
+                        
                         data.goalName = name
                         data.goalValue = Int(value) ?? 0
                         data.isGoal = true
@@ -143,6 +173,7 @@ struct newGoalView: View {
                         UserDefaults.standard.set(0, forKey: "freeMoney")
                         UserDefaults.standard.set(true, forKey: "isGoal")
                         goalShown.toggle()
+
                     }) {
                         
                         ZStack{
@@ -351,12 +382,20 @@ struct newGoalView: View {
                             }
                             
                             Button(action: {
-                                //
+                                
+                                if userImage != UIImage(named: "image") {
+                                    picturesShown.toggle()
+                                }
+                                
+                                else {
+                                    pickerShown = true
+                                }
+                                
                             }) {
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill((Color("a39cf4")).opacity(1))
                                     .frame(width: 70, height: 70)
-                                    .overlay(Image("image")
+                                    .overlay(Image(uiImage: userImage)
                                         .resizable()
                                         .frame(width: 65, height: 65))
                             }
@@ -369,52 +408,40 @@ struct newGoalView: View {
                 
             }
             
-        }
+        }.sheet(isPresented: $pickerShown, content: {
+            PhotoPicker(userImage: $userImage)
+        })
         
     }
 }
 
-// Image from photo library
-struct ImagePicker: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) private var presentationMode
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @Binding var selectedImage: UIImage
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
-
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = sourceType
-        imagePicker.delegate = context.coordinator
-
-        return imagePicker
+extension View {
+// This function changes our View to UIView, then calls another function
+// to convert the newly-made UIView to a UIImage.
+    public func asUIImage() -> UIImage {
+        let controller = UIHostingController(rootView: self)
+        
+        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
+        UIApplication.shared.windows.first!.rootViewController?.view.addSubview(controller.view)
+        
+        let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
+        controller.view.bounds = CGRect(origin: .zero, size: size)
+        controller.view.sizeToFit()
+        
+// here is the call to the function that converts UIView to UIImage: `.asUIImage()`
+        let image = controller.view.asUIImage()
+        controller.view.removeFromSuperview()
+        return image
     }
+}
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-        var parent: ImagePicker
-
-        init(_ parent: ImagePicker) {
-            self.parent = parent
+extension UIView {
+// This is the function to convert UIView to UIImage
+    public func asUIImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
         }
-
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
-            }
-
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-
     }
 }
 

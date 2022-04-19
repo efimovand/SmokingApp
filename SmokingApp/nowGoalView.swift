@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+func loadImage() {
+     guard let data = UserDefaults.standard.data(forKey: "KEY") else { return }
+     let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+     let image = UIImage(data: decoded)
+}
+
 struct nowGoalView: View {
     
     @EnvironmentObject var data: UserData
@@ -40,12 +46,26 @@ struct nowGoalView: View {
                     HStack(spacing: 15){
                         
                         // picture
-                        RoundedRectangle(cornerRadius: 15)
+                        switch data.userImageBool {
+                            
+                        case true:
+                            RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor((Color.white).opacity(0.4))
+                            .frame(width: 60, height: 60)
+                            .overlay(Image(uiImage: data.userImage)
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                                .cornerRadius(15))
+                            
+                        case false:
+                            RoundedRectangle(cornerRadius: 15)
                             .foregroundColor((Color.white).opacity(0.4))
                             .frame(width: 60, height: 60)
                             .overlay(Image(data.goalPicture ?? "")
                                 .resizable()
                                 .frame(width: 60, height: 60))
+                            
+                        }
                         
                         VStack(spacing: 16){
                             
