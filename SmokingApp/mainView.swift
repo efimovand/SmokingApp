@@ -373,6 +373,7 @@ struct healthNow: View {
     var text: String
     var picture: Image
     var description: String
+    var backgroundBlur: Bool = false
     var quit: Bool = true
     
     @State var size: CGFloat = (UIScreen.screenHeight >= 812 ? UIScreen.screenHeight * 0.374 : UIScreen.screenHeight * 0.37745)
@@ -392,10 +393,21 @@ struct healthNow: View {
                 // healthNow
                 ZStack{
                     
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                        .frame(width: 317, height: 88)
-                        .opacity(0.4)
+                    switch backgroundBlur {
+                        
+                    case false:
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                            .frame(width: 317, height: 88)
+                            .opacity(0.4)
+                    case true:
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(Color.white)
+                            .frame(width: 317, height: 88)
+                            .opacity(0)
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 15))
+                        
+                    }
                     
                     picture
                         .resizable()
@@ -411,28 +423,28 @@ struct healthNow: View {
                             .offset(x: 40)
                         
                     case 11...23:
-                        if (text != "Восстанавливается сон" && text != "Восстанавливается кожа" && text != "Восстанавливаются десны") {
-                            Text(text)
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(Color.white)
-                            .frame(width: 200, height: 80, alignment: .leading)
-                            .offset(x: 40)
-                        }
-                        if (text != "Восстанавливаются десны") {
+                        if (text == "Восстанавливается сон" || text == "Восстанавливается кожа") {
                             Text(text)
                             .font(.system(size: 22, weight: .bold))
                             .foregroundColor(Color.white)
                             .frame(width: 215, height: 80, alignment: .leading)
                             .offset(x: 40)
                         }
-                        else {
+                        else if (text == "Восстанавливаются десны") {
                             Text(text)
                             .font(.system(size: 22, weight: .bold))
                             .foregroundColor(Color.white)
                             .frame(width: 217, height: 80, alignment: .leading)
                             .offset(x: 37)
                         }
-                        
+                        else {
+                            Text(text)
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 80, alignment: .leading)
+                            .offset(x: 40)
+                        }
+
                     case 24...33: Text(text)
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(Color.white)
@@ -484,10 +496,21 @@ struct healthNow: View {
                     
                     VStack(spacing: 0){
                         
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
-                            .frame(width: 317, height: 110)
-                            .opacity(0.4)
+                        switch backgroundBlur {
+                            
+                        case false:
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(LinearGradient(gradient: Gradient(colors: [Color.white, Color(red: 1, green: 1, blue: 1, opacity: 0.50)]), startPoint: .top, endPoint: .bottom))
+                                .frame(width: 317, height: 110)
+                                .opacity(0.4)
+                        case true:
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(Color.white)
+                                .frame(width: 317, height: 110)
+                                .opacity(0)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 15))
+                            
+                        }
                         
                     }
                     
@@ -789,7 +812,7 @@ struct healthNow: View {
             
         }
             
-        }
+        }.preferredColorScheme(.light)
         
     }
 }

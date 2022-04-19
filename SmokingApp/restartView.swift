@@ -131,7 +131,6 @@ struct restartView: View {
                     }
                 })
             
-            
             // showingAlert
             if alertShown {
                 restartAlertView(alertShown: $alertShown)
