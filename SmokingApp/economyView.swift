@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+func getSizeOfUserDefaults() -> Int? {
+    guard let libraryDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first else {
+        return nil
+    }
+
+    guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+        return nil
+    }
+
+    let filepath = "\(libraryDir)/Preferences/\(bundleIdentifier).plist"
+    let filesize = try? FileManager.default.attributesOfItem(atPath: filepath)
+    let retVal = filesize?[FileAttributeKey.size]
+    return retVal as? Int
+}
+
+
 struct economyView: View {
     
     @EnvironmentObject var data: UserData
@@ -44,6 +60,9 @@ struct economyView: View {
                             .font(.system(size: 40, weight: .bold))
                             .frame(width: 276, height: 55, alignment: .topLeading)
                             .offset(y: -50)
+                            .onTapGesture(perform: {
+                                print(getSizeOfUserDefaults())
+                            })
                         
                         HStack(spacing: 0){
                             

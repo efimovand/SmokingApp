@@ -78,6 +78,7 @@ struct restartGoalAlertView: View {
                         data.isGoal = false
                         UserDefaults.standard.set("", forKey: "goalPicture")
                         UserDefaults.standard.set(false, forKey: "isGoal")
+                        UserDefaults.standard.removeObject(forKey: "userImage")
                         hapticTouch(power: "medium")
                     }) {
                         Text("Подтвердить")
