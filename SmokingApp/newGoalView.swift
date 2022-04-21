@@ -26,6 +26,17 @@ struct newGoalView: View {
         
         ZStack{
             
+            // Hide keyboard invisible button
+            if (name != "") && (value != "") {
+                
+                Button(action: {hideKeyboard()}){
+                    Rectangle()
+                        .frame(width: .infinity, height: .infinity)
+                        .opacity(0)
+                }
+                
+            }
+            
             VStack(spacing: 0){
                 
                 ZStack{
@@ -154,7 +165,7 @@ struct newGoalView: View {
                 }
                 
                 // Accept Button
-                if (name != "") && (value != ""){
+                if (name != "") && (value != "") {
                     
                     Button(action: {
                         

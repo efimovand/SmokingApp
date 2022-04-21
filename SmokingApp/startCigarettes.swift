@@ -110,7 +110,7 @@ struct startCigarettes: View {
                     // Hide keyboard invisible button
                     Button(action: {hideKeyboard()}){
                         Rectangle()
-                            .frame(width: 375, height: 812)
+                            .frame(width: .infinity, height: .infinity)
                             .opacity(0)
                     }
                     
