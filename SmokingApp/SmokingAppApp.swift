@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-/*
-UserDefaults
- score = UserDefaults.standart.integer(forKey: "score") +
- hours = UserDefaults.standard.integer(forKey: "hours") +
- dailyEconomy = UserDefaults.standart.integer(forKey: "dailyEconomy") +
- attempts = score = UserDefaults.standart.integer(forKey: "attempts") +
- 
- firstDay = UserDefaults.standard.bool(forKey: "firstDay")
- savedHours = UserDefaults.standart.object(forKey: "savedHours")
- 
- isLaunchedBefore = UserDefaults.standart.bool(forKey: "isLaunchedBefore")
- savedTime = UserDefaults.standart.object(forKey: "savedTime")
- 
- !!!
- isGoal = UserDefaults.standart.bool(forKey: "isGoal")
- goalValue = UserDefaults.standard.integer(forKey: "goalValue")
- goalName = UserDefaults.standard.string(forKey: "goalName")
-*/
-
 @main
 struct SmokingAppApp: App {
     
@@ -73,9 +54,6 @@ struct SmokingAppApp: App {
                 .environmentObject(alertGoalShown)
                 .environmentObject(alertResetShown)
                 .environmentObject(mapPointShown)
-            //startView()
-            //.environmentObject(dailyUse)
-            //.environmentObject(pricePack)
         }
     }
 }

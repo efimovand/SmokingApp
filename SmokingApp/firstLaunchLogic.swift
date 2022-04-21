@@ -6,9 +6,26 @@
 //
 
 import SwiftUI
-
-import SwiftUI
 import Foundation
+
+/*
+UserDefaults
+ score = UserDefaults.standart.integer(forKey: "score") +
+ hours = UserDefaults.standard.integer(forKey: "hours") +
+ dailyEconomy = UserDefaults.standart.integer(forKey: "dailyEconomy") +
+ attempts = score = UserDefaults.standart.integer(forKey: "attempts") +
+ 
+ firstDay = UserDefaults.standard.bool(forKey: "firstDay")
+ savedHours = UserDefaults.standart.object(forKey: "savedHours")
+ 
+ isLaunchedBefore = UserDefaults.standart.bool(forKey: "isLaunchedBefore")
+ savedTime = UserDefaults.standart.object(forKey: "savedTime")
+ 
+ !!!
+ isGoal = UserDefaults.standart.bool(forKey: "isGoal")
+ goalValue = UserDefaults.standard.integer(forKey: "goalValue")
+ goalName = UserDefaults.standard.string(forKey: "goalName")
+*/
 
 class UserData: ObservableObject {
     @Published var isLaunchedBefore = UserDefaults.standard.bool(forKey: "isLaunchedBefore")

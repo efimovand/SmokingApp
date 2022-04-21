@@ -103,6 +103,7 @@ struct resetAlertView: View {
     }
 }
 
+
 struct resetAlertView_Previews: PreviewProvider {
     static var previews: some View {
         resetAlertView(resetAlertShown: .constant(false))

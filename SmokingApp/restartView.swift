@@ -158,32 +158,6 @@ struct restartView: View {
     }
 }
 
-// function for Haptic Touch
-func hapticTouch(power: String) {
-    
-    if power == "medium" {
-        let haptic = UIImpactFeedbackGenerator(style: .medium)
-        haptic.impactOccurred()
-    }
-    else if power == "soft" {
-        let haptic = UIImpactFeedbackGenerator(style: .soft)
-        haptic.impactOccurred()
-    }
-    else if power == "light" {
-        let haptic = UIImpactFeedbackGenerator(style: .light)
-        haptic.impactOccurred()
-    }
-    else if power == "heavy" {
-        let haptic = UIImpactFeedbackGenerator(style: .heavy)
-        haptic.impactOccurred()
-    }
-    else if power == "rigid" {
-        let haptic = UIImpactFeedbackGenerator(style: .rigid)
-        haptic.impactOccurred()
-    }
-    
-}
-
 
 struct restartView_Previews: PreviewProvider {
     static var previews: some View {

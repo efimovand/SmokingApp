@@ -44,7 +44,7 @@ struct settingsView: View {
                 }   .padding(.horizontal, 10)
                     .offset(y: -180)
                 
-                // noticications
+                // notifications
                 Toggle(isOn: $notifications){
                     
                     Text("Уведомления")

@@ -7,31 +7,11 @@
 
 import SwiftUI
 
-func getSizeOfUserDefaults() -> Int? {
-    guard let libraryDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first else {
-        return nil
-    }
-
-    guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
-        return nil
-    }
-
-    let filepath = "\(libraryDir)/Preferences/\(bundleIdentifier).plist"
-    let filesize = try? FileManager.default.attributesOfItem(atPath: filepath)
-    let retVal = filesize?[FileAttributeKey.size]
-    return retVal as? Int
-}
-
-
 struct economyView: View {
     
     @EnvironmentObject var data: UserData
-    //@State var score = 5
-    //@State var dailyEconomy = 180
-    //@State var isGoal = true
     
     @State var goalShown = false
-    
     @State var height: Float = Float(UIScreen.screenHeight)
     @State var restartBlurRadius : CGFloat = 0
     @State var newGoalBlurRadius : CGFloat = 0
@@ -223,8 +203,6 @@ struct economyView: View {
         
     }
 }
-
-
 
 
 struct economyView_Previews: PreviewProvider {

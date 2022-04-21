@@ -10,13 +10,12 @@ import SwiftUI
 struct nowGoalView: View {
     
     @EnvironmentObject var data: UserData
+    @AppStorage("freeMoney") var freeMoney: Int = 0
     
     @State var offset: CGFloat = 0
     @State var set: Bool = false
     @State var alertGoalShown = false
     @State var blurRadius : CGFloat = 0
-    
-    @AppStorage("freeMoney") var freeMoney: Int = 0
     
     @State var size : CGFloat = (UIScreen.screenHeight * 0.048)
     @State var descriptionOpacity : CGFloat = 0

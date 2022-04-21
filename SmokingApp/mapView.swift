@@ -712,8 +712,6 @@ struct mapPoint: View {
 }
 
 
-
-
 // maxScore pin
 //struct mapPin: View {
 //
@@ -812,60 +810,11 @@ struct mapPoint: View {
 //    }
 //}
 
-// line shape
-struct Line: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: CGPoint.zero)
-        path.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.minY), control: CGPoint(x: rect.midX, y: rect.minY + 70))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addQuadCurve(to: CGPoint(x: 0, y: rect.maxY), control: CGPoint(x: rect.midX, y: rect.maxY + 70))
-        path.closeSubpath()
-        
-        return path
-    }
-}
-
-// triangle shape
-struct Triangle: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
-        return path
-    }
-}
-
-// modifier for disabling ScrollView bounce
-struct bounceOff: ViewModifier {
-    init() {
-        UIScrollView.appearance().bounces = false
-    }
-    
-    func body(content: Content) -> some View {
-        return content
-    }
-}
 
 struct mapView_Previews: PreviewProvider {
     static var previews: some View {
                 mapView(mapShown: .constant(false))
                     .environmentObject(UserData())
                     .preferredColorScheme(.dark)
-        
-        //        mapPoint(picture: Image("lungs"), name: "Нормализуется уровень углекислого газа в крови", description: "Организм избавляется от избытка CO2. Повышенное содержание кислорода помогает питать ткани и кровеносные сосуды, которые получали меньше кислорода во время курения.", number: 4)
-        //            .preferredColorScheme(.dark)
-        //            .environmentObject(UserData())
-        
-//        mapPin()
-//            .environmentObject(UserData())
-//            .preferredColorScheme(.dark)
-        
-//        Line()
-//            .frame(height: 300)
-//            .preferredColorScheme(.dark)
     }
 }

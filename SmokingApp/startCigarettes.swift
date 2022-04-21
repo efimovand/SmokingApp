@@ -7,8 +7,6 @@
 
 import SwiftUI
 import Combine
-import UIKit
-
 
 struct startCigarettes: View {
     
@@ -174,13 +172,6 @@ struct startCigarettes: View {
         
     }
     
-}
-
-// Closing keyboard for TextField
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
 }
 
 struct startCigarettes_Previews: PreviewProvider {

@@ -98,6 +98,7 @@ struct restartGoalAlertView: View {
     }
 }
 
+
 struct restartGoalAlertView_Previews: PreviewProvider {
     static var previews: some View {
         restartGoalAlertView(alertGoalShown: .constant(false))
