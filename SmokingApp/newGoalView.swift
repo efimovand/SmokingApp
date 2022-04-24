@@ -28,13 +28,11 @@ struct newGoalView: View {
             
             // Hide keyboard invisible button
             if (name != "") && (value != "") {
-                
                 Button(action: {hideKeyboard()}){
                     Rectangle()
                         .frame(width: .infinity, height: .infinity)
                         .opacity(0)
                 }
-                
             }
             
             VStack(spacing: 0){

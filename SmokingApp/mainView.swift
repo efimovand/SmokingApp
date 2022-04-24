@@ -606,7 +606,7 @@ struct healthNow: View {
                             .font(.system(size: 13, weight: .semibold))
                             .foregroundColor(Color.white)
                             .multilineTextAlignment(.leading)
-                            .frame(width: 295, height: 120, alignment: .top)
+                            .frame(width: 295, height: 140, alignment: .top)
                             .opacity(descriptionTextOpacity)
                             .onChange(of: data.healthShown, perform: { value in
                                 switch value {
