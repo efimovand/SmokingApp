@@ -22,7 +22,7 @@ struct SmokingAppApp: App {
     @StateObject private var freeMoney = UserData()
     @StateObject private var goalPicture = UserData()
     @StateObject private var userImage = UserData()
-    @StateObject private var userImageBool = UserData()
+    @StateObject private var userImageBool = UserData() // is there saved userImage?
     @StateObject private var beforeScore = UserData() // user's summary score with all restarts
     @StateObject private var maxScoreHours = UserData() // user's score record in hours
     @StateObject private var beforeMoney = UserData() // user's summary economy with all restarts

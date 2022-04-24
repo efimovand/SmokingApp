@@ -171,7 +171,7 @@ struct newGoalView: View {
                             data.userImageBool = true
                             UserDefaults.standard.set(true, forKey: "userImageBool")
                             data.userImage = Image(uiImage: userImage)
-                            UserDefaults.standard.setValue(userImage.jpegData(compressionQuality: 0.00001), forKey: "userImage")
+                            let savedUserImage = saveImage(image: userImage)
                         }
                         else{
                             data.userImageBool = false

@@ -194,4 +194,28 @@ struct bounceOff: ViewModifier {
 }
 
 
+// Function for saving userImage to the file system
+func saveImage(image: UIImage) -> Bool {
+    guard let data = image.jpegData(compressionQuality: 0.1) ?? image.pngData() else {
+        return false
+    }
+    guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+        return false
+    }
+    do {
+        try data.write(to: directory.appendingPathComponent("userImage")!)
+        return true
+    } catch {
+        print(error.localizedDescription)
+        return false
+    }
+}
 
+
+// Function for loading userImage from the file system
+func loadImage(named: String) -> UIImage? {
+    if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+        return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+    }
+    return nil
+}

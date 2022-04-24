@@ -24,11 +24,11 @@ struct nowGoalView: View {
     @State private var image: UIImage?
     
     // load userImage
-    init() {
-            if let imageData = UserDefaults.standard.data(forKey: "userImage") {
-                self._image = State(wrappedValue: UIImage(data: imageData))
-            }
-        }
+//    init() {
+//            if let imageData = UserDefaults.standard.data(forKey: "userImage") {
+//                self._image = State(wrappedValue: UIImage(data: imageData))
+//            }
+//        }
     
     var body: some View {
         
@@ -52,13 +52,18 @@ struct nowGoalView: View {
                             
                         // user image
                         case true:
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor((Color.white).opacity(0.4))
-                                .frame(width: 60, height: 60)
-                                .overlay(Image(uiImage: image!)
-                                    .resizable()
+                            
+                            if let image = loadImage(named: "userImage") {
+                                
+                                RoundedRectangle(cornerRadius: 15)
+                                    .foregroundColor((Color.white).opacity(0.4))
                                     .frame(width: 60, height: 60)
-                                    .cornerRadius(15))
+                                    .overlay(Image(uiImage: image)
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .cornerRadius(15))
+                                
+                            }
                             
                         // standart image
                         case false:
