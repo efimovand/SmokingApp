@@ -449,6 +449,7 @@ struct mapPointHours: View {
                                 Image(systemName: "lock.fill")
                                     .resizable()
                                     .frame(width: 16, height: 21)
+                                    .foregroundColor(Color.white)
                                     .offset(y: -1)
                                 
                                 // days value
@@ -456,18 +457,22 @@ struct mapPointHours: View {
                                     
                                     Text(String(number))
                                         .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(Color.white)
                                     
                                     if ((number != 11) && (number % 10 == 1)){
                                         Text("час")
                                             .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(Color.white)
                                     }
                                     else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
                                         Text("часа")
                                             .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(Color.white)
                                     }
                                     else{
                                         Text("часов")
                                             .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(Color.white)
                                     }
                                     
                                 }
@@ -661,6 +666,7 @@ struct mapPoint: View {
                                 Image(systemName: "lock.fill")
                                     .resizable()
                                     .frame(width: 16, height: 21)
+                                    .foregroundColor(Color.white)
                                     .offset(y: -1)
                                 
                                 // days value
@@ -668,18 +674,22 @@ struct mapPoint: View {
                                     
                                     Text(String(number))
                                         .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(Color.white)
                                     
                                     if ((number != 11) && (number % 10 == 1)){
                                         Text("день")
                                             .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(Color.white)
                                     }
                                     else if (((number != 12) && (number != 13) && (number != 14)) && ((number % 10 == 2) || (number % 10 == 3) || (number % 10 == 4))){
                                         Text("дня")
                                             .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(Color.white)
                                     }
                                     else{
                                         Text("дней")
                                             .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(Color.white)
                                     }
                                     
                                 }
